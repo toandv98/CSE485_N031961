@@ -18,6 +18,7 @@
 <body>
     <div class="container-fullwidth">
         <?php
+        session_start();
         include('./php/header.php');
         ?>
 
