@@ -92,22 +92,26 @@
                         ký</a>
                     <ul class="dropdown-menu form-wrapper">
                         <li>
-                            <form action="confirmation.php" method="post">
+                            <form action="./php/confirmation.php" method="post">
                                 <p class="hint-text">Điền thông tin để đăng ký!</p>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Tên đăng nhập" required="required">
+                                    <input type="text" class="form-control" name="txtUsername" placeholder="Tên đăng nhập" required="required">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Mật khẩu" required="required">
+                                    <input type="text" class="form-control" name="txtEmail" placeholder="Email" required="required">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Xác nhân mật khẩu"
+                                    <input type="password" class="form-control" name="txtPassword" placeholder="Mật khẩu" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="txtPasswordCF" placeholder="Xác nhân mật khẩu"
                                         required="required">
                                 </div>
                                 <div class="form-group">
                                     <label class="checkbox-inline"><input type="checkbox" required="required"> Tôi đồng
                                         ý các <a href="#">Điều khoản &amp; Điều kiện</a></label>
                                 </div>
+
                                 <input type="submit" class="btn btn-primary btn-block" value="Đăng ký">
                             </form>
                         </li>
