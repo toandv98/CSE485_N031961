@@ -27,46 +27,25 @@
                     <h2>Hot</h2>
                 </div>
                 <div class="row">
-                    <?php
-                for ($i=0; $i < 12; $i++) {
-                    echo '<div class="col-lg-3 col-md-4 img-hover">
-                            <a href="#" class="d-block mb-4 h-100" style="text-decoration: none;">
-                             <div><img class="img-fluid img-thumbnail " src="./image/logo.png" alt=""></div>
-                              <div class="mt-2" style="color: black;">Tên bài hát</div>
-                            </a>
-                          </div>';
+                <?php
+                    require('./php/connect.php');
+                    $sql = "SELECT * FROM baihat";
+                    $result = mysqli_query($con,$sql);
+                    while($row = mysqli_fetch_assoc($result)){
+                        $tenbaihat = $row['tenbaihat'];
+                        echo '<div class="col-lg-3 col-md-4 img-hover">
+                                <a href="#" class="d-block mb-4 h-100" style="text-decoration: none;">
+                                <div><img class="img-fluid img-thumbnail " src="./image/logo.png" alt=""></div>
+                                <div class="mt-2" style="color: black;">'.$tenbaihat.'</div>
+                                </a>
+                            </div>';
                     }
-                ?>
+                    mysqli_close($con);
+                    ?>
                 </div>
             </div>
             <div class="right col-md-4 float-right">
-                <div class="text-md-left mt-5">
-                    <h2>Nghe nhiều</h2>
-                </div>
-                <div class="list-group">
-                    <?php
-                for ($i=0; $i < 10; $i++) {
-                    $cl='';
-                    switch ($i) {
-                        case 0:
-                            $cl='danger';
-                            break;
-                        case 1:
-                            $cl='success';
-                            break;
-                        case 2:
-                            $cl='primary';
-                            break;
-                        default:
-                            $cl='warning';
-                            break;
-                    } 
-                    echo '<a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2 p-2">
-                        <div class="item_title"><span class="badge badge-pill badge-'.$cl.'">'.($i+1).'</span><span class="ml-3">Tên nhạc</span></div>
-                    </a>';
-                }
-            ?>
-                </div>
+                <?php include('./php/menuright.php');?>
             </div>
             <div style="clear: both"></div>
         </main>
