@@ -7,8 +7,8 @@
     if(mysqli_num_rows($result)==1)
     {
         $_SESSION['userName']=$userName;
-        
-        header("location:http://localhost:2015/BTL1/");
+
+        header("location:../index.php");
         exit();
 
     }
@@ -20,4 +20,4 @@
 
 
 
-?>    
+?>
