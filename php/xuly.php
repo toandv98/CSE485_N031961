@@ -1,4 +1,4 @@
-<?php 
+<?php
     include('./connect.php');
     $username   = addslashes($_POST['txtUsername']);
     $password   = addslashes($_POST['txtPassword']);
@@ -63,7 +63,7 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 $headers .= 'From: <webmaster@example.com>' . "\r\n";
 $headers .= 'Cc: myboss@example.com' . "\r\n";
 
-$send=mail($to,$subject,$message,$headers);
+// $send=mail($to,$subject,$message,$headers);
 if($send)
 {
     echo "Thanh Cong";

@@ -25,7 +25,7 @@
 
             <div class="left col-md-8 float-left">
                 <div class="text-md-left mt-5">
-                    <h2>Hot</h2>
+                    <h2>Album</h2>
                 </div>
                 <div class="row">
                 <?php

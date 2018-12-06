@@ -58,10 +58,6 @@
                         </a>';
                     }
                     mysqli_close($con);
-                    
-                    for ($i=0; $i < 10; $i++) { 
-                         
-                    }
                 ?>
                 </div>
             </div>
