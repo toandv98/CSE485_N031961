@@ -68,59 +68,72 @@
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right ml-auto">
-                <li class="nav-item">
-                    <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Đăng nhập</a>
-                    <ul class="dropdown-menu form-wrapper">
-                        <li>
-                            <form action="confirmation.php" method="post">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Tên đăng nhập" required="required">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Mật khẩu" required="required">
-                                </div>
-                                <input type="submit" class="btn btn-primary btn-block" value="Đăng nhập">
-                                <div class="form-footer">
-                                    <a href="#">Quên mật khẩu?</a>
-                                </div>
-                            </form>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Đăng
-                        ký</a>
-                    <ul class="dropdown-menu form-wrapper">
-                        <li>
-                            <form action="./php/confirmation.php" method="post">
-                                <p class="hint-text">Điền thông tin để đăng ký!</p>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="txtUsername" placeholder="Tên đăng nhập" required="required">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="txtEmail" placeholder="Email" required="required">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" name="txtPassword" placeholder="Mật khẩu" required="required">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" name="txtPasswordCF" placeholder="Xác nhân mật khẩu"
-                                        required="required">
-                                </div>
-                                <div class="form-group">
-                                    <label class="checkbox-inline"><input type="checkbox" required="required"> Tôi đồng
-                                        ý các <a href="#">Điều khoản &amp; Điều kiện</a></label>
-                                </div>
-
-                                <input type="submit" class="btn btn-primary btn-block" value="Đăng ký">
-                            </form>
-                        </li>
-                    </ul>
-                </li>
+            <?php
+            if(isset($_SESSION['userName']))
+                    {
+                        
+                        echo "Chào ".$_SESSION['userName'],"  <a href='php/xulydangxuat.php' style='text-decoration:none';>Logout</a>";
+                    }
+                    else{
+                        echo '<li class="nav-item">
+                        <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Đăng nhập</a>
+                        <ul class="dropdown-menu form-wrapper">
+                            <li>
+                                <form action="./php/xulydangnhap.php" method="post">
+                                    <div class="form-group">
+                                        <input type="text" name="txtlogin" class="form-control" placeholder="Tên đăng nhập" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="txtpasswordlogin" class="form-control" placeholder="Mật khẩu" required="required">
+                                    </div>
+                                    <input type="submit" class="btn btn-primary btn-block" value="Đăng nhập">
+                                    <div class="form-footer">
+                                        <a href="#">Quên mật khẩu?</a>
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </li> 
+                    <li class="nav-item">
+                        <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Đăng
+                            ký</a>
+                        <ul class="dropdown-menu form-wrapper">
+                            <li>
+                            <form action="./php/xuly.php" method="post">
+                                    <p class="hint-text">Điền thông tin để đăng ký!</p>
+                                    <div class="form-group">
+                                        <input type="text" name="txtUsername" class="form-control" placeholder="Tên đăng nhập" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="txtPassword" class="form-control" placeholder="Mật khẩu" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="txtPasswordCF" class="form-control" placeholder="Xác nhân mật khẩu"
+                                            required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="txtEmail" class="form-control" placeholder="Email"
+                                            required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="checkbox-inline"><input type="checkbox" required="required"> Tôi đồng
+                                            ý các <a href="#">Điều khoản &amp; Điều kiện</a></label>
+                                    </div>
+                                    <input type="submit" class="btn btn-primary btn-block" value="Đăng ký">
+                                </form>
+                            </li>
+                        </ul>
+                    </li>';
+                    
+                    };
+            ?>
+                    
+                
             </ul>
         </div>
     </nav>
 
+    
 </header>
 <script type="text/javascript">
     $(document).on("click", ".navbar-right .dropdown-menu", function (e) {
