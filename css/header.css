@@ -1,5 +1,5 @@
 .form-control {
-    box-shadow: none;		
+    box-shadow: none;
     font-weight: normal;
     font-size: 13px;
 }
@@ -9,7 +9,7 @@
 }
 .navbar-header.col {
     padding: 0 !important;
-}	
+}
 .navbar {
     background: #fff;
     padding-left: 16px;
@@ -32,7 +32,7 @@
 }
 .navbar .navbar-brand b {
     font-weight: bold;
-    color: #33cabb;		
+    color: #33cabb;
 }
 .navbar .form-inline {
     display: inline-block;
@@ -45,7 +45,7 @@
 }
 .search-box {
     position: relative;
-}	
+}
 .search-box input {
     padding-right: 35px;
     border-color: #dfe3e8;
@@ -73,8 +73,8 @@
     padding-bottom: 6px;
     vertical-align: middle;
     border: none;
-}	
-.navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {		
+}
+.navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {
     color: #fff;
     outline: none;
     background: #31bfb1;
@@ -91,7 +91,7 @@
 }
 .navbar ul.nav li.active a, .navbar ul.nav li.open > a {
     background: transparent !important;
-}	
+}
 .navbar .nav .get-started-btn {
     min-width: 120px;
     margin-top: 8px;
@@ -124,7 +124,7 @@
     right: 0;
     font-size: 14px;
 }
-.navbar .dropdown-menu.form-wrapper a {		
+.navbar .dropdown-menu.form-wrapper a {
     color: #33cabb;
     padding: 0 !important;
 }
@@ -147,7 +147,7 @@
     line-height: 34px;
     width: 47%;
     text-decoration: none;
-}	
+}
 .navbar .social-btn .btn-primary {
     background: #507cc0;
 }

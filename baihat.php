@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/script.js"></script>
 </head>
 
 <body>
@@ -69,7 +68,6 @@
         <?php
         include('./php/footer.php');
         ?>
-
     </div>
 </body>
 
