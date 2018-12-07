@@ -9,7 +9,19 @@
     <title>Trang Quản Trị Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-    <script src="main.js"></script>
+    <script language="javascript">
+        function xacnhan()
+        {
+            if(confirm("Bạn có muốn xoá  không?"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
     <div id="top">

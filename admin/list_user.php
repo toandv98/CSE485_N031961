@@ -32,7 +32,7 @@
                 {
                     echo "<td>Thành Viên</td>";
                 }
-                echo "<td><a href='templates/delete_user.php?$data[id]' style='color:red;'>Delete</a></td>";
+                echo "<td><a href='del_user.php?id=$data[id]' onclick=' return xacnhan();' style='color:red;'>Delete</a></td>";
             echo "</tr>";
             $stt++;
             }
