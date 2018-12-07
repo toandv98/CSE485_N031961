@@ -36,10 +36,10 @@
     ");
 
     if ($addmember)
-        echo "Quá trình đăng ký thành công. <a href='/'>Về trang chủ</a>";
+        echo "Quá trình đăng ký thành công. <a href='/CongngheWeb'>Về trang chủ</a>";
     else
         echo "Có lỗi xảy ra trong quá trình đăng ký. <a href='index.php'>Thử lại</a>";
-
+/*
 $to = "hongducphi17@gmail.com";
 $subject = "Email";
 
@@ -71,5 +71,5 @@ if($send)
 else
 {
     echo "Lỗi";
-}
+}*/
 ?>

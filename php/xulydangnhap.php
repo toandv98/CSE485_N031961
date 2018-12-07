@@ -6,12 +6,22 @@
     $result = mysqli_query($con,"Select*from nguoidung where userName = '$userName' and passWord = '$passWord'");
     if(mysqli_num_rows($result)==1)
     {
+        $data = mysqli_fetch_assoc($result);
+        $_SESSION['level'] = $data['level'];
+        if($_SESSION['level']==1)
+        {
+            header("location:http://localhost:2015/Congngheweb/admin/admin.php");
+            exit();
+        }
+        else{
+        // lấy tên từ form nhập
         $_SESSION['userName']=$userName;
-
-        header("location:../index.php");
+        //chuyển sang trang chủ
+        header("location:http://localhost:2015/CongngheWeb/");
         exit();
 
     }
+}
     else
     {
         echo "Sai Ten Dang Nhap Hoac Mat Khau";
@@ -20,4 +30,4 @@
 
 
 
-?>
+?>    

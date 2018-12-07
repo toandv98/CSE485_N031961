@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "nhac";
+$dbname = "tlumusic";
 
 $con = mysqli_connect($servername,$username,$password,$dbname);
 
