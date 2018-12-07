@@ -71,8 +71,13 @@
             <?php
             if(isset($_SESSION['userName']))
                     {
-
-                        echo "Chào ".$_SESSION['userName'],"  <a href='php/xulydangxuat.php' style='text-decoration:none';>Logout</a>";
+                        echo '<li class="nav-item">
+                            <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Chào,&nbsp;'.$_SESSION['userName'].'</a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                              <li><a href="#" class="dropdown-item">Trang cá nhân</a></li>
+                              <li><a href="./php/xulydangxuat.php" class="dropdown-item">Đăng Xuất</a></li>
+                            </ul>
+                        </li>';
                     }
                     else{
                         echo '<li class="nav-item">
