@@ -2,7 +2,7 @@
 <header>
     <nav class="navbar navbar-default navbar-expand-lg navbar-light">
         <div class="navbar-header d-flex col">
-            
+
             <a class="navbar-brand" href="./index.php"><span><img class="mr-2" src="./image/logo.png" width="40px"></span>Nhac Online</b></a>
             <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
                 <span class="navbar-toggler-icon"></span>
@@ -71,7 +71,7 @@
             <?php
             if(isset($_SESSION['userName']))
                     {
-                        
+
                         echo "Chào ".$_SESSION['userName'],"  <a href='php/xulydangxuat.php' style='text-decoration:none';>Logout</a>";
                     }
                     else{
@@ -93,13 +93,13 @@
                                 </form>
                             </li>
                         </ul>
-                    </li> 
+                    </li>
                     <li class="nav-item">
                         <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Đăng
                             ký</a>
                         <ul class="dropdown-menu form-wrapper">
                             <li>
-                            <form action="./php/xuly.php" method="post">
+                            <form action="./php/confirmation.php" method="post">
                                     <p class="hint-text">Điền thông tin để đăng ký!</p>
                                     <div class="form-group">
                                         <input type="text" name="txtUsername" class="form-control" placeholder="Tên đăng nhập" required="required">
@@ -112,7 +112,7 @@
                                             required="required">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="txtEmail" class="form-control" placeholder="Email"
+                                        <input type="email" name="txtEmail" class="form-control" placeholder="Email"
                                             required="required">
                                     </div>
                                     <div class="form-group">
@@ -124,16 +124,16 @@
                             </li>
                         </ul>
                     </li>';
-                    
+
                     };
             ?>
-                    
-                
+
+
             </ul>
         </div>
     </nav>
 
-    
+
 </header>
 <script type="text/javascript">
     $(document).on("click", ".navbar-right .dropdown-menu", function (e) {
