@@ -104,7 +104,7 @@
                             ký</a>
                         <ul class="dropdown-menu form-wrapper">
                             <li>
-                            <form action="./php/confirmation.php" method="post">
+                            <form action="./php/dangky.php" method="post">
                                     <p class="hint-text">Điền thông tin để đăng ký!</p>
                                     <div class="form-group">
                                         <input type="text" name="txtUsername" class="form-control" placeholder="Tên đăng nhập" required="required">
