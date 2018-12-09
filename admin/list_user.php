@@ -17,14 +17,14 @@
 
             //thuchiencautruyvan
             $stt=1;
-            $result = mysqli_query($con,"Select id,userName,email,level from nguoidung");
+            $result = mysqli_query($con,"Select id,userName,email,level from user");
             While($data = mysqli_fetch_assoc($result))
             {
                 echo "<tr>";
                 echo "<td>$stt</td>";
                 echo "<td>$data[userName]</td>";
                 echo "<td>$data[email]</td>";
-                if($data['level']==1)
+                if($data['level']==2)
                 {
                     echo "<td>Admin</td>";
                 }

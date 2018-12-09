@@ -19,6 +19,8 @@
             //truyvan
             
             mysqli_query($con,"Insert Into chude(chude) value('$tenchude')");
+
+            header('location:./list_chude.php');
             //dongketnoi
             mysqli_close($con);
         }

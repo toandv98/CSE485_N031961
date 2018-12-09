@@ -1,4 +1,17 @@
 <link rel="stylesheet" href="./css/header.css">
+<script>
+    function quayve(){
+        if(confirm("Quay về trang đăng nhập"))
+        {
+            return true;
+            window.location.href = "../index.php";
+        }
+        else{
+            return false;
+            window.location.reload();
+        }
+    }
+</script>
 <header>
     <nav class="navbar navbar-default navbar-expand-lg navbar-light">
         <div class="navbar-header d-flex col">
@@ -15,12 +28,20 @@
             <ul class="nav navbar-nav">
                 <li class="nav-item"><a href="./baihat.php" class="nav-link">Bài hát</a></li>
                 <li class="nav-item dropdown">
-                    <a data-hover="dropdown" class="nav-link dropdown-toggle" href="#">Chủ đề <b class="caret"></b></a>
+                    <a data-hover="dropdown" class="nav-link dropdown-toggle" href="./chude.php">Chủ đề <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#" class="dropdown-item">item</a></li>
-                        <li><a href="#" class="dropdown-item">item</a></li>
-                        <li><a href="#" class="dropdown-item">item</a></li>
-                        <li><a href="#" class="dropdown-item">item</a></li>
+                    <?php
+                        include('./php/connect.php');
+                        $sql = "Select*from chude";
+                        $result = mysqli_query($con,$sql);
+                        while($row = mysqli_fetch_assoc($result))
+                        {
+                            $tenchude = $row['chude'];
+                            echo '<li><a href="#" class="dropdown-item">'.$tenchude.'</a></li>';
+                        }
+                        mysqli_close($con);
+                        ?>
+                        
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -127,11 +148,11 @@
                     
                     };
             ?>
-                    
-                
+
             </ul>
         </div>
     </nav>
+    
 
     
 </header>

@@ -19,7 +19,7 @@
             include('../php/connect.php');
             //truyvanupdate
             mysqli_query($con,"Update chude SET chude='$tenchude' where id=$id");
-
+            header('location:list_chude.php');
             mysqli_close($con);
         }
     }

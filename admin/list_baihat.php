@@ -6,7 +6,7 @@
         <table>
             <tr>
                 <td colspan="3"></td>
-                <td colspan="2"><a href="#" style="color:#c36">Thêm bài hát</a></td>
+                <td colspan="2"><a href="thembaihat.php" style="color:#c36">Thêm bài hát</a></td>
             </tr>
             <tr style="background: #0C6;">
                 <th >STT</th>

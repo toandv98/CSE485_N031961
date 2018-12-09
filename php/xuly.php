@@ -15,28 +15,21 @@
     ];
     $hash = password_hash($password, PASSWORD_DEFAULT, $options);
 
-    if (mysqli_num_rows(mysqli_query($con,"SELECT username FROM nguoidung WHERE username='$username'")) > 0){
-        echo "Tên đăng nhập này đã có người dùng. Vui lòng chọn tên đăng nhập khác. <a href='javascript: history.go(-1)'>Trở lại</a>";
+    if (mysqli_num_rows(mysqli_query($con,"SELECT username FROM user WHERE username='$username'")) > 0)
+    {
+        echo "Tên đăng nhập này đã có người dùng. Vui lòng chọn tên đăng nhập khác. <a href='../index.php'>Trở lại</a>";
         exit;
     }
 
-    if (mysqli_num_rows(mysqli_query($con,"SELECT email FROM nguoidung WHERE Email='$email'")) > 0)
+    if (mysqli_num_rows(mysqli_query($con,"SELECT email FROM user WHERE Email='$email'")) > 0)
     {
-        echo "Email này đã có người dùng. Vui lòng chọn Email khác. <a href='javascript: history.go(-1)'>Trở lại</a>";
+        echo "Email này đã có người dùng. Vui lòng chọn Email khác. <a href='../index.php'>Trở lại</a>";
         exit;
     }
-    @$addmember = mysqli_query($con,"
-    INSERT INTO nguoidung (username, password, email)
-    VALUE
-        (
-            '{$username}',
-            '{$hash}',
-            '{$email}'
-        )
-    ");
+    @$addmember = mysqli_query($con,"INSERT INTO user (username, password, email) VALUE('{$username}','{$hash}','{$email}')");
 
     if ($addmember)
-        echo "Quá trình đăng ký thành công. <a href='/CongngheWeb'>Về trang chủ</a>";
+        echo "Quá trình đăng ký thành công. <a href='../index.php'>Quay về trang đăng nhập</a>";
     else
         echo "Có lỗi xảy ra trong quá trình đăng ký. <a href='index.php'>Thử lại</a>";
 /*
