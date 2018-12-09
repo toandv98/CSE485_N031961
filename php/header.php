@@ -80,11 +80,11 @@
                     </ul>
                 </li>
             </ul>
-            <form class="navbar-form form-inline">
+            <form class="navbar-form form-inline" action="./timkiem.php" method="post">
                 <div class="input-group search-box">
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Tìm kiếm..." aria-label="Tìm kiếm...">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                    <form  class="form-inline my-2 my-lg-0" method="POST">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Tìm kiếm..." name = "keyword" required="required">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="ok">Tìm kiếm</button>
                     </form>
                 </div>
             </form>

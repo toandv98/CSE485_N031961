@@ -5,37 +5,30 @@
     <div id="wrapper">
         <table>
             <tr>
-                <td colspan="3"></td>
-                <td colspan="2"><a href="thembaihat.php" style="color:#c36">Thêm bài hát</a></td>
+                <td colspan="2"></td>
+                <td colspan="1"><a href="../thembaihat.php" style="color:#c36">Thêm bài hát</a></td>
             </tr>
             <tr style="background: #0C6;">
                 <th >STT</th>
                 <th>Chủ Đề</th>
-                <th>Tựa đề</th>
-                <th>Edit</th>
                 <th>Delete</a></th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Nhạc Trẻ</td>
-                <td>Anh chẳng sao mà</td>
-                <td><a href="#"" style="color:#09F;">Edit</a></td>
-                <td><a href="#"" style="color:red;">Delete</a></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Remix</td>
-                <td>Ngắm Hoa Lệ Rơi</td>
-                <td><a href="#"" style="color:#09F;">Edit</a></td>
-                <td><a href="#"" style="color:red;">Delete</a></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Nhạc Trẻ</td>
-                <td>Lặng quên chiều thu</td>
-                <td><a href="#"" style="color:#09F;">Edit</a></td>
-                <td><a href="#"" style="color:red;">Delete</a></td>
-            </tr>
+            <?php
+                
+                include('../php/connect.php');
+                $stt=1;
+                $result = mysqli_query($con,"Select id,tenbaihat from baihat");
+                While($data = mysqli_fetch_assoc($result))
+                {
+                    echo "<tr>";
+                    echo "<td style='width:100px;'>$stt</td>";
+                    echo "<td>$data[tenbaihat]</td>";
+                    echo "<td><a href='del_baihat.php?id=$data[id]' onclick=' return xacnhan();' style='color:red;'>Delete</a></td>";
+                    echo "</tr>";
+                    $stt++;
+                }
+                
+            ?>
         </table>
     </div>
     <?php

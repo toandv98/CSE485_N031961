@@ -24,7 +24,7 @@
                             $cl='warning';
                             break;
                     } 
-                    echo '<a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2 p-2">
+                    echo '<a href="playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2 p-2">
                         <div class="item_title"><span class="badge badge-pill badge-'.$cl.'">'.$i.'</span><span class="ml-3">'.$tenbaihat.'</span></div>
                     </a>';
                     $i++;
