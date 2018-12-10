@@ -134,12 +134,10 @@ a:hover{
 					echo "Đăng nhạc thất bại!Trở về <a href='./admin/list_baihat.php'>Trở Lại</a><br />";
 				}
 			}
-			else
-			echo "Kiểu File không hợp lệ. Quay lại <a href='./admin/list_baihat.php'>Trở Lại</a><br />";
 		}
-		else
-		{
-
+		
+			
+				
 ?>
 <!DOCTYPE html>
 <html>
@@ -204,15 +202,15 @@ a:hover{
 					        <input type="text" name="casy" id="casy" /></td>
 					      </tr>
 						  <tr>
-						    <td height="30" align="right"><b>Thể loại:</b></td>
+						    <td height="30" align="right"><b>Chủ Đề:</b></td>
 						    <td><label for="theloai"></label>
 						      <select name="theloai">
 										<?php
-											$luachon=mysqli_query($con,"select * from theloai");
-											while($row=mysqli_fetch_assoc($luachon))
+											$chude=mysqli_query($con,"select * from chude");
+											while($row=mysqli_fetch_assoc($chude))
 											{
 										?>
-											<option> <?php echo $row['noidung']?></option>
+											<option> <?php echo $row['chude']?></option>
 										<?php
 											}
 										?>
@@ -231,9 +229,9 @@ a:hover{
 								<strong>Cách thức upload tránh lỗi nhạc:</strong>
 							</div>
 							<ul>
-					            <li>- Không để tên bài hát có dấu (chỉ nhạc trên máy).</li>
-					            <li>- Không để tên ca sĩ trên bài hát (chỉ nhạc trên máy).</li>
-					            <li>- Chỉ up nhạc MP3.</li>
+					            <li> Không để tên bài hát có dấu.</li>
+					            <li> Không để tên ca sĩ trên bài hát.</li>
+					            <li> Chỉ up nhạc MP3.</li>
 			                </ul>
 							
 						</td>
@@ -245,4 +243,4 @@ a:hover{
 </div>
 <?php 
 	include('./admin/templates/footer.php');
-										}?>
+										?>
