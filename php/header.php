@@ -59,11 +59,11 @@
           </ul>
         </li>
       </ul>
-      <form action="./canhan.php" class="navbar-form form-inline">
+      <form action="./timkiem.php" class="navbar-form form-inline" method="post">
         <div class="input-group search-box">
           <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Tìm kiếm..." aria-label="Tìm kiếm...">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+            <input class="form-control mr-sm-2" name="keyword" type="text" placeholder="Tìm kiếm..." aria-label="Tìm kiếm..." required="required">
+            <button class="btn btn-outline-success my-2 my-sm-0" name="ok" type="submit">Tìm kiếm</button>
           </form>
         </div>
       </form>
@@ -72,6 +72,15 @@
         <?php
             if(isset($_SESSION['userName']))
                     {
+                      if($_SESSION['level']==2){
+                        echo '<li class="nav-item">
+                                      <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Chào,&nbsp;'.$_SESSION['userName'].'</a>
+                                      <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="./admin/admin.php" class="dropdown-item">Trang quản trị</a></li>
+                                        <li><a href="./php/xulydangxuat.php" class="dropdown-item">Đăng Xuất</a></li>
+                                      </ul>
+                                  </li>';
+                      }else{
                         echo '<li class="nav-item">
                             <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Chào,&nbsp;'.$_SESSION['userName'].'</a>
                             <ul class="dropdown-menu dropdown-menu-right">
@@ -79,6 +88,7 @@
                               <li><a href="./php/xulydangxuat.php" class="dropdown-item">Đăng Xuất</a></li>
                             </ul>
                         </li>';
+                      }
                     }
                     else{
                         echo '<li class="nav-item">

@@ -48,7 +48,7 @@
       mysqli_close($con);
           echo '
         <main class="col-md-10 m-auto p-5">
-          <form class="" action="./php/capnhatTT.php" method="post">
+          <form class="" action="./php/capnhatTT.php" method="post" enctype="multipart/form-data">
             <div class="col-md-3 mr-5 float-left text-md-center">
               <img src="./image/logo.png" class="m-x-auto img-fluid img-circle" alt="avatar">
               <label class="custom-file">

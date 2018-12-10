@@ -8,6 +8,7 @@
       $row = mysqli_fetch_assoc($result);
       $hash = $row["passWord"];
       $active = $row["active"];
+      $_SESSION['level'] = $row['level'];
       if ($active==0) {
         echo "Tài khoản chưa kích hoạt. Kiểm tra email để kích hoạt tài khoản. <a href='../index.php'>Về trang chủ</a>";
       }else {
