@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    
 </head>
 
 <body>
@@ -20,7 +21,7 @@
         session_start();
         include('./php/header.php');
         ?>
-
+        
         <div id="carouselExampleControls" class="carousel slide col-md-11 m-auto pt-3" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
