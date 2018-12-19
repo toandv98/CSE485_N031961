@@ -7,7 +7,7 @@
                     $sql = "SELECT * FROM baihat";
                     $result = mysqli_query($con,$sql);
                     $i=1;
-                    while($row = mysqli_fetch_assoc($result)){
+                    while(($row = mysqli_fetch_assoc($result)) && ($i<='10')){
                         $tenbaihat = $row['tenbaihat'];
                         $cl='';
                     switch ($i) {

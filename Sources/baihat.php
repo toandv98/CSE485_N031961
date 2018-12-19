@@ -34,12 +34,12 @@
                     $result = mysqli_query($con,$sql);
                     while($row = mysqli_fetch_assoc($result)){
                         $tenbaihat = $row['tenbaihat'];
+                        $anh = $row['image'];
                         $casy = $row['casy'];
                         $luotnghe = $row['luotnghe'];
-                        $duongdananh = $row['duongdananh'];
                         echo '<a href="./playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
                             <span>
-                                <img class="float-md-left mr-2" src="./'.$duongdananh.'" width="50px">
+                                <img class="float-md-left mr-2" src="./'.$anh.'" width="50px">
                             </span>
                             <div class="item_title">'.$tenbaihat.'</div>
                             <div class="box_items">

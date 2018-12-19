@@ -15,14 +15,22 @@
       <ul class="nav navbar-nav">
         <li class="nav-item"><a href="./baihat.php" class="nav-link">Bài hát</a></li>
         <li class="nav-item dropdown">
-          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="#">Chủ đề <b class="caret"></b></a>
+          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="./chude.php">Chủ đề <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#" class="dropdown-item">item</a></li>
-            <li><a href="#" class="dropdown-item">item</a></li>
-            <li><a href="#" class="dropdown-item">item</a></li>
-            <li><a href="#" class="dropdown-item">item</a></li>
+          <?php
+            include('./php/connect.php');
+            $sql = "Select * from theloai";
+            $result = mysqli_query($con,$sql);
+            while($row = mysqli_fetch_assoc($result))
+            {
+              $tenchude = $row['tentheloai'];
+              echo '<li><a href="nhactre.php?id='.$row['id'].'" class="dropdown-item">'.$tenchude.'</a></li>';
+
+            }
+            mysqli_close($con);
+            ?>            
           </ul>
-        </li>
+          </li>
         <li class="nav-item dropdown">
           <a data-hover="dropdown" class="nav-link dropdown-toggle" href="#">BXH <b class="caret"></b></a>
           <ul class="dropdown-menu">

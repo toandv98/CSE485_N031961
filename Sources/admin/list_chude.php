@@ -18,12 +18,12 @@
                 
                 include('../php/connect.php');
                 $stt=1;
-                $result = mysqli_query($con,"Select id,chude from chude");
+                $result = mysqli_query($con,"Select id,tentheloai from theloai");
                 While($data = mysqli_fetch_assoc($result))
                 {
                     echo "<tr>";
                     echo "<td style='width:100px;'>$stt</td>";
-                    echo "<td>$data[chude]</td>";
+                    echo "<td>$data[tentheloai]</td>";
                     echo "<td style='width:100px;'><a href='chinhsuachude.php?id=$data[id]' style='color:#09F;'>Edit</a></td>";
                     echo "<td><a href='del_chude.php?id=$data[id]' onclick=' return xacnhan();' style='color:red;'>Delete</a></td>";
                     echo "</tr>";

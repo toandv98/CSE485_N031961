@@ -18,7 +18,7 @@
             include('../php/connect.php');
             //truyvan
             
-            mysqli_query($con,"Insert Into chude(chude) value('$tenchude')");
+            mysqli_query($con,"Insert Into theloai(tentheloai) value('$tenchude')");
 
             header('location:./list_chude.php');
             //dongketnoi
@@ -34,6 +34,11 @@
                     <tr>
                         <td>Name:</td>
                         <td><input type=text size="25>" name="txtname"/>
+
+                    </tr>
+                    <tr>
+                        <td>Anh:</td>
+                        <td><input type=file size="25>" name="image"/>
 
                     </tr>
                     <tr>

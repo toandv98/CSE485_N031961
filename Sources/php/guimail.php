@@ -3,7 +3,7 @@
     // Chủ Đề
     $subject="Kích Hoạt Tài Khoản";
     // From
-    $header="from: NhacOnline <toan98.k10@gmail.com>";
+    $header="from: NhacOnline <hongducphi17@gmail.com>";
     // Your message
     $message="Đường link kích hoạt : \r\n";
     $message.="Nhấp vào link sau để kích hoạt tài khoản\r\n";

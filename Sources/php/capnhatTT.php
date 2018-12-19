@@ -22,7 +22,6 @@
             ngaysinh='{$ngaysinh}',
             sdt='{$sdt}',
             diachi='{$diachi}'
-            where userName ='{$userName}'
             ");
             if ($addmember){
               echo 'Cập nhật thành công. <a href="javascript: history.go(-1)">Trở lại...</a> <span id="time"></span>';

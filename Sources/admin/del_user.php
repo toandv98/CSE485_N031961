@@ -8,5 +8,7 @@
     echo "Xoá thành công";
     header('location:list_user.php');
 
+
+
     mysqli_close($con);
 ?>

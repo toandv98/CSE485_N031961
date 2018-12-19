@@ -12,13 +12,13 @@
         }
         else
         {
-            $tenchude =  $_POST['txtname']; 
+            $tenchude =  $_POST['txtname'];
         }
         if($tenchude)
         {
             include('../php/connect.php');
             //truyvanupdate
-            mysqli_query($con,"Update chude SET chude='$tenchude' where id=$id");
+            mysqli_query($con,"Update theloai SET tentheloai='$tenchude' where id=$id");
             header('location:list_chude.php');
             mysqli_close($con);
         }
@@ -28,9 +28,9 @@
     //moketnoicsdl
     include('../php/connect.php');
     //cautruyvan
-    $result = mysqli_query($con,"Select chude from chude where id=$id");
+    $result = mysqli_query($con,"Select tentheloai from theloai where id=$id");
     $data = mysqli_fetch_assoc($result);
-    
+
 ?>
     <div id="wrapper2">
         <fieldset style="width:27px;margin:20px auto 10px;">
@@ -39,7 +39,7 @@
                     <table>
                         <tr>
                             <td>Name</td>
-                            <td><input type="text" size="25" name="txtname" value = "<?php echo $data['chude'];?>"></td>
+                            <td><input type="text" size="25" name="txtname" value = "<?php echo $data['tentheloai'];?>"></td>
                         </tr>
                         <tr>
                             <td></td>

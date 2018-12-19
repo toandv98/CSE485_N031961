@@ -31,6 +31,10 @@
 <link href='https://fonts.googleapis.com/css?family=Allerta' rel='stylesheet'>
 
 <div class="container-audio">
+	<h3 style="color:blue;font-size:16pt;color:#999;"><?php echo $row['tenbaihat'];?> </h3>
+ 	<span style="font-size:11pt;color:#999;">Trình bày: <?php echo $row['casy'];?> | Lượt nghe: <?php echo $row['luotnghe'];?></span>
+	 <br>	
+	 <br>
 	<audio controls  loop autoplay>
 	<source src="<?php echo "./".$row['duongdan'];?>" type="audio/mpeg">
   <source src="<?php echo "./".$row['duongdan'];?>" type="audio/ogg">
