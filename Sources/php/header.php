@@ -15,7 +15,7 @@
       <ul class="nav navbar-nav">
         <li class="nav-item"><a href="./baihat.php" class="nav-link">Bài hát</a></li>
         <li class="nav-item dropdown">
-          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="./chude.php">Chủ đề <b class="caret"></b></a>
+          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="./chude.php">Thể loại<b class="caret"></b></a>
           <ul class="dropdown-menu">
           <?php
             include('./php/connect.php');
@@ -34,10 +34,9 @@
         <li class="nav-item dropdown">
           <a data-hover="dropdown" class="nav-link dropdown-toggle" href="#">BXH <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#" class="dropdown-item">item</a></li>
-            <li><a href="#" class="dropdown-item">item</a></li>
-            <li><a href="#" class="dropdown-item">item</a></li>
-            <li><a href="#" class="dropdown-item">item</a></li>
+            <li><a href="#" class="dropdown-item">Bài hát</a></li>
+            <li><a href="#" class="dropdown-item">Album</a></li>
+            <li><a href="#" class="dropdown-item">Chủ đề</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -49,23 +48,7 @@
             <li><a href="#" class="dropdown-item">item</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
-          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="#">Video <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#" class="dropdown-item">item</a></li>
-            <li><a href="#" class="dropdown-item">item</a></li>
-            <li><a href="#" class="dropdown-item">item</a></li>
-            <li><a href="#" class="dropdown-item">item</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="#">Nhạc sỹ <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#" class="dropdown-item">Việt Nam</a></li>
-            <li><a href="#" class="dropdown-item">Âu Mỹ</a></li>
-            <li><a href="#" class="dropdown-item">Châu Á</a></li>
-          </ul>
-        </li>
+        
       </ul>
       <form action="./timkiem.php" class="navbar-form form-inline" method="post">
         <div class="input-group search-box">

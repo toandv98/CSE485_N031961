@@ -4,7 +4,7 @@
 <div class="list-group">
     <?php
                     require('./php/connect.php');
-                    $sql = "SELECT * FROM baihat";
+                    $sql = "SELECT * FROM baihat ORDER BY luotnghe DESC";
                     $result = mysqli_query($con,$sql);
                     $i=1;
                     while(($row = mysqli_fetch_assoc($result)) && ($i<='10')){

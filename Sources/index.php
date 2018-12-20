@@ -55,9 +55,10 @@
                 $result = mysqli_query($con,$sql);
                 while($row = mysqli_fetch_assoc($result)){
                 $tentheloai = $row['tentheloai'];
+                $image=$row['image'];
                 echo '<div class="col-lg-3 col-md-4 img-hover">
                     <a href="nhactre.php?id='.$row['id'] .'" class="d-block mb-4 h-100" style="text-decoration: none;">
-                    <div><img class="img-fluid img-thumbnail " src="./image/anh252.jpg" alt=""></div>
+                    <div><img class="img-fluid img-thumbnail " src='.$image.' alt=""></div>
                     <div class="mt-2" style="color: black;">'.$tentheloai.'</div>
                     </a>
                 </div>';
