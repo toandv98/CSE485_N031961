@@ -56,13 +56,10 @@ CREATE TABLE `baihat` (
   `loibaihat` varchar(9999) COLLATE utf8mb4_unicode_ci NOT NULL,
   `luotnghe` int(255) NOT NULL,
   `idtheloai` int(10) NOT NULL,
-  `idalbum` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idtheloai` (`idtheloai`),
-  KEY `idalbum` (`idalbum`),
-  CONSTRAINT `baihat_ibfk_1` FOREIGN KEY (`idtheloai`) REFERENCES `theloai` (`id`),
-  CONSTRAINT `baihat_ibfk_2` FOREIGN KEY (`idalbum`) REFERENCES `album` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  CONSTRAINT `baihat_ibfk_1` FOREIGN KEY (`idtheloai`) REFERENCES `theloai` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,6 +68,7 @@ CREATE TABLE `baihat` (
 
 LOCK TABLES `baihat` WRITE;
 /*!40000 ALTER TABLE `baihat` DISABLE KEYS */;
+INSERT INTO `baihat` VALUES (10,'Hongkong1','Trọng Tài','Nhạc Trẻ','nhac/hongkong1.mp3','image/21309893.jpg','',11,4),(11,'Tên bài hát','Tên ca sĩ','Nhạc EDM','nhac/hongkong1.mp3','image/21124196.jpg','',5,3),(12,'Tên bài hát','Tên ca sĩ','Nhạc Thư Giãn','nhac/hongkong1.mp3','image/22913579.jpg','',3,2),(13,'Tên bài hát','Tên ca sĩ','Rap','nhac/hongkong1.mp3','image/21106388.jpg','',2,1),(14,'Tên bài hát','Tên ca sĩ','Nhạc Trẻ','nhac/hongkong1.mp3','image/22911086.jpg','',0,4),(15,'Tên bài hát','Tên ca sĩ','Nhạc Thư Giãn','nhac/hongkong1.mp3','image/23725919.jpg','',0,2),(16,'Tên bài hát','Tên ca sĩ','Nhạc Thư Giãn','nhac/hongkong1.mp3','image/22695413.jpg','',0,2);
 /*!40000 ALTER TABLE `baihat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,7 +150,7 @@ CREATE TABLE `theloai` (
 
 LOCK TABLES `theloai` WRITE;
 /*!40000 ALTER TABLE `theloai` DISABLE KEYS */;
-INSERT INTO `theloai` VALUES (1,'Rap',''),(2,'Nhạc Thư Giãn',''),(3,'Nhạc EDM',''),(4,'Nhạc Trẻ','');
+INSERT INTO `theloai` VALUES (1,'Rap','image/22334189.jpg'),(2,'Nhạc Thư Giãn','image/281235.jpg'),(3,'Nhạc EDM','image/19975520.jpg'),(4,'Nhạc Trẻ','image/22695413.jpg');
 /*!40000 ALTER TABLE `theloai` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,4 +167,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-20 19:12:42
+-- Dump completed on 2018-12-20 21:36:57
