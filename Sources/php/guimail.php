@@ -7,7 +7,7 @@
     // Your message
     $message="Đường link kích hoạt : \r\n";
     $message.="Nhấp vào link sau để kích hoạt tài khoản\r\n";
-    $message.="http://localhost/CongngheWeb/php/confirmation.php?passkey=$code";
+    $message.="http://localhost/CSE485_N031961/Sources/php/confirmation.php?passkey=$code";
     // Gủi mail
     $sentmail = mail($to,$subject,$message,$header);
  ?>

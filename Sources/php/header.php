@@ -85,6 +85,7 @@
                                       <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Chào,&nbsp;'.$_SESSION['userName'].'</a>
                                       <ul class="dropdown-menu dropdown-menu-right">
                                         <li><a href="./admin/admin.php" class="dropdown-item">Trang quản trị</a></li>
+                                        <li><a href="./canhan.php" class="dropdown-item">Trang cá nhân</a></li>
                                         <li><a href="./php/xulydangxuat.php" class="dropdown-item">Đăng Xuất</a></li>
                                       </ul>
                                   </li>';
@@ -112,7 +113,7 @@
                                     </div>
                                     <input type="submit" class="btn btn-primary btn-block" value="Đăng nhập">
                                     <div class="form-footer">
-                                        <a href="#">Quên mật khẩu?</a>
+                                        <a href="./quenmatkhau.php">Quên mật khẩu?</a>
                                     </div>
                                 </form>
                             </li>
