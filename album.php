@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/script.js"></script>
 </head>
 
 <body>
@@ -25,19 +24,21 @@
 
             <div class="left col-md-8 float-left">
                 <div class="text-md-left mt-5">
-                    <h2>Hot</h2>
+                    <h2>Album</h2>
                 </div>
                 <div class="row">
                 <?php
                     require('./php/connect.php');
-                    $sql = "SELECT * FROM baihat";
+                    $sql = "SELECT * FROM album";
                     $result = mysqli_query($con,$sql);
+                    
                     while($row = mysqli_fetch_assoc($result)){
-                        $tenbaihat = $row['tenbaihat'];
+                        $tenalbum = $row['tenalbum'];
+                        $anh = $row['image'];
                         echo '<div class="col-lg-3 col-md-4 img-hover">
                                 <a href="#" class="d-block mb-4 h-100" style="text-decoration: none;">
-                                <div><img class="img-fluid img-thumbnail " src="./image/logo.png" alt=""></div>
-                                <div class="mt-2" style="color: black;">'.$tenbaihat.'</div>
+                                <div><img class="img-fluid img-thumbnail " src="image/'.$row["image"].'" alt=""></div>
+                                <div class="mt-2" style="color: black;">'.$tenalbum.'</div>
                                 </a>
                             </div>';
                     }
