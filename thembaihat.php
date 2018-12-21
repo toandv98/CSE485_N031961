@@ -86,39 +86,50 @@ a:hover{
 	session_start();
 	include("./php/connect.php");
 	$sql=mysqli_query($con,"select * from baihat");
+
 	$row=mysqli_fetch_assoc($sql);
 		if(isset($_POST['up']))
 		{
+			
 			$tenbaihat=$_POST['tenbaihat'];
 			$casy=$_POST['casy'];
 			$theloai=$_POST['theloai'];
+			$album = $_POST['tenalbum'];
 			$file_name=$_FILES['upload']['name'];
+			$image=$_FILES['uploadimg']['name'];
 			$extent_file="mp3";
 			$pattern='#.+\.(mp3)$#i';
-			if (isset($_POST['up']) && isset($_FILES['upload'])) {
-				if ($_FILES['upload']['error'] > 0)
-					echo "Upload lỗi rồi!";
-				else {
-					move_uploaded_file($_FILES['upload']['tmp_name'], 'nhac/' . $_FILES['upload']['name']);
-					
-				}
-			}
+			$pattern1='#\.(jpg|jpeg|gif|png)$#i';
+			
+			
+			
 			if(preg_match($pattern,$file_name)==1)
 			{
-				$file_type=true;
-			}
-			else
-			{
-				$file_type=false;
-			}
-			if($file_type==true)
-			{
-				$source=$_FILES['upload']['tmp_name'];
-				$dest='nhac/'.$_FILES['upload']['name'];
-				if(copy($source,$dest)==false)
+				if(preg_match($pattern1,$image)==1)
 				{
+					
+					if (isset($_POST['up']) && isset($_FILES['upload']) && isset($_FILES['uploadimg'])) {
+						if ($_FILES['upload']['error'] > 0)
+							echo "Upload lỗi rồi!";
+						else {
+							move_uploaded_file($_FILES['upload']['tmp_name'], 'nhac/' . $_FILES['upload']['name']);	
+							move_uploaded_file($_FILES['uploadimg']['tmp_name'], 'image/' . $_FILES['uploadimg']['name']);
+							
+						}
+					}
+
+				$dest='nhac/'.$_FILES['upload']['name'];
+				$dest1='image/'.$_FILES['uploadimg']['name'];
+				if(file_exists($dest) && file_exists($dest1))
+				{	
+					$rtheloai=mysqli_query($con,"select theloai.id as idtl, album.id as idab from theloai,album where tentheloai = '$theloai' and tenalbum = '$album'");
+					$rowtl=mysqli_fetch_assoc($rtheloai);
+					
+					
+					$idtheloai = $rowtl['idtl'];
+					$idalbum = $rowtl['idab'];
 					$flag=true;
-					$update=mysqli_query($con,"insert into baihat(tenbaihat,casy,theloai,duongdan) values('$tenbaihat','$casy','$theloai','$dest')");
+					$update=mysqli_query($con,"insert into baihat(tenbaihat,casy,theloai,duongdan,image,idtheloai,idalbum) values('$tenbaihat','$casy','$theloai','$dest','$dest1','$idtheloai','$idalbum')");
 					if($update)
 					{
 						echo "Bài hát của bạn đã được đăng <a href='./admin/list_baihat.php'>Trở Lại</a><br />";
@@ -133,11 +144,25 @@ a:hover{
 					$flag=false;
 					echo "Đăng nhạc thất bại!Trở về <a href='./admin/list_baihat.php'>Trở Lại</a><br />";
 				}
-			}
-		}
-		
-			
+
+				}
+			else
+			{
 				
+				echo 'Sai định dạng file anh!';
+			}
+	
+		
+		
+		}else
+		{
+			echo 'Sai định dạng file nhac!';
+		}
+
+	}
+	
+	
+			
 ?>
 <!DOCTYPE html>
 <html>
@@ -166,14 +191,16 @@ a:hover{
 </head>
 <body>
     <div id="top">
-        <h3 style="color:#FFF";>Welcom Admin , <a href="../php/xulydangxuat.php" style="color:#FFF";>Logout</a></h3>
+		<h3 style="color:#FFF";>Welcom Admin , <a href="../php/xulydangxuat.php" style="color:#FFF";>Logout</a></h3>
     </div>
     <div id="menu">
         <ul>
             <li><a href="./admin/list_user.php">Quản Lý Thành Viên</a></li>
-            <li><a href="./adimn/list_chude.php">Quản Lý Chủ Đề</a></li>
+            <li><a href="./admin/list_chude.php">Quản Lý Chủ Đề</a></li>
             <li><a href="./admin/list_baihat.php">Quản Lý Bài Hát</a></li>
             <li><a href="./admin/list_comment.php">Quản Lý Bình Luận</a></li>
+			<li><a href="./admin/list_album.php">Quản Lý Albums</a></li>
+
         </ul>
     </div>
     <div style="clear:left";></div>
@@ -183,12 +210,13 @@ a:hover{
 	</div>
 	<div class="thongtin_dangky">
 		<div style="padding: 10px;">
-			<form name="form1" method="post" enctype="multipart/form-data" action="">
+			<form name="form1" method="post" enctype="multipart/form-data" action="thembaihat.php">
 				<table width="825" height="201" border="0">
 					<tr>
 						<td width="301" align="center" valign="top">
 						<p>
-							<input class="btup" type="file" name="upload" id="upload">
+							Nhạc: <input class="btup" type="file" name="upload" id="upload">
+							Ảnh :  <input class="btup" type="file" name="uploadimg" id="uploadimg" style="padding-right:0px;">
 						</p>
 						<table width="277" border="0">
 						  <tr>
@@ -203,14 +231,30 @@ a:hover{
 					      </tr>
 						  <tr>
 						    <td height="30" align="right"><b>Chủ Đề:</b></td>
-						    <td><label for="theloai"></label>
+						    <td><label for="chude"></label>
 						      <select name="theloai">
 										<?php
-											$chude=mysqli_query($con,"select * from chude");
-											while($row=mysqli_fetch_assoc($chude))
+											$theloai=mysqli_query($con,"select * from theloai");
+											while($row=mysqli_fetch_assoc($theloai))
 											{
 										?>
-											<option> <?php echo $row['chude']?></option>
+											<option> <?php echo $row['tentheloai']?></option>
+										<?php
+											}
+										?>
+								</select>
+							</td>
+					      </tr>
+						  <tr>
+						    <td height="30" align="right"><b>Album:</b></td>
+						    <td><label for="chude"></label>
+						      <select name="tenalbum">
+										<?php
+											$album=mysqli_query($con,"select * from album");
+											while($row=mysqli_fetch_assoc($album))
+											{
+										?>
+											<option> <?php echo $row['tenalbum']?></option>
 										<?php
 											}
 										?>
@@ -232,6 +276,8 @@ a:hover{
 					            <li> Không để tên bài hát có dấu.</li>
 					            <li> Không để tên ca sĩ trên bài hát.</li>
 					            <li> Chỉ up nhạc MP3.</li>
+								<li> Dung luong file anh khong vuot qua 4MB.</li>
+								<li> Chỉ up nhạc MP3.</li>
 			                </ul>
 							
 						</td>
