@@ -8,11 +8,12 @@
     <title>Nhạc Online</title>
     <link rel="stylesheet" href="./css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/stylephantrang.css">
     <link rel="stylesheet" href="./css/hover.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/script.js"></script>
+
 </head>
 
 <body>
@@ -21,7 +22,7 @@
         session_start();
         include('./php/header.php');
         ?>
-
+        
         <div id="carouselExampleControls" class="carousel slide col-md-11 m-auto pt-3" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -47,35 +48,138 @@
 
             <div class="left col-md-8 float-left">
                 <div class="text-md-left mt-5">
-                    <h2>Hot</h2>
+                    <h2>Chủ Đề</h2>
                 </div>
                 <div class="row">
-                    <?php
+            <?php
+                require('./php/connect.php');
+                $sql = "SELECT * FROM theloai";
+                $result = mysqli_query($con,$sql);
+                while($row = mysqli_fetch_assoc($result)){
+                $tentheloai = $row['tentheloai'];
+                $anh = $row['image'];
+                echo '<div class="col-lg-3 col-md-4 img-hover">
+                    <a href="nhactre.php?id='.$row['id'] .'" class="d-block mb-4 h-100" style="text-decoration: none;">
+                    <div><img class="img-fluid img-thumbnail " src="image/'.$row["image"].'" alt=""></div>
+                    <div class="mt-2" style="color: black;">'.$tentheloai.'</div>
+                    </a>
+                </div>';
+                }
+                mysqli_close($con);
+                    ?>
+                </div>
+                <div class="text-md-left mt-5">
+                    <h2>Bài hát</h2>
+                </div>
+                <div class="list-group">
+                <?php
                     require('./php/connect.php');
-                    $sql = "SELECT * FROM baihat";
+                    if(isset($_GET['begin']))
+                    {
+                        $position = $_GET['begin'];
+                    }
+                    else
+                    {
+                        $position = 0;
+                    }
+                    $display = 6;
+                    $sql = "SELECT * FROM baihat limit $position,$display" ;
                     $result = mysqli_query($con,$sql);
                     while($row = mysqli_fetch_assoc($result)){
                         $tenbaihat = $row['tenbaihat'];
-                        echo '<div class="col-lg-3 col-md-4 img-hover">
-                                <a href="playnhac.php?id='.$row['id'].'" class="d-block mb-4 h-100" style="text-decoration: none;">
-                                <div><img class="img-fluid img-thumbnail " src="./image/logo.png" alt=""></div>
-                                <div class="mt-2" style="color: black;">'.$tenbaihat.'</div>
-                                </a>
-                            </div>';
+                        $anh = $row['image'];
+                        $casy = $row['casy'];
+                        $luotnghe = $row['luotnghe'];
+                        echo '<a href="./playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
+                            <span>
+                                <img class="float-md-left mr-2" src="./'.$anh.'" width="50px">
+                            </span>
+                            <div class="item_title">'.$tenbaihat.'</div>
+                            <div class="box_items">
+                                <span class="item_span mr-5">
+                                    <img src="./image/views.png" width="18px">
+                                    <span style="font-size:12px;">'.$luotnghe.'</span>
+                                </span>
+                                <span>
+                                    <span style="font-size:12px;">'.$casy.'</span>
+                                </span>
+                            </div>
+                        </a>';
                     }
                     mysqli_close($con);
-                    ?>
+                ?>
+
+
                 </div>
             </div>
+            
+            
+            
             <div class="right col-md-4 float-right">
-                <?php include('./php/menuright.php');?>
+            
+            <?php include('./php/menuright.php');?>
             </div>
+            
             <div style="clear: both"></div>
         </main>
+        <div class="pagination">
+
+            <?php
+                require('./php/connect.php');
+                $result = mysqli_query($con,"SELECT tenbaihat From baihat ");
+                $data = mysqli_num_rows($result);
+                $sum_page = ceil($data/$display);
+                if($sum_page>1)
+                {
+                    echo '<ul style="list-style:none;display:inline-flex;">';
+                        $current = ($position/$display) + 1;
+                        if($current!=1)
+                        {   
+                            $prev = $position - $display;
+                            echo "<li><a href='index.php?begin=$prev' class='page'>Prev</a></li>";
+                        }
+
+                        for($page=1;$page<=$sum_page;$page++)    
+                        {
+                            
+                            $begin = ($page-1)*$display;
+                            if($current == $page)
+                            {
+                                echo "<li><a href='index.php?begin=$begin' style='background:#00B2BF;color:#f4f4f4; ' class='page'>$page</a></li>";
+                            }
+                            else
+                            {
+                                echo "<li><a href='index.php?begin=$begin'  class='page' >$page</a></li>";
+                            }
+                        }
+                        if($current != $sum_page)
+                        {
+                            $next = $position + $display;
+                            echo "<li><a href='index.php?begin=$next' class='page'>Next</a></li>";
+                        }
+                        if($current = $sum_page)
+                        {
+                            $last = (($display*$sum_page) - $display);
+                            echo "<li><a href='index.php?begin=$last' class='page'>Last </a></li>";
+                        }
+
+                        
+                    echo '</ul>';
+                }
+
+                mysqli_close($con);
+
+                 
+                
+            
+                
+            ?>
+            </div>
+        
+        
         <?php
         include('./php/footer.php');
         ?>
-
     </div>
 </body>
 
