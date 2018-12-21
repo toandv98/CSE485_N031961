@@ -1,103 +1,114 @@
 <link rel="stylesheet" href="./css/header.css">
-<script>
-    function quayve(){
-        if(confirm("Quay về trang đăng nhập"))
-        {
-            return true;
-            window.location.href = "../index.php";
-        }
-        else{
-            return false;
-            window.location.reload();
-        }
-    }
-</script>
 <header>
-    <nav class="navbar navbar-default navbar-expand-lg navbar-light">
-        <div class="navbar-header d-flex col">
-            
-            <a class="navbar-brand" href="./index.php"><span><img class="mr-2" src="./image/logo.png" width="40px"></span>Nhac Online</b></a>
-            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
-                <span class="navbar-toggler-icon"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+  <nav class="navbar navbar-default navbar-expand-lg navbar-light">
+    <div class="navbar-header d-flex col">
+
+      <a class="navbar-brand" href="./index.php"><span><img class="mr-2" src="./image/logo.png" width="40px"></span>Nhac Online</b></a>
+      <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
+        <span class="navbar-toggler-icon"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+      <ul class="nav navbar-nav">
+        <li class="nav-item"><a href="./baihat.php" class="nav-link">Bài hát</a></li>
+        <li class="nav-item dropdown">
+          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="./chude.php">Chủ đề <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+          <?php
+            include('./php/connect.php');
+            $sql = "Select * from theloai";
+            $result = mysqli_query($con,$sql);
+            while($row = mysqli_fetch_assoc($result))
+            {
+              $tenchude = $row['tentheloai'];
+              echo '<li><a href="nhactre.php?id='.$row['id'].'" class="dropdown-item">'.$tenchude.'</a></li>';
+
+            }
+            mysqli_close($con);
+            ?>            
+          </ul>
+          </li>
+        <li class="nav-item dropdown">
+          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="#">BXH <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#" class="dropdown-item">item</a></li>
+            <li><a href="#" class="dropdown-item">item</a></li>
+            <li><a href="#" class="dropdown-item">item</a></li>
+            <li><a href="#" class="dropdown-item">item</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="./album.php">Album <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+          <?php
+            include('./php/connect.php');
+            $sql = "Select * from album";
+            $result = mysqli_query($con,$sql);
+            while($row = mysqli_fetch_assoc($result))
+            {
+              $tenalbum = $row['tenalbum'];
+              echo '<li><a href="p_album.php?id='.$row['id'].'" class="dropdown-item">'.$tenalbum.'</a></li>';
+
+            }
+            mysqli_close($con);
+            ?>  
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="#">Video <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#" class="dropdown-item">item</a></li>
+            <li><a href="#" class="dropdown-item">item</a></li>
+            <li><a href="#" class="dropdown-item">item</a></li>
+            <li><a href="#" class="dropdown-item">item</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="#">Nhạc sỹ <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#" class="dropdown-item">Việt Nam</a></li>
+            <li><a href="#" class="dropdown-item">Âu Mỹ</a></li>
+            <li><a href="#" class="dropdown-item">Châu Á</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form action="./timkiem.php" class="navbar-form form-inline" method="post">
+        <div class="input-group search-box">
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" name="keyword" type="text" placeholder="Tìm kiếm..." aria-label="Tìm kiếm..." required="required">
+            <button class="btn btn-outline-success my-2 my-sm-0" name="ok" type="submit">Tìm kiếm</button>
+          </form>
         </div>
-        <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
-            <ul class="nav navbar-nav">
-                <li class="nav-item"><a href="./baihat.php" class="nav-link">Bài hát</a></li>
-                <li class="nav-item dropdown">
-                    <a data-hover="dropdown" class="nav-link dropdown-toggle" href="./chude.php">Chủ đề <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                    <?php
-                        include('./php/connect.php');
-                        $sql = "Select*from chude";
-                        $result = mysqli_query($con,$sql);
-                        while($row = mysqli_fetch_assoc($result))
-                        {
-                            $tenchude = $row['chude'];
-                            echo '<li><a href="#" class="dropdown-item">'.$tenchude.'</a></li>';
-                        }
-                        mysqli_close($con);
-                        ?>
-                        
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a data-hover="dropdown" class="nav-link dropdown-toggle" href="#">BXH <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" class="dropdown-item">item</a></li>
-                        <li><a href="#" class="dropdown-item">item</a></li>
-                        <li><a href="#" class="dropdown-item">item</a></li>
-                        <li><a href="#" class="dropdown-item">item</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a data-hover="dropdown" class="nav-link dropdown-toggle" href="./album.php">Album <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" class="dropdown-item">item</a></li>
-                        <li><a href="#" class="dropdown-item">item</a></li>
-                        <li><a href="#" class="dropdown-item">item</a></li>
-                        <li><a href="#" class="dropdown-item">item</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a data-hover="dropdown" class="nav-link dropdown-toggle" href="#">Video <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" class="dropdown-item">item</a></li>
-                        <li><a href="#" class="dropdown-item">item</a></li>
-                        <li><a href="#" class="dropdown-item">item</a></li>
-                        <li><a href="#" class="dropdown-item">item</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a data-hover="dropdown" class="nav-link dropdown-toggle" href="#">Nhạc sỹ <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" class="dropdown-item">Việt Nam</a></li>
-                        <li><a href="#" class="dropdown-item">Âu Mỹ</a></li>
-                        <li><a href="#" class="dropdown-item">Châu Á</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="navbar-form form-inline" action="./timkiem.php" method="post">
-                <div class="input-group search-box">
-                    <form  class="form-inline my-2 my-lg-0" method="POST">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Tìm kiếm..." name = "keyword" required="required">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="ok">Tìm kiếm</button>
-                    </form>
-                </div>
-            </form>
-            <ul class="nav navbar-nav navbar-right ml-auto">
-            <?php
+      </form>
+      <ul class="nav navbar-nav navbar-right ml-auto">
+
+        <?php
             if(isset($_SESSION['userName']))
                     {
-                        
-                        echo "Chào ".$_SESSION['userName'],"  <a href='php/xulydangxuat.php' style='text-decoration:none';>Logout</a>";
+                      if($_SESSION['level']==2){
+                        echo '<li class="nav-item">
+                                      <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Chào,&nbsp;'.$_SESSION['userName'].'</a>
+                                      <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="./admin/admin.php" class="dropdown-item">Trang quản trị</a></li>
+                                        <li><a href="./php/xulydangxuat.php" class="dropdown-item">Đăng Xuất</a></li>
+                                      </ul>
+                                  </li>';
+                      }else{
+                        echo '<li class="nav-item">
+                            <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Chào,&nbsp;'.$_SESSION['userName'].'</a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                              <li><a href="./canhan.php" class="dropdown-item">Trang cá nhân</a></li>
+                              <li><a href="./php/xulydangxuat.php" class="dropdown-item">Đăng Xuất</a></li>
+                            </ul>
+                        </li>';
+                      }
                     }
                     else{
                         echo '<li class="nav-item">
-                        <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Đăng nhập</a>
+                        <a data-toggle="dropdown" class="nav-link dropdown-toggle mt-1" href="#">Đăng nhập</a>
                         <ul class="dropdown-menu form-wrapper">
                             <li>
                                 <form action="./php/xulydangnhap.php" method="post">
@@ -114,13 +125,13 @@
                                 </form>
                             </li>
                         </ul>
-                    </li> 
+                    </li>
                     <li class="nav-item">
-                        <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Đăng
+                        <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn">Đăng
                             ký</a>
                         <ul class="dropdown-menu form-wrapper">
                             <li>
-                            <form action="./php/xuly.php" method="post">
+                            <form action="./php/dangky.php" method="post">
                                     <p class="hint-text">Điền thông tin để đăng ký!</p>
                                     <div class="form-group">
                                         <input type="text" name="txtUsername" class="form-control" placeholder="Tên đăng nhập" required="required">
@@ -133,7 +144,7 @@
                                             required="required">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="txtEmail" class="form-control" placeholder="Email"
+                                        <input type="email" name="txtEmail" class="form-control" placeholder="Email"
                                             required="required">
                                     </div>
                                     <div class="form-group">
@@ -145,19 +156,17 @@
                             </li>
                         </ul>
                     </li>';
-                    
+
                     };
             ?>
 
-            </ul>
-        </div>
-    </nav>
-    
+      </ul>
+    </div>
+  </nav>
 
-    
 </header>
 <script type="text/javascript">
-    $(document).on("click", ".navbar-right .dropdown-menu", function (e) {
-        e.stopPropagation();
-    });
+  $(document).on("click", ".navbar-right .dropdown-menu", function(e) {
+    e.stopPropagation();
+  });
 </script>
