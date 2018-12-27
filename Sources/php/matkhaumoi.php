@@ -64,7 +64,7 @@
     ];
     $hash = password_hash($password, PASSWORD_DEFAULT, $options);
 
-    @$addmember = mysqli_query($con,"UPDATE nguoidung SET password='{$hash}' where email=$email");
+    @$addmember = mysqli_query($con,"UPDATE nguoidung SET password='{$hash}' where email='{$email}'");
 
     if ($addmember){
 
