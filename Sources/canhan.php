@@ -45,14 +45,15 @@
           $email=$row["email"];
           $sdt=$row["sdt"];
           $diachi=$row["diachi"];
+          $avatar=$row['avatar'];
       mysqli_close($con);
           echo '
         <main class="col-md-10 m-auto p-5">
           <form class="" action="./php/capnhatTT.php" method="post" enctype="multipart/form-data">
             <div class="col-md-3 mr-5 float-left text-md-center">
-              <img src="./image/logo.png" class="m-x-auto img-fluid img-circle" alt="avatar">
+              <img src="./'.$avatar.'" class="m-x-auto img-fluid img-circle" alt="avatar">
               <label class="custom-file">
-                <input type="file" id="anh" class="custom-file-input">
+                <input type="file" id="anh" name="uploadimg" class="custom-file-input">
                 <label class="custom-file-label text-left mt-3" for="anh">Thay đổi ảnh...</label>
               </label>
             </div>

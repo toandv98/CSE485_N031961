@@ -18,8 +18,9 @@
     ?>
     <div class="col-md-8 m-auto pt-5 text-center">
     <?php
+        $id = $_GET["id"];
         if(isset($_POST['ok']))
-        {
+        {   
             $tenchude = $_POST['txtName'];
             $image=$_FILES['uploadimg']['name'];
             $pattern='#\.(jpg|jpeg|gif|png)$#i';
@@ -40,25 +41,35 @@
                     if(file_exists($destck))
                     {	
                         include('../php/connect.php');
-                        $update=mysqli_query($con,"Insert Into theloai(tentheloai,image) value('$tenchude','$dest')");
+                        $update=mysqli_query($con,"Update theloai SET tentheloai='$tenchude',image='$dest' where id=$id");
                         mysqli_close($con);
                         if($update)
                         {
-                            echo "<h3 style='color:lime;'>Thêm chủ đề thành công...</h3>";
+                            echo "<h3 style='color:lime;'>Cập nhật chủ đề thành công...</h3>";
                          }
                         else
                         {
-                            echo "<h3 style='color:red;'>Thêm chủ đề thất bại!</h3>";
+                            echo "<h3 style='color:red;'>Cập nhật chủ đề thất bại!</h3>";
                         }
                     }
                     else
                     {
-                        echo "<h3 style='color:red;'>Thêm chủ đề thất bại!</h3>";
+                        echo "<h3 style='color:red;'>Cập nhật chủ đề thất bại!</h3>";
                     }
                 }
                 else
                 {
-                    echo "<h3 style='color:red;'>Sai định dạng file anh!</h3>";
+                    include('../php/connect.php');
+                    $update=mysqli_query($con,"Update theloai SET tentheloai='$tenchude' where id=$id");
+                    mysqli_close($con);
+                    if($update)
+                    {
+                        echo "<h3 style='color:lime;'>Cập nhật chủ đề thành công...</h3>";
+                     }
+                    else
+                    {
+                        echo "<h3 style='color:red;'>Cập nhật chủ đề thất bại!</h3>";
+                    }
                 }
             }
             else
@@ -69,14 +80,21 @@
     ?>
     </div>
     <main class="col-md-8 m-auto p-5">
-          <form class="" action="./themchude.php" method="post" enctype="multipart/form-data">
+          <form class="" action="./suachude.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
               <div class="row">
                 <div class="col-md-8 m-auto">
                     <div class="row"><div class="col-md-12 text-center mb-3"><label style="font-size:24px">Thêm chủ đề</label></div></div>
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label form-control-label">Tên chủ đề:</label>
                         <div class="col-md-9">
-                                <input name="txtName" class="form-control" type="text" required="required">
+                            <?php
+                                include("../php/connect.php");
+                                $chude=mysqli_query($con,"select * from theloai where id=$id");
+								while($row=mysqli_fetch_assoc($chude)){
+									echo '<input name="txtName" class="form-control" type="text" value="'.$row['tentheloai'].'" required="required">';
+                                }
+                                 mysqli_close($con);
+							?>
                         </div>
                         <label class="col-md-3 mt-3 col-form-label form-control-label">Ảnh:</label>
                         <div class="col-md-9">
@@ -91,7 +109,7 @@
                       <label class="col-lg-3 col-form-label form-control-label"></label>
                       <div class="col-lg-9">
                         <input type="reset" class="btn btn-secondary" value="Reset">
-                        <input type="submit" name="ok" class="btn btn-primary" value="Thêm">
+                        <input type="submit" name="ok" class="btn btn-primary" value="Cập nhật">
                       </div>
                     </div>
                 </div>

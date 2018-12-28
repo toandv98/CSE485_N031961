@@ -6,7 +6,7 @@
     //truyvan
     mysqli_query($con,"Delete from baihat where id = '$id'");
     echo "Xoá thành công";
-    header('location:list_baihat.php');
+    header('location:baihat.php');
     //dongketnoi
     mysqli_close($con);
 ?>
