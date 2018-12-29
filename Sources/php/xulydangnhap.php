@@ -15,7 +15,6 @@
         if(password_verify($passWord, $hash))
         {
             $_SESSION['userName']=$userName;
-
             header("location:../index.php");
             exit();
         }

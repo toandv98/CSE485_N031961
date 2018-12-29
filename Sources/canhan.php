@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Nhạc Online</title>
-  <link rel="stylesheet" href="./css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/hover.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -19,7 +18,7 @@
     <?php
         session_start();
         include('./php/header.php');
-        ?>
+    ?>
         <?php
         include('./php/connect.php');
           $userName = $_SESSION['userName'];
@@ -117,7 +116,7 @@
           <div style="clear: both"></div>
           </form>
         </main>';
-         ?>
+        ?>
     <?php
         include('./php/footer.php');
         ?>

@@ -47,7 +47,15 @@
     ");
 
     if ($addmember){
-        include('./guimail.php');
+        
+        $to=$email;
+        $subject="Active account";
+        $header="from: NhacOnline <toan98.k10@gmail.com>";
+        $message="Đường link kích hoạt : \r\n";
+        $message.="Nhấp vào link sau để kích hoạt tài khoản\r\n";
+        $message.="http://localhost/CSE485_N031961/Sources/php/confirmation.php?passkey=$code";
+        $sentmail = mail($to,$subject,$message,$header);
+
         if ($sentmail) {
           echo "Quá trình đăng ký thành công. Kiểm tra email để kích hoạt tài khoản. <a href='../index.php'>Về trang chủ</a>";
         }else {

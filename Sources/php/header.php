@@ -27,7 +27,7 @@
               echo '<li><a href="listnhac.php?id='.$row['id'].'" class="dropdown-item">'.$tenchude.'</a></li>';
             }
             mysqli_close($con);
-            ?>            
+            ?>
           </ul>
           </li>
         <li class="nav-item dropdown">
@@ -59,18 +59,20 @@
                     {
                       if($_SESSION['level']==2){
                         echo '<li class="nav-item">
-                                      <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Chào,&nbsp;'.$_SESSION['userName'].'</a>
-                                      <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="./admin/admin.php" class="dropdown-item">Trang quản trị</a></li>
-                                        <li><a href="./canhan.php" class="dropdown-item">Trang cá nhân</a></li>
-                                        <li><a href="./php/xulydangxuat.php" class="dropdown-item">Đăng Xuất</a></li>
-                                      </ul>
-                                  </li>';
+                                <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Chào,&nbsp;'.$_SESSION['userName'].'</a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                  <li><a href="./admin/admin.php" class="dropdown-item">Trang quản trị</a></li>
+                                  <li><a href="./canhan.php" class="dropdown-item">Trang cá nhân</a></li>
+                                  <li><a href="./doimatkhau.php" class="dropdown-item">Đổi mật khẩu</a></li>
+                                  <li><a href="./php/xulydangxuat.php" class="dropdown-item">Đăng Xuất</a></li>
+                                </ul>
+                            </li>';
                       }else{
                         echo '<li class="nav-item">
                             <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Chào,&nbsp;'.$_SESSION['userName'].'</a>
                             <ul class="dropdown-menu dropdown-menu-right">
                               <li><a href="./canhan.php" class="dropdown-item">Trang cá nhân</a></li>
+                              <li><a href="./doimatkhau.php" class="dropdown-item">Đổi mật khẩu</a></li>
                               <li><a href="./php/xulydangxuat.php" class="dropdown-item">Đăng Xuất</a></li>
                             </ul>
                         </li>';

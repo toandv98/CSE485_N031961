@@ -7,8 +7,6 @@
     <title>Thêm chủ đề</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/xacnhan.js"></script>
 </head>
 
 <body>
@@ -20,6 +18,7 @@
     <?php
         if(isset($_POST['ok']))
         {
+            $tieusu = $_POST['tieusu'];
             $tencasi = $_POST['txtName'];
             $image=$_FILES['uploadimg']['name'];
             $pattern='#\.(jpg|jpeg|gif|png)$#i';
@@ -40,7 +39,7 @@
                     if(file_exists($destck))
                     {	
                         include('../php/connect.php');
-                        $update=mysqli_query($con,"Insert Into casi(tencasi,image) value('$tencasi','$dest')");
+                        $update=mysqli_query($con,"Insert Into casi(tencasi,image,tieusu) value('$tencasi','$dest','$tieusu')");
                         mysqli_close($con);
                         if($update)
                         {
@@ -85,6 +84,8 @@
                                 <label class="custom-file-label text-left mt-3" for="anh">Chọn đường dẫn đến ảnh...</label>
                             </label>
                         </div>
+                        <label for="tieusu" class="col-md-3 mt-3 col-form-label form-control-label">Tiểu sử:</label>
+                        <textarea class="form-control" rows="10" name="tieusu" id="tieusu"></textarea>
                     </div>
                     
                     <div class="form-group row mt-5">
@@ -103,6 +104,8 @@
         include('footer.php');
     ?>
     <script src="js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/xacnhan.js"></script>
 </body>
 
 </html>

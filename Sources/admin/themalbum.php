@@ -7,8 +7,6 @@
     <title>Thêm chủ đề</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/xacnhan.js"></script>
 </head>
 
 <body>
@@ -131,6 +129,8 @@
         include('footer.php');
     ?>
     <script src="js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/xacnhan.js"></script>
 </body>
 
 </html>

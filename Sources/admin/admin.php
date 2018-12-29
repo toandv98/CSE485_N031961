@@ -7,7 +7,6 @@
     <title>Document</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
-    <script src="./js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -25,6 +24,7 @@
     }
 ?>
     <script src="js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
 </body>
 
 </html>

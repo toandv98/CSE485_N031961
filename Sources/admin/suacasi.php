@@ -7,8 +7,6 @@
     <title>Thêm ca sĩ</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/xacnhan.js"></script>
 </head>
 
 <body>
@@ -21,6 +19,7 @@
         $id = $_GET["id"];
         if(isset($_POST['ok']))
         {   
+            $tieusu = $_POST['tieusu'];
             $tcasi = $_POST['txtName'];
             $image=$_FILES['uploadimg']['name'];
             $pattern='#\.(jpg|jpeg|gif|png)$#i';
@@ -41,7 +40,7 @@
                     if(file_exists($destck))
                     {	
                         include('../php/connect.php');
-                        $update=mysqli_query($con,"Update casi SET tencasi='$tcasi',image='$dest' where id=$id");
+                        $update=mysqli_query($con,"Update casi SET tencasi='$tcasi',image='$dest',tieusu='$tieusu' where id=$id");
                         mysqli_close($con);
                         if($update)
                         {
@@ -60,7 +59,7 @@
                 else
                 {
                     include('../php/connect.php');
-                    $update=mysqli_query($con,"Update casi SET tencasi='$tcasi' where id=$id");
+                    $update=mysqli_query($con,"Update casi SET tencasi='$tcasi',tieusu='$tieusu' where id=$id");
                     mysqli_close($con);
                     if($update)
                     {
@@ -99,10 +98,19 @@
                         <label class="col-md-3 mt-3 col-form-label form-control-label">Ảnh:</label>
                         <div class="col-md-9">
                         <label class="custom-file">
-                                <input type="file" id="anh" name="uploadimg" class="custom-file-input">
-                                <label class="custom-file-label text-left mt-3" for="anh">Chọn đường dẫn đến ảnh...</label>
-                            </label>
+                            <input type="file" id="anh" name="uploadimg" class="custom-file-input">
+                            <label class="custom-file-label text-left mt-3" for="anh">Chọn đường dẫn đến ảnh...</label>
+                        </label>
                         </div>
+                        <label for="tieusu" class="col-md-3 mt-3 col-form-label form-control-label">Tiểu sử:</label>
+                        <?php
+                            include("../php/connect.php");
+                            $casi=mysqli_query($con,"select * from casi where id=$id");
+							while($row=mysqli_fetch_assoc($casi)){
+								echo '<textarea class="form-control" rows="10" name="tieusu" id="tieusu">'.$row['tieusu'].'</textarea>';
+                            }
+                             mysqli_close($con);
+						?>
                     </div>
                     
                     <div class="form-group row mt-5">
@@ -121,6 +129,8 @@
         include('footer.php');
     ?>
     <script src="js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/xacnhan.js"></script>
 </body>
 
 </html>
