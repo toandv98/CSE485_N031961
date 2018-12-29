@@ -66,7 +66,7 @@
                                 echo "<td style='width:120px;'><a href='./duyetcomment.php?id=$data[id_cm]' style='color:#09F;'>Chưa Duyệt</a></td>";
                             }
                             else{
-                                echo "<td style='width:120px;'><a href='./duyetcomment.php?id$data[id_cm]' style='color:#09F;'>Đã Duyệt</a></td>";
+                                echo "<td style='width:120px;'><a href='./duyetcomment.php?id=$data[id_cm]' style='color:#09F;'>Đã Duyệt</a></td>";
                             }
                             echo "<td style='width:120px;'><a href='./xoacomment.php?id=$data[id_cm]' onclick=' return xacnhan();' style='color:red;'>Xoá</a></td>";
                             echo "</tr>";

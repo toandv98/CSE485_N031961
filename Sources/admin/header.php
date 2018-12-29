@@ -16,7 +16,8 @@
                 <li class="nav-item mr-5"><a href="./chude.php" class="nav-link"><b>Chủ đề</b></a></li>
                 <li class="nav-item mr-5"><a href="./baihat.php" class="nav-link"><b>Bài hát</b></a></li>
                 <li class="nav-item mr-5"><a href="./casi.php" class="nav-link"><b>Ca sĩ</b></a></li>
-                <li class="nav-item"><a href="./album.php" class="nav-link"><b>Album</b></a></li>
+                <li class="nav-item mr-5"><a href="./album.php" class="nav-link"><b>Album</b></a></li>
+                <li class="nav-item"><a href="./comment.php" class="nav-link"><b>Comment</b></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right ml-auto mr-3">
                     <?php
