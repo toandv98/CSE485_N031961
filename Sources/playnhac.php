@@ -8,6 +8,7 @@
 	<title>Nhạc Online</title>
 	<link rel="stylesheet" href="./css/font-awesome.min.css" type="text/css">
 	<link rel="stylesheet" href="./css/styleplayer.css">
+	
 	<link rel="stylesheet" href="./css/hover.css">
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
 	<script src="./js/jquery.min.js"></script>
@@ -18,16 +19,57 @@
 	<div class="container-fullwidth">
 		<?php
         session_start();
-        include('./php/header.php');
+		include('./php/header.php');
+		$id=$_GET['id'];
+		$loi=array();
+		$loi["name"]=$loi["mess"]=NULL;
+		
+		$name = $mess = NULL;
+		
+		if(isset($_POST["ok"]))
+		{
+			//check co nhap chua
+			if(empty($_POST["txtname"]))
+			{
+				$loi["name"]="Xin vui lòng nhập tên";
+			}
+			else
+			{
+				$name=$_POST["txtname"];
+			}
+			//check mess
+			if(empty($_POST["txtmess"]))
+			{
+				$loi["mess"]="Xin vui lòng nhập phần bình luận";
+			}
+			else
+			{
+				$mess=$_POST["txtmess"];
+			}
+			if($name && $mess)
+			{
+				include('./php/connect.php');
+				//querry
+				mysqli_query($con,"INSERT INTO comment(name,message,time,check_cm,baihat_id) values ('$name','$mess',now(),'N','$id')"); 	
+				
+
+				echo"<script type='text/javascript'>";
+					echo"alert('Bình luận của bạn đã được đăng thành công và chờ kiểm duyệt')";
+
+				echo"</script>";
+
+			}
+			
+		}
         ?>
 
 		<?php
-	include('./php/connect.php');
-	$id=$_GET['id'];
-	mysqli_query($con,"UPDATE baihat set luotnghe=luotnghe+1 where id='$id'");
-	$sql=mysqli_query($con,"select*from v_baihat where id='$id'");
-	$row=mysqli_fetch_assoc($sql);
-?>
+			include('./php/connect.php');
+			
+			mysqli_query($con,"UPDATE baihat set luotnghe=luotnghe+1 where id='$id'");
+			$sql=mysqli_query($con,"select*from v_baihat where id='$id'");
+			$row=mysqli_fetch_assoc($sql);
+		?>
 		<link href='https://fonts.googleapis.com/css?family=Allerta' rel='stylesheet'>
 
 		<div class="container-audio">
@@ -113,6 +155,74 @@
 					<div class="row"></div>
 				</div>
 		</div>
+		<div class="container">
+	            <div class="row">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+    						<div class="widget-area no-padding blank">
+								<div class="status-upload">
+								<?php
+										include('./php/connect.php');
+										$ketqua = mysqli_query($con,"SELECT * from comment where check_cm='Y' and baihat_id =$id");
+										$number = mysqli_num_rows($ketqua);
+								?>
+                                    <form action="playnhac.php?id=<?php echo $id;?>" method="post">
+									<h3 style="margin-left:110px;">Bình Luận (<?php echo "$number";?>)</h3>
+                                    <table style="margin-left:110px;margin-top:40px;">
+                                    <tr>
+							            <td>Name</td>
+							            <td><input type="text" placeholder="Nhập tên..." style="width:833.375px;" name="txtname" value="<?php echo $loi["name"]; ?>"></td>
+						            </tr>
+                                    <tr>
+							            <td>Message</td>
+										<td><textarea placeholder="Nhập bình luận..." style="width:833.375px;" name="txtmess" rows="6" cols="27" ><?php echo $loi["mess"]; ?></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <button type="submit" class="btn btn-success green" name="ok"><i class="fa fa-submit"></i>Bình Luận</button>
+                                        </td>
+                                    </tr> 
+										
+										
+                                    </table>    
+									</form>
+								</div><!-- Status Upload  -->
+							</div><!-- Widget Area -->
+						</div>
+        
+    </div>
+</div>
+<hr>
+			<div id="show-comment" style="margin-left:284px;margin-top:20px;">
+				<?php
+				include('./php/connect.php');
+				//query
+				$result1 = mysqli_query($con,"SELECT name,message,time from comment where check_cm ='Y' and baihat_id = $id");
+				while($data = mysqli_fetch_assoc($result1))
+				{
+					echo "<div class='comm'>";
+						echo "<table>";
+
+								echo "<td><img src='image/avtdf.jpg' ''alt='' width='60px'></td>";
+								$sqltime=$data['time'];
+								$timestamp=strtotime($sqltime);
+								$time=date('d-m-Y H:i',$timestamp);
+								echo "<td><p style='color:black;'>$data[name]  <span style='color:black;'> $time</span></p></td>";
+								echo "<br>","<br><td><p>$data[message]</p></td>";
+								echo "</div>";
+
+							echo "<div style = 'clear:left'> </div>";
+						echo "</table>";
+					echo "</div>";
+				}
+				//dong
+
+				mysqli_close($con);
+
+				?>
+			</div>
 
 
 		<main class="col-md-11 m-auto">
