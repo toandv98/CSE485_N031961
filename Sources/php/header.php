@@ -15,7 +15,7 @@
       <ul class="nav navbar-nav">
         <li class="nav-item"><a href="./baihat.php" class="nav-link">Bài hát</a></li>
         <li class="nav-item dropdown">
-          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="./chude.php">Thể loại<b class="caret"></b></a>
+          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="./chude.php">Chủ đề<b class="caret"></b></a>
           <ul class="dropdown-menu">
           <?php
             include('./php/connect.php');
@@ -24,8 +24,7 @@
             while($row = mysqli_fetch_assoc($result))
             {
               $tenchude = $row['tentheloai'];
-              echo '<li><a href="nhactre.php?id='.$row['id'].'" class="dropdown-item">'.$tenchude.'</a></li>';
-
+              echo '<li><a href="listnhac.php?id='.$row['id'].'" class="dropdown-item">'.$tenchude.'</a></li>';
             }
             mysqli_close($con);
             ?>            
