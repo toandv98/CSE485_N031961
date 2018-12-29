@@ -22,8 +22,9 @@
 		{
 			
 			$tenbaihat=$_POST['tenbaihat'];
-			$casi=$_POST['casi'];
-			$chude=$_POST['chude'];
+			$tcasi=$_POST['casi'];
+			$tchude=$_POST['chude'];
+			$talbum=$_POST['album'];
 			$file_name=$_FILES['upload']['name'];
 			$image=$_FILES['uploadimg']['name'];
 			$pattern='#.+\.(mp3)$#i';
@@ -52,10 +53,12 @@
                         if(file_exists($destck) && file_exists($destck1))
                         {	
                             include('../php/connect.php');
-                            $rchude=mysqli_query($con,"select id from theloai where tentheloai = '$chude'");
-                            $rowtl=mysqli_fetch_assoc($rchude);
-                            $idchude = $rowtl['id'];
-                            $update=mysqli_query($con,"insert into baihat(tenbaihat,casy,theloai,duongdan,image,idtheloai) values('$tenbaihat','$casi','$chude','$dest','$dest1','$idchude')");
+                            $re=mysqli_query($con,"SELECT ab.id AS idab,cs.id AS idcs,cd.id AS idcd FROM album ab,casi cs,chude cd WHERE ab.tenalbum = '$talbum' AND cs.tencasi = '$tcasi' AND cd.tenchude = '$tchude'");
+                            $rowi=mysqli_fetch_assoc($re);
+                            $idalbum = $rowi['idab'];
+                            $idcasi = $rowi['idcs'];
+                            $idchude = $rowi['idcd'];
+                            $update=mysqli_query($con,"INSERT INTO baihat(tenbaihat,path,image,idalbum,idcasi,idchude) VALUES('$tenbaihat','$dest','$dest1','$idalbum','$idcasi','$idchude')");
                             mysqli_close($con);
                             if($update)
                             {
@@ -112,18 +115,40 @@
                         <div class="col-md-9">
                                 <input name="tenbaihat" class="form-control mt-3" type="text" required="required">
                         </div>
-                        <label class="col-md-3 mt-3 col-form-label form-control-label">Tên ca sĩ:</label>
+                        <label class="col-md-3 mt-3 col-form-label form-control-label">Ca sĩ:</label>
                         <div class="col-md-9">
-                                <input name="casi" class="form-control mt-3" type="text" required="required">
+                            <select class="custom-select mr-sm-2 mt-3" id="casi" name="casi">
+                                <?php
+                                    include("../php/connect.php");
+                                    $casi=mysqli_query($con,"select * from casi");
+									while($row=mysqli_fetch_assoc($casi)){
+										echo '<option>'.$row['tencasi'].'</option>';
+                                    }
+                                    mysqli_close($con);
+								?>
+                            </select>
                         </div>
                         <label class="col-md-3 mt-3 col-form-label form-control-label">Chủ đề:</label>
                         <div class="col-md-9">
                             <select class="custom-select mr-sm-2 mt-3" id="chude" name="chude">
                                 <?php
                                     include("../php/connect.php");
-                                    $chude=mysqli_query($con,"select * from theloai");
+                                    $chude=mysqli_query($con,"select * from chude");
 									while($row=mysqli_fetch_assoc($chude)){
-										echo '<option>'.$row['tentheloai'].'</option>';
+										echo '<option>'.$row['tenchude'].'</option>';
+                                    }
+                                    mysqli_close($con);
+								?>
+                            </select>
+                        </div>
+                        <label class="col-md-3 mt-3 col-form-label form-control-label">album:</label>
+                        <div class="col-md-9">
+                            <select class="custom-select mr-sm-2 mt-3" id="album" name="album">
+                                <?php
+                                    include("../php/connect.php");
+                                    $album=mysqli_query($con,"select * from album");
+									while($row=mysqli_fetch_assoc($album)){
+										echo '<option>'.$row['tenalbum'].'</option>';
                                     }
                                     mysqli_close($con);
 								?>

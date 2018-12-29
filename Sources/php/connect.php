@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "db_nhac";
+$dbname = "db_nhaconline";
 
 $con = mysqli_connect($servername,$username,$password,$dbname);
 

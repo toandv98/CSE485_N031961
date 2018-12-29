@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Thêm chủ đề</title>
+    <title>Thêm album</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
     <script src="./js/bootstrap.min.js"></script>
@@ -21,7 +21,9 @@
         $id = $_GET["id"];
         if(isset($_POST['ok']))
         {   
-            $tenchude = $_POST['txtName'];
+            $tcasi=$_POST['casi'];
+			$tchude=$_POST['chude'];
+			$talbum=$_POST['txtName'];
             $image=$_FILES['uploadimg']['name'];
             $pattern='#\.(jpg|jpeg|gif|png)$#i';
 
@@ -41,34 +43,34 @@
                     if(file_exists($destck))
                     {	
                         include('../php/connect.php');
-                        $update=mysqli_query($con,"Update chude SET tenchude='$tenchude',image='$dest' where id=$id");
+                        $update=mysqli_query($con,"Update album SET tenalbum='$talbum',image='$dest',casi='$tcasi',chude='$tchude' where id=$id");
                         mysqli_close($con);
                         if($update)
                         {
-                            echo "<h3 style='color:lime;'>Cập nhật chủ đề thành công...</h3>";
+                            echo "<h3 style='color:lime;'>Cập nhật album thành công...</h3>";
                          }
                         else
                         {
-                            echo "<h3 style='color:red;'>Cập nhật chủ đề thất bại!</h3>";
+                            echo "<h3 style='color:red;'>Cập nhật album thất bại!</h3>";
                         }
                     }
                     else
                     {
-                        echo "<h3 style='color:red;'>Cập nhật chủ đề thất bại!</h3>";
+                        echo "<h3 style='color:red;'>Cập nhật album thất bại!</h3>";
                     }
                 }
                 else
                 {
                     include('../php/connect.php');
-                    $update=mysqli_query($con,"Update chude SET tenchude='$tenchude' where id=$id");
+                    $update=mysqli_query($con,"Update album SET tenalbum='$talbum',casi='$tcasi',chude='$tchude' where id=$id");
                     mysqli_close($con);
                     if($update)
                     {
-                        echo "<h3 style='color:lime;'>Cập nhật chủ đề thành công...</h3>";
+                        echo "<h3 style='color:lime;'>Cập nhật album thành công...</h3>";
                      }
                     else
                     {
-                        echo "<h3 style='color:red;'>Cập nhật chủ đề thất bại!</h3>";
+                        echo "<h3 style='color:red;'>Cập nhật album thất bại!</h3>";
                     }
                 }
             }
@@ -80,21 +82,47 @@
     ?>
     </div>
     <main class="col-md-8 m-auto p-5">
-          <form class="" action="./suachude.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
+          <form class="" action="./suaalbum.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
               <div class="row">
                 <div class="col-md-8 m-auto">
-                    <div class="row"><div class="col-md-12 text-center mb-3"><label style="font-size:24px">Thêm chủ đề</label></div></div>
+                    <div class="row"><div class="col-md-12 text-center mb-3"><label style="font-size:24px">Sửa album</label></div></div>
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label form-control-label">Tên chủ đề:</label>
+                        <label class="col-md-3 col-form-label form-control-label">Tên album:</label>
                         <div class="col-md-9">
                             <?php
                                 include("../php/connect.php");
-                                $chude=mysqli_query($con,"select * from chude where id=$id");
+                                $chude=mysqli_query($con,"select * from album where id=$id");
 								while($row=mysqli_fetch_assoc($chude)){
-									echo '<input name="txtName" class="form-control" type="text" value="'.$row['tenchude'].'" required="required">';
+									echo '<input name="txtName" class="form-control" type="text" value="'.$row['tenalbum'].'" required="required">';
                                 }
                                  mysqli_close($con);
 							?>
+                        </div>
+                        <label class="col-md-3 mt-3 col-form-label form-control-label">Ca sĩ:</label>
+                        <div class="col-md-9">
+                            <select class="custom-select mr-sm-2 mt-3" id="casi" name="casi">
+                                <?php
+                                    include("../php/connect.php");
+                                    $casi=mysqli_query($con,"select * from casi");
+									while($row=mysqli_fetch_assoc($casi)){
+										echo '<option>'.$row['tencasi'].'</option>';
+                                    }
+                                    mysqli_close($con);
+								?>
+                            </select>
+                        </div>
+                        <label class="col-md-3 mt-3 col-form-label form-control-label">Chủ đề:</label>
+                        <div class="col-md-9">
+                            <select class="custom-select mr-sm-2 mt-3" id="chude" name="chude">
+                                <?php
+                                    include("../php/connect.php");
+                                    $chude=mysqli_query($con,"select * from chude");
+									while($row=mysqli_fetch_assoc($chude)){
+										echo '<option>'.$row['tenchude'].'</option>';
+                                    }
+                                    mysqli_close($con);
+								?>
+                            </select>
                         </div>
                         <label class="col-md-3 mt-3 col-form-label form-control-label">Ảnh:</label>
                         <div class="col-md-9">

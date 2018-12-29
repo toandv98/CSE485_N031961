@@ -27,7 +27,7 @@
             
             $keyword = $_POST['keyword'];
             include('./php/connect.php');
-            $result = mysqli_query($con, "SELECT * FROM baihat WHERE tenbaihat like '%$keyword%'");
+            $result = mysqli_query($con, "SELECT * FROM v_baihat WHERE tenbaihat like '%$keyword%'");
             if(mysqli_num_rows($result)==0)
             {
                 echo '<div class="text-md-center mt-5"><h2>Không tìm thấy</h2></div>';
@@ -38,7 +38,7 @@
                 echo '<div class="text-md-center mt-5"><h2>Tìm được '.$number.' bài hát </h2></div>';
                 while($row = mysqli_fetch_assoc($result)){
                     $tenbaihat = $row['tenbaihat'];
-                    $casy = $row['casy'];
+                    $casi = $row['tencasi'];
                     $luotnghe = $row['luotnghe'];
                     $image=$row['image'];
                     echo '<a href="playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
@@ -53,7 +53,7 @@
                             </span>
                             
                             <span>
-                                <span style="font-size:12px;">'.$casy.'</span>
+                                <span style="font-size:12px;">'.$casi.'</span>
                             </span>
                         </div>
                     </a>';

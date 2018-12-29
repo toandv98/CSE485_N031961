@@ -1,9 +1,9 @@
 <?php
     $to=$email;
     // Chủ Đề
-    $subject="Kích Hoạt Tài Khoản";
+    $subject="Active account";
     // From
-    $header="from: NhacOnline <hongducphi17@gmail.com>";
+    $header="from: NhacOnline <toan98.k10@gmail.com>";
     // Your message
     $message="Đường link kích hoạt : \r\n";
     $message.="Nhấp vào link sau để kích hoạt tài khoản\r\n";

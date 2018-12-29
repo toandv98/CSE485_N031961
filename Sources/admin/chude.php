@@ -27,7 +27,7 @@
                             <th>STT</th>
                             <th>Chủ đề</th>
                             <th>Sửa chủ đề</th>
-                            <th>Xoá chủ đề</a></th>
+                            <th>Xoá chủ đề</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -35,19 +35,19 @@
                             <th>STT</th>
                             <th>Chủ đề</th>
                             <th>Sửa chủ đề</th>
-                            <th>Xoá chủ đề</a></th>
+                            <th>Xoá chủ đề</th>
                         </tr>
                     </tfoot>
                     <tbody>
                     <?php
                         include('../php/connect.php');
                         $stt=1;
-                        $result = mysqli_query($con,"Select id,tentheloai from theloai");
+                        $result = mysqli_query($con,"Select * from chude");
                         While($data = mysqli_fetch_assoc($result))
                         {
                             echo "<tr>";
                             echo "<td style='width:50px;'>$stt</td>";
-                            echo "<td>$data[tentheloai]</td>";
+                            echo "<td>$data[tenchude]</td>";
                             echo "<td style='width:120px;'><a href='./suachude.php?id=$data[id]' style='color:#09F;'>Sửa</a></td>";
                             echo "<td style='width:120px;'><a href='./del_chude.php?id=$data[id]' onclick=' return xacnhan();' style='color:red;'>Xoá</a></td>";
                             echo "</tr>";

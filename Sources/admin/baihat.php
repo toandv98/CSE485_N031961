@@ -27,7 +27,11 @@
                             <th >STT</th>
                             <th>Tên Bài Hát</th>
                             <th>Lượt Nghe</th>
-                            <th>Xoá bài hát</a></th>
+                            <th>Ca sĩ</th>
+                            <th>Album</th>
+                            <th>Chủ đề</th>
+                            <th>Ngày đăng</th>
+                            <th>Xoá</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -35,21 +39,29 @@
                         <th >STT</th>
                             <th>Tên Bài Hát</th>
                             <th>Lượt Nghe</th>
-                            <th>Xoá bài hát</a></th>
+                            <th>Ca sĩ</th>
+                            <th>Album</th>
+                            <th>Chủ đề</th>
+                            <th>Ngày đăng</th>
+                            <th>Xoá</th>
                         </tr>
                     </tfoot>
                     <tbody>
                     <?php
                         include('../php/connect.php');
                         $stt=1;
-                        $result = mysqli_query($con,"Select * from baihat");
+                        $result = mysqli_query($con,"Select * from v_baihat");
                         While($data = mysqli_fetch_assoc($result))
                         {
                             echo "<tr>";
                             echo "<td style='width:50px;'>$stt</td>";
                             echo "<td>$data[tenbaihat]</td>";
                             echo "<td style='width:120px;'>$data[luotnghe]</td>";
-                            echo "<td style='width:120px;'><a href='del_baihat.php?id=$data[id]' onclick=' return xacnhan();' style='color:red;'>Xoá</a></td>";
+                            echo "<td>$data[tencasi]</td>";
+                            echo "<td>$data[tenalbum]</td>";
+                            echo "<td>$data[tenchude]</td>";
+                            echo "<td>$data[ngaydang]</td>";
+                            echo "<td style='width:50px;'><a href='del_baihat.php?id=$data[id]' onclick=' return xacnhan();' style='color:red;'>Xoá</a></td>";
                             echo "</tr>";
                             $stt++;
                         }

@@ -48,7 +48,7 @@
 
     $password=passGen(6,2);
 
-    if (mysqli_num_rows(mysqli_query($con,"SELECT email FROM nguoidung WHERE email='$email'")) <1)
+    if (mysqli_num_rows(mysqli_query($con,"SELECT email FROM user WHERE email='$email'")) <1)
     {
         echo 'Tài khoản không tồn tại.Vui lòng nhập Email hợp lệ. <a href="javascript: history.go(-1)">Trở lại</a> sau... <span id="time"></span>';
         echo '<script src="../js/demnguoc.js" charset="utf-8"></script>';
@@ -64,7 +64,7 @@
     ];
     $hash = password_hash($password, PASSWORD_DEFAULT, $options);
 
-    @$addmember = mysqli_query($con,"UPDATE nguoidung SET password='{$hash}' where email='{$email}'");
+    @$addmember = mysqli_query($con,"UPDATE user SET password='{$hash}' where email='{$email}'");
 
     if ($addmember){
 
@@ -74,7 +74,7 @@
         // From
         $header="from: NhacOnline <toan98.k10@gmail.com>";
         // Your message
-        $message="Mật khẩu mới : $password";
+        $message="Mật khẩu mới của bạn là: $password";
         // Gủi mail
         $sentmail = mail($to,$subject,$message,$header);
 

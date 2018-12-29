@@ -20,7 +20,9 @@
     <?php
         if(isset($_POST['ok']))
         {
-            $tenchude = $_POST['txtName'];
+            $tcasi=$_POST['casi'];
+			$tchude=$_POST['chude'];
+            $talbum = $_POST['txtName'];
             $image=$_FILES['uploadimg']['name'];
             $pattern='#\.(jpg|jpeg|gif|png)$#i';
 
@@ -40,20 +42,20 @@
                     if(file_exists($destck))
                     {	
                         include('../php/connect.php');
-                        $update=mysqli_query($con,"Insert Into chude(tenchude,image) value('$tenchude','$dest')");
+                        $update=mysqli_query($con,"Insert Into album(tenalbum,image,casi,chude) value('$talbum','$dest','$tcasi','$tchude')");
                         mysqli_close($con);
                         if($update)
                         {
-                            echo "<h3 style='color:lime;'>Thêm chủ đề thành công...</h3>";
+                            echo "<h3 style='color:lime;'>Thêm album thành công...</h3>";
                          }
                         else
                         {
-                            echo "<h3 style='color:red;'>Thêm chủ đề thất bại!</h3>";
+                            echo "<h3 style='color:red;'>Thêm album thất bại!</h3>";
                         }
                     }
                     else
                     {
-                        echo "<h3 style='color:red;'>Thêm chủ đề thất bại!</h3>";
+                        echo "<h3 style='color:red;'>Thêm album thất bại!</h3>";
                     }
                 }
                 else
@@ -69,12 +71,12 @@
     ?>
     </div>
     <main class="col-md-8 m-auto p-5">
-          <form class="" action="./themchude.php" method="post" enctype="multipart/form-data">
+          <form class="" action="./themalbum.php" method="post" enctype="multipart/form-data">
               <div class="row">
                 <div class="col-md-8 m-auto">
-                    <div class="row"><div class="col-md-12 text-center mb-3"><label style="font-size:24px">Thêm chủ đề</label></div></div>
+                    <div class="row"><div class="col-md-12 text-center mb-3"><label style="font-size:24px">Thêm album</label></div></div>
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label form-control-label">Tên chủ đề:</label>
+                        <label class="col-md-3 col-form-label form-control-label">Tên album:</label>
                         <div class="col-md-9">
                                 <input name="txtName" class="form-control" type="text" required="required">
                         </div>
@@ -84,6 +86,32 @@
                                 <input type="file" id="anh" name="uploadimg" class="custom-file-input">
                                 <label class="custom-file-label text-left mt-3" for="anh">Chọn đường dẫn đến ảnh...</label>
                             </label>
+                        </div>
+                        <label class="col-md-3 mt-3 col-form-label form-control-label">Ca sĩ:</label>
+                        <div class="col-md-9">
+                            <select class="custom-select mr-sm-2 mt-3" id="casi" name="casi">
+                                <?php
+                                    include("../php/connect.php");
+                                    $casi=mysqli_query($con,"select * from casi");
+									while($row=mysqli_fetch_assoc($casi)){
+										echo '<option>'.$row['tencasi'].'</option>';
+                                    }
+                                    mysqli_close($con);
+								?>
+                            </select>
+                        </div>
+                        <label class="col-md-3 mt-3 col-form-label form-control-label">Chủ đề:</label>
+                        <div class="col-md-9">
+                            <select class="custom-select mr-sm-2 mt-3" id="chude" name="chude">
+                                <?php
+                                    include("../php/connect.php");
+                                    $chude=mysqli_query($con,"select * from chude");
+									while($row=mysqli_fetch_assoc($chude)){
+										echo '<option>'.$row['tenchude'].'</option>';
+                                    }
+                                    mysqli_close($con);
+								?>
+                            </select>
                         </div>
                     </div>
                     

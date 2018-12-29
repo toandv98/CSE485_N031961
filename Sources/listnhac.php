@@ -31,11 +31,11 @@
                 <?php
                     $id = $_GET["id"];
                     require('./php/connect.php');
-                    $sql = "SELECT * from baihat where idtheloai = '$id'";
+                    $sql = "SELECT * from v_baihat where idchude = '$id'";
                     $result = mysqli_query($con,$sql);
                     while($row = mysqli_fetch_assoc($result)){
                         $tenbaihat = $row['tenbaihat'];
-                        $casy = $row['casy'];
+                        $casi = $row['tencasi'];
                         $luotnghe = $row['luotnghe'];
                         $anh = $row['image'];
                         echo '<a href="./playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
@@ -49,7 +49,7 @@
                                     <span style="font-size:12px;">'.$luotnghe.'</span>
                                 </span>
                                 <span>
-                                    <span style="font-size:12px;">'.$casy.'</span>
+                                    <span style="font-size:12px;">'.$casi.'</span>
                                 </span>
                             </div>
                         </a>';

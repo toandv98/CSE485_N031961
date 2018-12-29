@@ -23,9 +23,9 @@
         <?php
         include('./php/connect.php');
           $userName = $_SESSION['userName'];
-          $result = mysqli_query($con,"Select * from nguoidung where userName = '$userName'");
+          $result = mysqli_query($con,"Select * from user where userName = '$userName'");
           $row = mysqli_fetch_assoc($result);
-          $hoten = $row["Name"];
+          $hoten = $row["hoten"];
           $gioiTinh =$row["gioitinh"];
           $Nam='';
           $Nu='';

@@ -11,13 +11,13 @@
       exit;
     }
 
-    if (mysqli_num_rows(mysqli_query($con,"SELECT userName FROM nguoidung WHERE userName='$username'")) > 0){
+    if (mysqli_num_rows(mysqli_query($con,"SELECT userName FROM user WHERE userName='$username'")) > 0){
         echo 'Tên đăng nhập này đã có người dùng. Vui lòng chọn tên đăng nhập khác. <a href="javascript: history.go(-1)">Trở lại</a> sau... <span id="time"></span>';
         echo '<script src="../js/demnguoc.js" charset="utf-8"></script>';
         exit;
     }
 
-    if (mysqli_num_rows(mysqli_query($con,"SELECT email FROM nguoidung WHERE email='$email'")) > 0)
+    if (mysqli_num_rows(mysqli_query($con,"SELECT email FROM user WHERE email='$email'")) > 0)
     {
         echo 'Email này đã có người dùng. Vui lòng chọn Email khác. <a href="javascript: history.go(-1)">Trở lại</a> sau... <span id="time"></span>';
         echo '<script src="../js/demnguoc.js" charset="utf-8"></script>';
@@ -35,7 +35,7 @@
     $hash = password_hash($password, PASSWORD_DEFAULT, $options);
 
     @$addmember = mysqli_query($con,"
-    INSERT INTO nguoidung(username, PASSWORD, email,code,active)
+    INSERT INTO user(username, PASSWORD, email,code,active)
     VALUE
         (
             '{$username}',

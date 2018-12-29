@@ -26,12 +26,12 @@
                     $dest='image/'.$_FILES['uploadimg']['name'];
                     if(file_exists($destck))
                     {	
-                      $result = mysqli_query($con,"Select * from nguoidung where userName = '$userName'");
+                      $result = mysqli_query($con,"Select * from user where userName = '$userName'");
                       $row = mysqli_fetch_assoc($result);
                       $hash = $row["passWord"];
                         if(password_verify($password, $hash))
                         {
-                          @$addmember = mysqli_query($con,"UPDATE nguoidung
+                          @$addmember = mysqli_query($con,"UPDATE user
                             SET Name='{$hoten}',
                             gioitinh='{$gioiTinh}',
                             ngaysinh='{$ngaysinh}',
@@ -68,12 +68,12 @@
                 }
                 else
                 {
-                  $result = mysqli_query($con,"Select * from nguoidung where userName = '$userName'");
+                  $result = mysqli_query($con,"Select * from user where userName = '$userName'");
                   $row = mysqli_fetch_assoc($result);
                   $hash = $row["passWord"];
                     if(password_verify($password, $hash))
                     {
-                      @$addmember = mysqli_query($con,"UPDATE nguoidung
+                      @$addmember = mysqli_query($con,"UPDATE user
                         SET Name='{$hoten}',
                         gioitinh='{$gioiTinh}',
                         ngaysinh='{$ngaysinh}',

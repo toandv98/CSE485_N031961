@@ -29,14 +29,15 @@
                 <div class="row">
                 <?php
                     require('./php/connect.php');
-                    $sql = "SELECT * FROM baihat";
+                    $sql = "SELECT * FROM album";
                     $result = mysqli_query($con,$sql);
                     while($row = mysqli_fetch_assoc($result)){
-                        $tenbaihat = $row['tenbaihat'];
+                        $tenalbum = $row['tenalbum'];
+                        $image=$row['image'];
                         echo '<div class="col-lg-3 col-md-4 img-hover">
                                 <a href="#" class="d-block mb-4 h-100" style="text-decoration: none;">
-                                <div><img class="img-fluid img-thumbnail " src="./image/logo.png" alt=""></div>
-                                <div class="mt-2" style="color: black;">'.$tenbaihat.'</div>
+                                <div><img class="img-fluid img-thumbnail " src="./'.$image.'" alt=""></div>
+                                <div class="mt-2" style="color: black;">'.$tenalbum.'</div>
                                 </a>
                             </div>';
                     }

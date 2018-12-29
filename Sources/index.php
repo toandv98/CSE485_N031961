@@ -51,15 +51,15 @@
                 <div class="row">
             <?php
                 require('./php/connect.php');
-                $sql = "SELECT * FROM theloai";
+                $sql = "SELECT * FROM chude";
                 $result = mysqli_query($con,$sql);
                 while($row = mysqli_fetch_assoc($result)){
-                $tentheloai = $row['tentheloai'];
+                $tenchude = $row['tenchude'];
                 $image=$row['image'];
                 echo '<div class="col-lg-3 col-md-4 img-hover">
-                    <a href="nhactre.php?id='.$row['id'] .'" class="d-block mb-4 h-100" style="text-decoration: none;">
+                    <a href="listnhac.php?id='.$row['id'] .'" class="d-block mb-4 h-100" style="text-decoration: none;">
                     <div><img class="img-fluid img-thumbnail " src='.$image.' alt=""></div>
-                    <div class="mt-2" style="color: black;">'.$tentheloai.'</div>
+                    <div class="mt-2" style="color: black;">'.$tenchude.'</div>
                     </a>
                 </div>';
                 }
@@ -81,11 +81,11 @@
                         $position = 0;
                     }
                     $display = 6;
-                    $sql = "SELECT * FROM baihat limit $position,$display" ;
+                    $sql = "SELECT * FROM v_baihat limit $position,$display" ;
                     $result = mysqli_query($con,$sql);
                     while($row = mysqli_fetch_assoc($result)){
                         $tenbaihat = $row['tenbaihat'];
-                        $casy = $row['casy'];
+                        $casi = $row['tencasi'];
                         $luotnghe = $row['luotnghe'];
                         $anh = $row['image'];
                         echo '<a href="./playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
@@ -99,7 +99,7 @@
                                     <span style="font-size:12px;">'.$luotnghe.'</span>
                                 </span>
                                 <span>
-                                    <span style="font-size:12px;">'.$casy.'</span>
+                                    <span style="font-size:12px;">'.$casi.'</span>
                                 </span>
                             </div>
                         </a>';
