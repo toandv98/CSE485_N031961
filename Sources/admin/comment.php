@@ -29,7 +29,7 @@
                             <th>Comment</th>
                             <th>Time</th>
                             <th>Link</th>
-                            <th>Duyệt Cmt</th>
+                            <th>Duyệt</th>
                             <th>Xoá</th>
                         </tr>
                     </thead>
@@ -48,27 +48,26 @@
                     <?php
                         include('../php/connect.php');
                         $stt=1;
-                        $result = mysqli_query($con,"Select * from comment");
+                        $result = mysqli_query($con,"SELECT u.hoten,c.id,c.thoigian,c.noidung,c.duyet,c.idbaihat FROM comment c INNER JOIN user u ON c.iduser = u.id");
                         While($data = mysqli_fetch_assoc($result))
                         {
+                            $sqltime=$data['thoigian'];
+                            $timestamp=strtotime($sqltime);
+                            $time=date('d-m-Y H:i',$timestamp);
                             echo "<tr>";
                             echo "<td style='width:50px;'>$stt</td>";
-                            echo "<td>$data[name]</td>";
-                            echo "<td>$data[message]</td>";
-                                $sqltime=$data['time'];
-								$timestamp=strtotime($sqltime);
-								$time=date('d-m-Y H:i',$timestamp);
+                            echo "<td>$data[hoten]</td>";
+                            echo "<td>$data[noidung]</td>";
                             echo "<td>$time</td>";
-                            
-                            echo "<td style='width:120px;'><a href='../playnhac.php?id=$data[baihat_id]' target='_blank' style='color:#09F;'>Xem</a></td>";
-                            if($data['check_cm']=='N')
+                            echo "<td><a href='../playnhac.php?id=$data[idbaihat]' target='_blank' style='color:#09F;'>Xem</a></td>";
+                            if($data['duyet']==0)
                             {
-                                echo "<td style='width:120px;'><a href='./duyetcomment.php?id=$data[id_cm]' style='color:#09F;'>Chưa Duyệt</a></td>";
+                                echo "<td><a href='./duyet.php?id=$data[id]'>Chưa duyệt</a></td>";
                             }
                             else{
-                                echo "<td style='width:120px;'><a href='./duyetcomment.php?id=$data[id_cm]' style='color:#09F;'>Đã Duyệt</a></td>";
+                                echo "<td><a href='./duyet.php?id=$data[id]' style='color:lime;'>Đã duyệt</a></td>";
                             }
-                            echo "<td style='width:120px;'><a href='./xoacomment.php?id=$data[id_cm]' onclick=' return xacnhan();' style='color:red;'>Xoá</a></td>";
+                            echo "<td><a href='./del_comment.php?id=$data[id]' onclick=' return xacnhan();' style='color:red;'>Xoá</a></td>";
                             echo "</tr>";
                             $stt++;
                         }

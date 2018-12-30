@@ -15,6 +15,8 @@
         if(password_verify($passWord, $hash))
         {
             $_SESSION['userName']=$userName;
+            $_SESSION['id']=$row['id'];
+            $_SESSION['avatar']=$row['avatar'];
             header("location:../index.php");
             exit();
         }
