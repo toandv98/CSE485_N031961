@@ -23,6 +23,7 @@
 		$id=$_GET['id'];
 		if(isset($_POST["ok"]))
 		{
+			if(isset($_SESSION['id'])){
 			$user=$_SESSION['userName'];
 			$mess=$_POST["txtnoidung"];
 			include('./php/connect.php');
@@ -34,6 +35,9 @@
 				echo"<script type='text/javascript'> alert('Có lỗi xảy ra!') </script>";
 			}
 			mysqli_close($con);
+			}else{
+				echo"<script type='text/javascript'> alert('Bạn phải đăng nhập để thêm bình luận') </script>";
+			}
 		}
         ?>
 		<?php
@@ -108,13 +112,18 @@
 					$ketqua = mysqli_query($con,"SELECT * from comment where duyet=1 and idbaihat =$id");
 					$number = mysqli_num_rows($ketqua);
 					mysqli_close($con);
+					if(isset($_SESSION['avatar'])){
+						$useravatar=$_SESSION['avatar'];
+					}else{
+						$useravatar='image/avatar.png';
+					}
 				?>
 				<form action="playnhac.php?id=<?php echo $id;?>" method="post">
 					<h4>Bình Luận (<?php echo "$number";?>)</h4>
 					<div class="p-2">
 					<div class="row">
 						<div class='col-md-2'>
-							<img src='./<?php echo $_SESSION['avatar'];?>' width='100px'>
+							<img src='./<?php echo $useravatar;?>' width='100px'>
 						</div>
 						<div class="col-md-10">
 							<label for="noidung" class="">Thêm bình luận:</label>
