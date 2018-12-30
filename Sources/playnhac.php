@@ -44,7 +44,10 @@
 			mysqli_close($con);
 		?>
 
-		<div class="container-audio">
+		
+		<main class="col-md-11 m-auto">
+			<div class="left col-md-8 float-left">
+			<div class="container-audio">
 			<h3 style="color:blue;font-size:16pt;color:#999;">
 				<?php echo $row['tenbaihat'];?>
 			</h3>
@@ -57,78 +60,14 @@
 				<source src="<?php echo " ./".$row['path'];?>" type="audio/mpeg">
 				<source src="<?php echo " ./".$row['path'];?>" type="audio/ogg">
 				<embed height="50" width="100" src="<?php echo " admin/".$row['path'];?>"> </audio> </div> <div class="container-audio">
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-				<div class="colum1">
-					<div class="row"></div>
-				</div>
-		</div>
-		<main class="col-md-11 m-auto">
-			<div class="left col-md-8 float-left">
+				<?php 
+					for ($i=0; $i < 40; $i++) { 
+						echo '<div class="colum1">
+								<div class="row"></div>
+							</div>';
+					}
+				?>
+			</div>
 			<div class="text-md-left mt-5">
 				<h3>Bài hát</h3>
 			</div>

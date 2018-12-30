@@ -56,16 +56,16 @@
                             $time=date('d-m-Y H:i',$timestamp);
                             echo "<tr>";
                             echo "<td style='width:50px;'>$stt</td>";
-                            echo "<td>$data[hoten]</td>";
+                            echo "<td style='width:150px;'>$data[hoten]</td>";
                             echo "<td>$data[noidung]</td>";
-                            echo "<td>$time</td>";
+                            echo "<td style='width:130px;'>$time</td>";
                             echo "<td><a href='../playnhac.php?id=$data[idbaihat]' target='_blank' style='color:#09F;'>Xem</a></td>";
                             if($data['duyet']==0)
                             {
-                                echo "<td><a href='./duyet.php?id=$data[id]'>Chưa duyệt</a></td>";
+                                echo "<td><a href='./duyet.php?id=$data[id]'>Chờ</a></td>";
                             }
                             else{
-                                echo "<td><a href='./duyet.php?id=$data[id]' style='color:lime;'>Đã duyệt</a></td>";
+                                echo "<td><a href='./duyet.php?id=$data[id]' style='color:lime;'>Xong</a></td>";
                             }
                             echo "<td><a href='./del_comment.php?id=$data[id]' onclick=' return xacnhan();' style='color:red;'>Xoá</a></td>";
                             echo "</tr>";

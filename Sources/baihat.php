@@ -108,7 +108,7 @@
                         if($current = $sum_page)
                         {
                             $last = (($display*$sum_page) - $display);
-                            echo "<li><a href='index.php?begin=$last' class='page'>Last </a></li>";
+                            echo "<li><a href='baihat.php?begin=$last' class='page'>Last </a></li>";
                         }
                     echo '</ul>';
                 }
