@@ -27,7 +27,7 @@
         }
         echo '<a href="./playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2 p-2">
             <div class="item_title"><span class="badge badge-pill badge-'.$cl.'">'.$i.'</span><span class="ml-3">'.$tenbaihat.'</span>
-            <span class="item_span ml-5">
+            <span class="item_span float-right">
             <img src="./image/views.png" width="18px">
             <span style="font-size:12px;">'.$luotnghe.'</span>
             </span></div>

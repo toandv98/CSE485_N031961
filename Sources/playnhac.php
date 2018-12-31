@@ -6,11 +6,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Nhạc Online</title>
+	<link rel="stylesheet" href="./css/AudioPlayer.css">
 	<link rel="stylesheet" href="./css/styleplayer.css">
 	<link rel="stylesheet" href="./css/hover.css">
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
 	<link rel="stylesheet" href="./css/jquery.paginate.css">
-	<link href='https://fonts.googleapis.com/css?family=Allerta' rel='stylesheet'>
+	<link rel="stylesheet" href="./css/fixplayer.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
 	<script src="./js/jquery.shorten.1.0.js"></script>
@@ -24,37 +26,12 @@
 		include('./php/header.php');
 		$id=$_GET['id'];
         ?>
-		<?php
-			include('./php/connect.php');
-			mysqli_query($con,"UPDATE baihat set luotnghe=luotnghe+1 where id='$id'");
-			$sql=mysqli_query($con,"select*from v_baihat where id='$id'");
-			$row=mysqli_fetch_assoc($sql);
-			mysqli_close($con);
-		?>
-
 		<main class="col-md-11 m-auto">
 			<div class="left col-md-8 float-left">
-			<div class="container-audio">
-			<h3 style="color:blue;font-size:16pt;color:#999;">
-				<?php echo $row['tenbaihat'];?>
-			</h3>
-			<span style="font-size:11pt;color:#999;">Trình bày:
-				<?php echo $row['tencasi'];?> | Lượt nghe:
-				<?php echo $row['luotnghe'];?></span>
-			<br>
-			<br>
-			<audio controls loop autoplay>
-				<source src="<?php echo " ./".$row['path'];?>" type="audio/mpeg">
-				<source src="<?php echo " ./".$row['path'];?>" type="audio/ogg">
-				<embed height="50" width="100" src="<?php echo " admin/".$row['path'];?>"> </audio> </div>
-				<div class="container-audio">
-				<?php 
-					for ($i=0; $i < 40; $i++) { 
-						echo '<div class="colum1">
-								<div class="row"></div>
-							</div>';
-					}
-				?>
+			<div class="dshow">
+			</div>
+			<div class="dplayer">
+				<div id='player' class="position-relative h-100"></div>
 			</div>
 			<div class="text-md-left mt-5">
 				<h3>Bài hát</h3>
@@ -173,6 +150,32 @@
 			include('./php/footer.php');
 		?>
 		</div>
+	
+	<script src="./js/AudioPlayer.js"></script>
+	<?php
+		include('./php/connect.php');
+		$sql1=mysqli_query($con,"select*from v_baihat where id='$id'");
+		$rown1=mysqli_fetch_assoc($sql1);
+		$sql=mysqli_query($con,"select*from v_baihat where idalbum='$rown1[idalbum]' and id!='$id' limit 20");
+		echo "<script>
+        var iconImage = null;
+        AP.init({
+            container:'#player',
+            volume   : 0.7,
+            autoPlay : false,
+            notification: false,
+			playList: [";
+			echo "{'icon': iconImage, 'title': '$rown1[tenbaihat]', 'file': './$rown1[path]' ,'idbh': '$rown1[id]'},";
+		while($rown=mysqli_fetch_assoc($sql)){
+			echo "
+				{'icon': iconImage, 'title': '$rown[tenbaihat]', 'file': './$rown[path]' ,'idbh': '$rown[id]'},";
+		}
+         echo "]
+        });
+	</script>";
+	
+	mysqli_close($con);
+	?>
 	<script language="javascript">
 		$('#cmt').paginate({
 			  perPage:3 
@@ -182,6 +185,17 @@
 			"showChars" : 160,
 			"moreText"  : "Xem thêm",
 			"lessText"  : "Rút gọn",
+		});
+		$.ajax({
+			url : "./php/showinfo.php",
+			type : "post",
+			dataType:"text",
+			data : {
+					id:<?php echo $id ?>
+			},
+			success : function (result){
+				$('.dshow').html(result);
+			}
 		});
 		function load_ajax(){
 			$.ajax({
