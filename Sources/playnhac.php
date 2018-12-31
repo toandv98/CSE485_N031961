@@ -9,10 +9,12 @@
 	<link rel="stylesheet" href="./css/styleplayer.css">
 	<link rel="stylesheet" href="./css/hover.css">
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/jquery.paginate.css">
 	<link href='https://fonts.googleapis.com/css?family=Allerta' rel='stylesheet'>
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
 	<script src="./js/jquery.shorten.1.0.js"></script>
+	<script src="./js/jquery.paginate.js"></script>
 </head>
 
 <body>
@@ -44,7 +46,8 @@
 			<audio controls loop autoplay>
 				<source src="<?php echo " ./".$row['path'];?>" type="audio/mpeg">
 				<source src="<?php echo " ./".$row['path'];?>" type="audio/ogg">
-				<embed height="50" width="100" src="<?php echo " admin/".$row['path'];?>"> </audio> </div> <div class="container-audio">
+				<embed height="50" width="100" src="<?php echo " admin/".$row['path'];?>"> </audio> </div>
+				<div class="container-audio">
 				<?php 
 					for ($i=0; $i < 40; $i++) { 
 						echo '<div class="colum1">
@@ -57,6 +60,7 @@
 				<h3>Bài hát</h3>
 			</div>
 			<div class="list-group">
+			<ul id="listbaihat" class="p-0" style="list-style:none;">
 			<?php
 			require('./php/connect.php');
 			$sql = "SELECT * FROM v_baihat";
@@ -66,7 +70,7 @@
 				$casi = $row['tencasi'];
 				$luotnghe = $row['luotnghe'];
 				$image=$row['image'];
-				echo '<a href="playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
+				echo '<li><a href="playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
 					<span>
 						<img class="float-md-left mr-2" src='.$image.' width="50px">
 					</span>
@@ -81,11 +85,13 @@
 							<span style="font-size:12px;">'.$casi.'</span>
 						</span>
 					</div>
-				</a>';
+				</a></li>';
 			}
 			mysqli_close($con);
 		?>
-		<span class="border border-primary mt-5 bg-light p-3 rounded">
+		</ul>
+		</div>
+		<div class="border border-primary mt-5 bg-light p-3 rounded">
 		<div class="row">
 			<div class="col-md-12 m-auto">
 				<?php
@@ -117,6 +123,7 @@
 			</div>
 		</div>
 		<div id="show-comment">
+			<ul id="cmt" class="p-0" style="list-style:none;">
 			<?php
 			include('./php/connect.php');
 			$result1 = mysqli_query($con,"SELECT u.hoten,u.avatar,c.noidung,c.thoigian FROM comment c INNER JOIN user u ON c.iduser = u.id WHERE c.duyet=1 AND c.idbaihat='$id'");
@@ -128,7 +135,7 @@
 				$sqltime=$data['thoigian'];
 				$timestamp=strtotime($sqltime);
 				$time=date('d-m-Y H:i',$timestamp);
-				echo "<div class='list-group-item mt-3'>
+				echo "<li><div class='list-group-item mt-2'>
 						<div class='float-left'>
 							<img src='$avatar' width='70px'></div>
 						<div class='ml-3'>
@@ -149,12 +156,12 @@
 							</td>
 							</table>
 						</div>
-						</div>";
+						</div></li>";
 			}
 			mysqli_close($con);
 			?>
-		</div>
-		</div></span>
+			</ul>
+		</div></div>
 		</div>
 		<div class="right col-md-4 float-right">
 			<?php include('./php/menuright.php');?>
@@ -163,9 +170,19 @@
 		</main>
 			
 		<?php
-	include('./php/footer.php');
-?>
+			include('./php/footer.php');
+		?>
+		</div>
 	<script language="javascript">
+		$('#cmt').paginate({
+			  perPage:3 
+		});
+		$('#listbaihat').paginate();
+		$(".thugon").shorten({
+			"showChars" : 160,
+			"moreText"  : "Xem thêm",
+			"lessText"  : "Rút gọn",
+		});
 		function load_ajax(){
 			$.ajax({
 				url : "./php/ajaxcomment.php",
@@ -180,13 +197,6 @@
 				}
 			});
 		}
-	</script>
-	<script type="text/javascript">
-	$(".thugon").shorten({
-		"showChars" : 160,
-		"moreText"  : "Xem thêm",
-		"lessText"  : "Rút gọn",
-	});
 	</script>
 </body>
 </html>
