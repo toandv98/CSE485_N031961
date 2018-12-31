@@ -21,24 +21,6 @@
         session_start();
 		include('./php/header.php');
 		$id=$_GET['id'];
-		if(isset($_POST["ok"]))
-		{
-			if(isset($_SESSION['id'])){
-			$user=$_SESSION['userName'];
-			$mess=$_POST["txtnoidung"];
-			include('./php/connect.php');
-			$iduser=$_SESSION['id'];
-			$up=mysqli_query($con,"INSERT INTO comment(noidung,iduser,idbaihat) VALUES('$mess','$iduser','$id')"); 	
-			if($up){
-				echo"<script type='text/javascript'> alert('Bình luận của bạn đã được đăng thành công và chờ kiểm duyệt') </script>";
-			}else{
-				echo"<script type='text/javascript'> alert('Có lỗi xảy ra!') </script>";
-			}
-			mysqli_close($con);
-			}else{
-				echo"<script type='text/javascript'> alert('Bạn phải đăng nhập để thêm bình luận') </script>";
-			}
-		}
         ?>
 		<?php
 			include('./php/connect.php');
@@ -48,7 +30,6 @@
 			mysqli_close($con);
 		?>
 
-		
 		<main class="col-md-11 m-auto">
 			<div class="left col-md-8 float-left">
 			<div class="container-audio">
@@ -126,9 +107,9 @@
 							<img src='./<?php echo $useravatar;?>' width='100px'>
 						</div>
 						<div class="col-md-10">
-							<label for="noidung" class="">Thêm bình luận:</label>
+							<label for="noidung" id="thongbao">Thêm bình luận:</label>
 							<textarea class="form-control" rows="6" name="txtnoidung" id="noidung" placeholder="Nhập bình luận..." required="required"></textarea>
-							<button type="submit" class="btn btn-success green mt-3" name="ok">Bình Luận</button>
+							<button type="button" class="btn btn-success green mt-3" onclick="load_ajax()" name="ok">Bình Luận</button>
 						</div>
 					</div>
 					</div>
@@ -184,6 +165,22 @@
 		<?php
 	include('./php/footer.php');
 ?>
+	<script language="javascript">
+		function load_ajax(){
+			$.ajax({
+				url : "./php/ajaxcomment.php",
+				type : "post",
+				dataType:"text",
+				data : {
+						noidung : $('#noidung').val(),
+						id:<?php echo $id ?>
+				},
+				success : function (result){
+					$('#thongbao').html(result);
+				}
+			});
+		}
+	</script>
 	<script type="text/javascript">
 	$(".thugon").shorten({
 		"showChars" : 160,
