@@ -62,10 +62,10 @@
                             echo "<td><a href='../playnhac.php?id=$data[idbaihat]' target='_blank' style='color:#09F;'>Xem</a></td>";
                             if($data['duyet']==0)
                             {
-                                echo "<td><a href='./duyet.php?id=$data[id]'>Chờ</a></td>";
+                                echo "<td><a href='./duyet.php?id=$data[id]&d=1'>Duyệt</a></td>";
                             }
                             else{
-                                echo "<td><a href='./duyet.php?id=$data[id]' style='color:lime;'>Xong</a></td>";
+                                echo "<td><a href='./duyet.php?id=$data[id]&d=0' style='color:lime;'>Huỷ</a></td>";
                             }
                             echo "<td><a href='./del_comment.php?id=$data[id]' onclick=' return xacnhan();' style='color:red;'>Xoá</a></td>";
                             echo "</tr>";
