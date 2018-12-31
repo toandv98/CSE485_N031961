@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nhạc Online</title>
     <link rel="stylesheet" href="./css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/hover.css">
     <link rel="stylesheet" href="./css/stylephantrang.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
