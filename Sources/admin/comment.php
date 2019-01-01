@@ -7,8 +7,6 @@
     <title>Document</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/xacnhan.js"></script>
 </head>
 
 <body>
@@ -84,6 +82,8 @@
         include('footer.php');
     ?>
     <script src="js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/xacnhan.js"></script>
     <script src="js/jquery.dataTables.js"></script>
     <script src="js/dataTables.bootstrap4.js"></script>
     <script>
