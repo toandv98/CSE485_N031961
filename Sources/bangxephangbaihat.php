@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/hover.css">
+    <link rel="stylesheet" href="./css/fixbody.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
