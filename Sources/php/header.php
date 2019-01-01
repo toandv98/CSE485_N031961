@@ -31,9 +31,9 @@
           </ul>
           </li>
         <li class="nav-item dropdown">
-          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="#"><b class="caret">BXH</b></a>
+          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="./bangxephangbaihat.php"><b class="caret">BXH</b></a>
           <ul class="dropdown-menu">
-            <li><a href="#" class="dropdown-item">Bài hát</a></li>
+            <li><a href="./bangxephangbaihat.php" class="dropdown-item">Bài hát</a></li>
             <li><a href="#" class="dropdown-item">Album</a></li>
             <li><a href="#" class="dropdown-item">Chủ đề</a></li>
           </ul>
