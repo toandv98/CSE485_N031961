@@ -10,8 +10,11 @@
     <link rel="stylesheet" href="./css/hover.css">
     <link rel="stylesheet" href="./css/stylephantrang.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/jquery.paginate.css">
+    <link rel="stylesheet" href="./css/fixbody.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+	<script src="./js/jquery.paginate.js"></script>
 </head>
 
 <body>
@@ -27,27 +30,24 @@
                 <div class="text-md-left mt-5">
 
                 </div>
+                <div class="text-md-left mt-3">
+                    <h3>Bài hát</h3>
+                </div>
+                <hr>
                 <div class="list-group">
+                <ul id="listbaihat" class="p-0" style="list-style:none;">
                 <?php
                     $id = $_GET["id"];
                     require('./php/connect.php');
-                    if(isset($_GET['begin']))
-                    {
-                        $position = $_GET['begin'];
-                    }
-                    else
-                    {
-                        $position = 0;
-                    }
-                    $display = 6;
-                    $sql = "SELECT * from v_baihat where idalbum = '$id' limit $position,$display";
+                    
+                    $sql = "SELECT * from v_baihat where idalbum = '$id'";
                     $result = mysqli_query($con,$sql);
                     while($row = mysqli_fetch_assoc($result)){
                         $tenbaihat = $row['tenbaihat'];
                         $casy = $row['tencasi'];
                         $luotnghe = $row['luotnghe'];
                         $anh = $row['image'];
-                        echo '<a href="./playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
+                        echo '<li><a href="./playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
                             <span>
                                 <img class="float-md-left mr-2" src="./'.$anh.'" width="50px">
                             </span>
@@ -61,10 +61,11 @@
                                     <span style="font-size:12px;">'.$casy.'</span>
                                 </span>
                             </div>
-                        </a>';
+                        </a></li>';
                     }
                     mysqli_close($con);
                 ?>
+                </ul>
                 </div>
             </div>
             <div class="right col-md-4 float-right">
@@ -72,64 +73,15 @@
             </div>
             <div style="clear: both"></div>
         </main>
-        <div class="pagination">
-
-            <?php
-                $id = $_GET["id"];
-                require('./php/connect.php');
-                $result = mysqli_query($con,"SELECT tenbaihat From baihat where idalbum = '$id'");
-                $data = mysqli_num_rows($result);
-                $sum_page = ceil($data/$display);
-                if($sum_page>1)
-                {
-                    echo '<ul style="list-style:none;display:inline-flex;">';
-                        $current = ($position/$display) + 1;
-                        if($current!=1)
-                        {   
-                            $prev = $position - $display;
-                            echo "<li><a href='p_album.php?id=$id&begin=$prev' class='page'>Prev</a></li>";
-                        }
-
-                        for($page=1;$page<=$sum_page;$page++)    
-                        {
-                            
-                            $begin = ($page-1)*$display;
-                            if($current == $page)
-                            {
-                                echo "<li><a href='p_album.php?id=$id&begin=$begin' style='background:#00B2BF;color:#f4f4f4; '  class='page'>$page</a></li>";
-                            }
-                            else
-                            {
-                                echo "<li><a href='p_album.php?id=$id&begin=$begin' class='page'>$page</a></li>";
-                            }
-                        }
-                        if($current != $sum_page)
-                        {
-                            $next = $position + $display;
-                            echo "<li><a href='p_album.php?id=$id&begin=$next' class='page'>Next</a></li>";
-                        }
-                        if($current = $sum_page)
-                        {
-                            $last = (($display*$sum_page) - $display);
-                            echo "<li><a href='p_album.php?id=$id&begin=$last' class='page'>Last </a></li>";
-                        }
-
-                        
-                    echo '</ul>';
-                }
-
-                mysqli_close($con);
-
-                 
-                
-            
-                
-            ?>
-            </div>
         <?php
         include('./php/footer.php');
         ?>
     </div>
+    <script>
+        $('#listbaihat').paginate({
+			  perPage:10 
+		});
+    </script>
 </body>
 
 </html>

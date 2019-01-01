@@ -7,6 +7,7 @@
     <title>Thêm album</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/fix.css">
 </head>
 
 <body>
@@ -19,8 +20,6 @@
         $id = $_GET["id"];
         if(isset($_POST['ok']))
         {   
-            $tcasi=$_POST['casi'];
-			$tchude=$_POST['chude'];
 			$talbum=$_POST['txtName'];
             $image=$_FILES['uploadimg']['name'];
             $pattern='#\.(jpg|jpeg|gif|png)$#i';
@@ -41,7 +40,7 @@
                     if(file_exists($destck))
                     {	
                         include('../php/connect.php');
-                        $update=mysqli_query($con,"Update album SET tenalbum='$talbum',image='$dest',casi='$tcasi',chude='$tchude' where id=$id");
+                        $update=mysqli_query($con,"Update album SET tenalbum='$talbum',image='$dest' where id=$id");
                         mysqli_close($con);
                         if($update)
                         {
@@ -60,7 +59,7 @@
                 else
                 {
                     include('../php/connect.php');
-                    $update=mysqli_query($con,"Update album SET tenalbum='$talbum',casi='$tcasi',chude='$tchude' where id=$id");
+                    $update=mysqli_query($con,"Update album SET tenalbum='$talbum' where id=$id");
                     mysqli_close($con);
                     if($update)
                     {
@@ -95,32 +94,6 @@
                                 }
                                  mysqli_close($con);
 							?>
-                        </div>
-                        <label class="col-md-3 mt-3 col-form-label form-control-label">Ca sĩ:</label>
-                        <div class="col-md-9">
-                            <select class="custom-select mr-sm-2 mt-3" id="casi" name="casi">
-                                <?php
-                                    include("../php/connect.php");
-                                    $casi=mysqli_query($con,"select * from casi");
-									while($row=mysqli_fetch_assoc($casi)){
-										echo '<option>'.$row['tencasi'].'</option>';
-                                    }
-                                    mysqli_close($con);
-								?>
-                            </select>
-                        </div>
-                        <label class="col-md-3 mt-3 col-form-label form-control-label">Chủ đề:</label>
-                        <div class="col-md-9">
-                            <select class="custom-select mr-sm-2 mt-3" id="chude" name="chude">
-                                <?php
-                                    include("../php/connect.php");
-                                    $chude=mysqli_query($con,"select * from chude");
-									while($row=mysqli_fetch_assoc($chude)){
-										echo '<option>'.$row['tenchude'].'</option>';
-                                    }
-                                    mysqli_close($con);
-								?>
-                            </select>
                         </div>
                         <label class="col-md-3 mt-3 col-form-label form-control-label">Ảnh:</label>
                         <div class="col-md-9">

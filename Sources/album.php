@@ -8,8 +8,11 @@
     <title>Nhạc Online</title>
     <link rel="stylesheet" href="./css/hover.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/fixbody.css">
+	<link rel="stylesheet" href="./css/jquery.paginate.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+	<script src="./js/jquery.paginate.js"></script>
 </head>
 
 <body>
@@ -22,9 +25,9 @@
 
             <div class="left col-md-8 float-left">
                 <div class="text-md-left mt-5">
-                    <h2>Album</h2>
-                </div>
-                <div class="row">
+                    <h3>Album</h3>
+                </div><hr>
+                <div class="row" id="listbaihat">
                 <?php
                     require('./php/connect.php');
                     $sql = "SELECT * FROM album";
@@ -52,7 +55,12 @@
         include('./php/footer.php');
         ?>
 
-    </div>
+    </div><script>
+        $('#listbaihat').paginate({
+            scope: $('div'),
+			  perPage:8
+		});
+    </script>
 </body>
 
 </html>

@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nhạc Online</title>
+    <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/hover.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/fixbody.css">
+	<link rel="stylesheet" href="./css/jquery.paginate.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/script.js"></script>
+	<script src="./js/jquery.paginate.js"></script>
 </head>
-<link rel="stylesheet" href="./css/header.css">
 
 <body>
 <div class="container-fullwidth">
@@ -24,9 +27,9 @@
 
         <div class="left col-md-8 float-left">
         <div class="text-md-left mt-5">
-            <h2>Chủ Đề</h2>
-        </div>
-        <div class="row">
+            <h3>Chủ Đề</h3>
+        </div><hr>
+        <div class="row" id="listbaihat">
             <?php
                 require('./php/connect.php');
                 $sql = "SELECT * FROM chude";
@@ -44,14 +47,21 @@
                 mysqli_close($con);
         ?>
     </div>
-</div>
-<div class="right col-md-4 float-right">
-    <?php include('./php/menuright.php');?>
-</div>
-<div style="clear: both"></div>
-</main>
-        </body>
+	</div>
+	<div class="right col-md-4 float-right">
+		<?php include('./php/menuright.php');?>
+	</div>
+	<div style="clear: both"></div>
+	</main>
+	<?php
+	include('./php/footer.php');
+    ?>
+    </div><script>
+        $('#listbaihat').paginate({
+            scope: $('div'),
+			  perPage:8
+		});
+    </script>
+</body>
 
-        <?php
-        include('./php/footer.php');
-?>
+</html>

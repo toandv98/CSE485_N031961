@@ -7,6 +7,7 @@
     <title>Document</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/fix.css">
 </head>
 
 <body>
@@ -24,8 +25,6 @@
                         <tr>
                             <th>STT</th>
                             <th>Tên album</th>
-                            <th>Ca sĩ</th>
-                            <th>Chủ đề</th>
                             <th>Sửa</th>
                             <th>Xoá</th>
                         </tr>
@@ -34,8 +33,6 @@
                         <tr>
                             <th>STT</th>
                             <th>Tên album</th>
-                            <th>Ca sĩ</th>
-                            <th>Chủ đề</th>
                             <th>Sửa</th>
                             <th>Xoá</th>
                         </tr>
@@ -50,8 +47,6 @@
                             echo "<tr>";
                             echo "<td style='width:50px;'>$stt</td>";
                             echo "<td>$data[tenalbum]</td>";
-                            echo "<td>$data[casi]</td>";
-                            echo "<td>$data[chude]</td>";
                             echo "<td style='width:120px;'><a href='./suaalbum.php?id=$data[id]' style='color:#09F;'>Sửa</a></td>";
                             echo "<td style='width:120px;'><a href='./del_album.php?id=$data[id]' onclick=' return xacnhan();' style='color:red;'>Xoá</a></td>";
                             echo "</tr>";

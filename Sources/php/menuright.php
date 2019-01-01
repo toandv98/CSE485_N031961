@@ -1,6 +1,6 @@
 <div class="text-md-left mt-5">
-    <h2>Nghe nhiều</h2>
-</div>
+    <h3>Nghe nhiều</h3>
+</div><hr>
 <div class="list-group">
     <?php
         require('./php/connect.php');

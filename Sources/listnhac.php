@@ -8,6 +8,7 @@
     <title>Nhạc Online</title>
     <link rel="stylesheet" href="./css/hover.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/fixbody.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
 </head>
@@ -25,6 +26,10 @@
                 <div class="text-md-left mt-5">
 
                 </div>
+                <div class="text-md-left mt-3">
+                    <h3>Bài hát</h3>
+                </div>
+                <hr>
                 <div class="list-group">
                 <?php
                     $id = $_GET["id"];

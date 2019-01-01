@@ -8,18 +8,18 @@
           </ul>
           <div class="row">
             <div class="col-md-12 d-flex align-items-center justify-content-md-between justify-content-center my-2"> <a href="#">
-                <i class="d-block fa fa-facebook-official text-muted fa-lg mx-2"></i>
+                <i class=""></i>
               </a> <a href="#">
-                <i class="d-block fa fa-instagram text-muted fa-lg mx-2"></i>
+                <i class=""></i>
               </a> <a href="#">
-                <i class="d-block fa fa-twitter text-muted fa-lg ml-2"></i>
+                <i class=""></i>
               </a> </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12 text-center">
-          <p class="mt-2 mb-0">© 2018-2019 wru. All rights reserved</p>
+          <p class="mt-2 mb-0">© Bản quyền 2018-2019 bởi nhaconline</p>
         </div>
       </div>
     </div>

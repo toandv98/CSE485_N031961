@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/hover.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
 	<link rel="stylesheet" href="./css/jquery.paginate.css">
+    <link rel="stylesheet" href="./css/fixbody.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
 	<script src="./js/jquery.paginate.js"></script>
@@ -25,8 +26,8 @@
 
             <div class="left col-md-8 float-left">
                 <div class="text-md-left mt-5">
-                    <h2>Bài hát</h2>
-                </div>
+                    <h3>Bài hát</h3>
+                </div><hr>
                 <div class="list-group">
                 <ul id="listbaihat" class="p-0" style="list-style:none;">
                 <?php

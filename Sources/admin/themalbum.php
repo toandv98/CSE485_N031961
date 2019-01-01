@@ -7,6 +7,7 @@
     <title>Thêm chủ đề</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/fix.css">
 </head>
 
 <body>
@@ -18,8 +19,6 @@
     <?php
         if(isset($_POST['ok']))
         {
-            $tcasi=$_POST['casi'];
-			$tchude=$_POST['chude'];
             $talbum = $_POST['txtName'];
             $image=$_FILES['uploadimg']['name'];
             $pattern='#\.(jpg|jpeg|gif|png)$#i';
@@ -40,7 +39,7 @@
                     if(file_exists($destck))
                     {	
                         include('../php/connect.php');
-                        $update=mysqli_query($con,"Insert Into album(tenalbum,image,casi,chude) value('$talbum','$dest','$tcasi','$tchude')");
+                        $update=mysqli_query($con,"Insert Into album(tenalbum,image) value('$talbum','$dest')");
                         mysqli_close($con);
                         if($update)
                         {
@@ -84,32 +83,6 @@
                                 <input type="file" id="anh" name="uploadimg" class="custom-file-input">
                                 <label class="custom-file-label text-left mt-3" for="anh">Chọn đường dẫn đến ảnh...</label>
                             </label>
-                        </div>
-                        <label class="col-md-3 mt-3 col-form-label form-control-label">Ca sĩ:</label>
-                        <div class="col-md-9">
-                            <select class="custom-select mr-sm-2 mt-3" id="casi" name="casi">
-                                <?php
-                                    include("../php/connect.php");
-                                    $casi=mysqli_query($con,"select * from casi");
-									while($row=mysqli_fetch_assoc($casi)){
-										echo '<option>'.$row['tencasi'].'</option>';
-                                    }
-                                    mysqli_close($con);
-								?>
-                            </select>
-                        </div>
-                        <label class="col-md-3 mt-3 col-form-label form-control-label">Chủ đề:</label>
-                        <div class="col-md-9">
-                            <select class="custom-select mr-sm-2 mt-3" id="chude" name="chude">
-                                <?php
-                                    include("../php/connect.php");
-                                    $chude=mysqli_query($con,"select * from chude");
-									while($row=mysqli_fetch_assoc($chude)){
-										echo '<option>'.$row['tenchude'].'</option>';
-                                    }
-                                    mysqli_close($con);
-								?>
-                            </select>
                         </div>
                     </div>
                     

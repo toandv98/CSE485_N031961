@@ -13,9 +13,9 @@
     </div>
     <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
       <ul class="nav navbar-nav">
-        <li class="nav-item"><a href="./baihat.php" class="nav-link">Bài hát</a></li>
+        <li class="nav-item"><a href="./baihat.php" class="nav-link"><b>Bài hát</b></a></li>
         <li class="nav-item dropdown">
-          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="./chude.php">Chủ đề<b class="caret"></b></a>
+          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="./chude.php"><b class="caret">Chủ đề</b></a>
           <ul class="dropdown-menu">
           <?php
             include('./php/connect.php');
@@ -31,7 +31,7 @@
           </ul>
           </li>
         <li class="nav-item dropdown">
-          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="#">BXH <b class="caret"></b></a>
+          <a data-hover="dropdown" class="nav-link dropdown-toggle" href="#"><b class="caret">BXH</b></a>
           <ul class="dropdown-menu">
             <li><a href="#" class="dropdown-item">Bài hát</a></li>
             <li><a href="#" class="dropdown-item">Album</a></li>
@@ -39,7 +39,7 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link" href="./album.php">Album <b class="caret"></b></a>
+          <a class="nav-link" href="./album.php"><b class="caret">Album</b></a>
           </ul>
         </li>
         

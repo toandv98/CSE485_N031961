@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/hover.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
 	<link rel="stylesheet" href="./css/jquery.paginate.css">
+    <link rel="stylesheet" href="./css/fixbody.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
 	<script src="./js/jquery.paginate.js"></script>
@@ -46,9 +47,10 @@
 
             <div class="left col-md-8 float-left">
                 <div class="text-md-left mt-5">
-                    <h2>Chủ Đề</h2>
+                    <h3>Chủ Đề</h3>
                 </div>
-                <div class="row">
+                <hr>
+                <div class="row" id="listchude">
             <?php
                 require('./php/connect.php');
                 $sql = "SELECT * FROM chude";
@@ -66,9 +68,32 @@
                 mysqli_close($con);
                     ?>
                 </div>
-                <div class="text-md-left mt-5">
-                    <h2>Bài hát</h2>
+                <div class="text-md-left mt-3">
+                    <h3>Album</h3>
                 </div>
+                <hr>
+                <div class="row" id="listalbum">
+                <?php
+                    require('./php/connect.php');
+                    $sql = "SELECT * FROM album";
+                    $result = mysqli_query($con,$sql);
+                    while($row = mysqli_fetch_assoc($result)){
+                    $tenalbum = $row['tenalbum'];
+                    $imageab=$row['image'];
+                    echo '<div class="col-lg-3 col-md-4 img-hover">
+                        <a href="p_album.php?id='.$row['id'] .'" class="d-block mb-4 h-100" style="text-decoration: none;">
+                        <div><img class="img-fluid img-thumbnail " src='.$imageab.' alt=""></div>
+                        <div class="mt-2" style="color: black;">'.$tenalbum.'</div>
+                        </a>
+                    </div>';
+                    }
+                    mysqli_close($con);
+                        ?>
+                </div>
+                <div class="text-md-left mt-3">
+                    <h3>Bài hát</h3>
+                </div>
+                <hr>
                 <div class="list-group">
                 <ul id="listbaihat" class="p-0" style="list-style:none;">
                 <?php
@@ -106,14 +131,20 @@
                 <?php include('./php/menuright.php');?>
             </div>
             <div style="clear: both"></div>
-
-            <div style="clear: both"></div>
         </main>
         <?php
         include('./php/footer.php');
         ?>
     </div>
     <script>
+        $('#listalbum').paginate({
+            scope: $('div'),
+			  perPage:4
+		});
+        $('#listchude').paginate({
+            scope: $('div'),
+			  perPage:4
+		});
         $('#listbaihat').paginate({
 			  perPage:10 
 		});

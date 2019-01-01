@@ -35,7 +35,7 @@
 			</div>
 			<div class="text-md-left mt-5">
 				<h3>Bài hát</h3>
-			</div>
+			</div><hr>
 			<div class="list-group">
 			<ul id="listbaihat" class="p-0" style="list-style:none;">
 			<?php
@@ -84,6 +84,7 @@
 				?>
 				<form action="playnhac.php?id=<?php echo $id;?>" method="post">
 					<h4>Bình Luận (<?php echo "$number";?>)</h4>
+					<hr>
 					<div class="p-2">
 					<div class="row">
 						<div class='col-md-2'>
