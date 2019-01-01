@@ -45,7 +45,7 @@
                         mysqli_close($con);
                         if($update)
                         {
-                            echo "<h3 style='color:lime;'>Cập nhật ca sĩ thành công...</h3>";
+                            echo "<h3 style='color:blue;'>Cập nhật ca sĩ thành công...</h3>";
                          }
                         else
                         {
@@ -64,7 +64,7 @@
                     mysqli_close($con);
                     if($update)
                     {
-                        echo "<h3 style='color:lime;'>Cập nhật ca sĩ thành công...</h3>";
+                        echo "<h3 style='color:blue;'>Cập nhật ca sĩ thành công...</h3>";
                      }
                     else
                     {

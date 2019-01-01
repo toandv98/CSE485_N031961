@@ -44,7 +44,7 @@
                         mysqli_close($con);
                         if($update)
                         {
-                            echo "<h3 style='color:lime;'>Thêm ca sĩ thành công...</h3>";
+                            echo "<h3 style='color:blue;'>Thêm ca sĩ thành công...</h3>";
                          }
                         else
                         {

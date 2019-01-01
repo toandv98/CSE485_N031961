@@ -38,9 +38,11 @@
             <li><a href="#" class="dropdown-item">Chủ đề</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item">
           <a class="nav-link" href="./album.php"><b class="caret">Album</b></a>
-          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./casi.php"><b class="caret">Ca sĩ</b></a>
         </li>
         
       </ul>

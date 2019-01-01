@@ -94,7 +94,7 @@
                     $sentmail = mail($to,$subject,$message,$header);
 
                     if ($sentmail) {
-                        echo "<h4 style='color:lime;'>Kiểm tra email để lấy mật khẩu mới.</h4>";
+                        echo "<h4 style='color:blue;'>Kiểm tra email để lấy mật khẩu mới.</h4>";
                     }else {
                         echo "<h4 style='color:red;'>Có lỗi xảy ra khi gửi mail.</h4>";
                     }

@@ -43,7 +43,7 @@
                         mysqli_close($con);
                         if($update)
                         {
-                            echo "<h3 style='color:lime;'>Thêm album thành công...</h3>";
+                            echo "<h3 style='color:blue;'>Thêm album thành công...</h3>";
                          }
                         else
                         {

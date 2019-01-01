@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="./css/hover.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/fixbody.css">
+	<link rel="stylesheet" href="./css/jquery.paginate.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/script.js"></script>
+	<script src="./js/jquery.paginate.js"></script>
 </head>
 
 <body>
@@ -22,6 +24,7 @@
         ?>
         <main class="col-md-11 m-auto">
         <div class="left col-md-8 float-left">
+        <ul id="listbaihat" class="p-0" style="list-style:none;">
         <?php
             
             $keyword = $_POST['keyword'];
@@ -29,18 +32,18 @@
             $result = mysqli_query($con, "SELECT * FROM v_baihat WHERE tenbaihat like '%$keyword%'");
             if(mysqli_num_rows($result)==0)
             {
-                echo '<div class="text-md-center mt-5"><h2>Không tìm thấy</h2></div>';
+                echo '<div class="text-md-center mt-5"><h3>Không tìm thấy</h3></div>';
             }
             else
             {
                 $number = mysqli_num_rows($result);
-                echo '<div class="text-md-center mt-5"><h2>Tìm được '.$number.' bài hát </h2></div>';
+                echo '<div class="text-md-center mt-5"><h3>Tìm được '.$number.' bài hát </h3></div>';
                 while($row = mysqli_fetch_assoc($result)){
                     $tenbaihat = $row['tenbaihat'];
                     $casi = $row['tencasi'];
                     $luotnghe = $row['luotnghe'];
                     $image=$row['image'];
-                    echo '<a href="playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
+                    echo '<li><a href="playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
                         <span>
                             <img class="float-md-left mr-2" src='.$image.' width="50px">
                         </span>
@@ -55,13 +58,12 @@
                                 <span style="font-size:12px;">'.$casi.'</span>
                             </span>
                         </div>
-                    </a>';
+                    </a></li>';
                 }
                 mysqli_close($con);
             }
-            
-                    
-        ?>
+                 
+        ?></ul>
         </div>
         <div class="right col-md-4 float-right">
             <?php include('./php/menuright.php');?>
@@ -72,6 +74,11 @@
            include('./php/footer.php');
         ?>
     </div>
+    <script>
+        $('#listbaihat').paginate({
+			  perPage:10 
+		});
+    </script>
 </body>
 
 </html>

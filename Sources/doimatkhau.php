@@ -42,7 +42,7 @@
                     {
                         $update = mysqli_query($con,"UPDATE user SET password='{$hash}' where userName='{$userName}'");
                         if($update){
-                            echo "<h4 style='color:lime;'>Đổi mật khẩu thành công</h4>";
+                            echo "<h4 style='color:blue;'>Đổi mật khẩu thành công</h4>";
                         }else{
                             echo "<h4 style='color:red;'>Đổi mật khẩu thất bại!</h4>";
                         }

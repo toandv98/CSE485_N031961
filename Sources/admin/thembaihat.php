@@ -61,7 +61,7 @@
                             mysqli_close($con);
                             if($update)
                             {
-                                echo "<h3 style='color:lime;'>Bài hát của bạn đã được đăng...</h3>";
+                                echo "<h3 style='color:blue;'>Bài hát của bạn đã được đăng...</h3>";
                             }
                             else
                             {
