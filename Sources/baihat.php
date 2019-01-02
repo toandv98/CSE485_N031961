@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nhạc Online</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="./css/hover.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
 	<link rel="stylesheet" href="./css/jquery.paginate.css">
     <link rel="stylesheet" href="./css/fixbody.css">
+    <link rel="stylesheet" href="./css/like.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
 	<script src="./js/jquery.paginate.js"></script>
+    <script src="./js/like.js"></script>
 </head>
 
 <body>
@@ -41,7 +44,7 @@
                         $luotnghe = $row['luotnghe'];
                         echo '<li><a href="./playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
                             <span>
-                                <img class="float-md-left mr-2" src="./'.$anh.'" width="50px">
+                                <img class="float-left mr-2" src="./'.$anh.'" width="50px">
                             </span>
                             <div class="item_title">'.$tenbaihat.'</div>
                             <div class="box_items">
@@ -53,7 +56,24 @@
                                     <span style="font-size:12px;">'.$casi.'</span>
                                 </span>
                             </div>
-                        </a></li>';
+                        </a><div class="dlike">';
+                        if(isset($_SESSION['id'])){
+                            $iduser = $_SESSION['id'];
+                            $results = mysqli_query($con, "SELECT * FROM likes WHERE iduser=$iduser AND idbaihat=".$row['id']."");
+                                if (mysqli_num_rows($results) == 1 ):
+                                    echo "<span class='unlike fa fa-thumbs-up' data-id='$row[id]'></span>
+                                    <span class='like d-none fa fa-thumbs-o-up' data-id='$row[id]'></span>";
+                                else:
+                                    echo "<span class='like fa fa-thumbs-o-up' data-id='$row[id]'></span> 
+                                    <span class='unlike d-none fa fa-thumbs-up' data-id='$row[id]'></span>";
+                                endif;
+                                echo "<span class='likes_count'>$row[likes]</span>";
+                            echo "</div></li>";
+                        }else{
+                            echo "<span class='yclogin fa fa-thumbs-o-up'></span>";
+                            echo "<span class='likes_count'>$row[likes]</span>";
+                            echo "</div></li>";
+                        }
                     }
                     mysqli_close($con);
                 ?>
@@ -72,7 +92,10 @@
     <script>
         $('#listbaihat').paginate({
 			  perPage:10 
-		});
+        });
+        $('.yclogin').on('click', function(){
+            alert('Bạn phải đăng nhập để sử dụng chức năng này!');
+        });
     </script>
 </body>
 

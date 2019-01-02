@@ -24,7 +24,7 @@
             while($row = mysqli_fetch_assoc($result))
             {
               $tenchude = $row['tenchude'];
-              echo '<li><a href="listnhac.php?id='.$row['id'].'" class="dropdown-item">'.$tenchude.'</a></li>';
+              echo '<li><a href="p_baihat.php?id='.$row['id'].'" class="dropdown-item">'.$tenchude.'</a></li>';
             }
             mysqli_close($con);
             ?>

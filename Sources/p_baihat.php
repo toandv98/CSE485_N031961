@@ -31,17 +31,17 @@
                 <?php 
                     $id = $_GET["id"];
                     require('./php/connect.php');
-                    $resultcd = mysqli_query($con,"SELECT tenalbum FROM album where id = '$id'");
+                    $resultcd = mysqli_query($con,"SELECT tenchude FROM chude where id = '$id'");
                     $rowcd = mysqli_fetch_assoc($resultcd);
                     mysqli_close($con);
-                    echo "<h3>Album $rowcd[tenalbum]</h3>";
+                    echo "<h3>Chủ đề $rowcd[tenchude]</h3>";
                     ?>
                 </div><hr>
                 <div class="list-group">
                 <ul id="listbaihat" class="p-0" style="list-style:none;">
                 <?php
                     require('./php/connect.php');
-                    $sql = "SELECT * FROM v_baihat where idalbum = '$id'" ;
+                    $sql = "SELECT * FROM v_baihat where idchude = '$id'" ;
                     $result = mysqli_query($con,$sql);
                     while($row = mysqli_fetch_assoc($result)){
                         $tenbaihat = $row['tenbaihat'];
