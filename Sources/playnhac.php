@@ -132,7 +132,7 @@
 				$sqltime=$data['thoigian'];
 				$timestamp=strtotime($sqltime);
 				$time=date('d-m-Y H:i',$timestamp);
-				echo "<li><div class='list-group-item mt-2'>
+				echo "<li><div class='list-group-item mt-2 p-1'>
 						<div class='float-left'>
 							<img src='$avatar' width='70px'></div>
 						<div class='ml-3'>

@@ -51,7 +51,11 @@
                             echo "<td>$data[userName]</td>";
                             echo "<td>$data[email]</td>";
                             echo "<td>$data[ngaydangky]</td>";
-                            echo "<td style='width:50px;'><a href='del_user.php?id=$data[id]' onclick=' return xacnhan();' style='color:red;'>Xoá</a></td>";
+                            if($data['level']==2){
+                                echo "<td style='width:50px;'><del style='color:red;'>Xoá</del></td>";
+                            }else{
+                                echo "<td style='width:50px;'><a href='del_user.php?id=$data[id]' onclick=' return xacnhan();' style='color:red;'>Xoá</a></td>";
+                            }
                         echo "</tr>";
                         $stt++;
                         }
@@ -61,7 +65,7 @@
                 </table>
             </div>
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        <div class="card-footer small text-muted">Updated by Admin</div>
     </div>
     </main>
     <?php
