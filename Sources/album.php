@@ -58,7 +58,7 @@
     </div><script>
         $('#listbaihat').paginate({
             scope: $('div'),
-			  perPage:8
+			  perPage:16
 		});
     </script>
 </body>
