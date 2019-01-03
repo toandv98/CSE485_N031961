@@ -29,7 +29,7 @@
                 $tenalbum = $row['tenalbum'];
                 $anh = $row['image'];
                 $luotnghe = $row['tongluotnghe'];
-                echo '<a href="./p_album.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2 p-1">
+                echo '<a href="./p_album.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2 p-1 rounded">
                     <span>
                         <img class="float-md-left mr-2" src="./'.$anh.'" width="40px">
                     </span>
@@ -74,15 +74,13 @@
                 $cl='warning';
                 break;
         }
-        echo '<a href="./playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2 p-2">
-            <div class="">
+        echo '<a href="./playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2 p-2 rounded">
                 <span class="badge badge-pill badge-'.$cl.'">'.$i.'</span>
                 <span class="ml-3 rg">'.$tenbaihat.'</span>
                 <span class="item_span float-right">
                     <img src="./image/views.png" width="18px">
                     <span style="font-size:13px;">'.$luotnghe.'</span>
                 </span>
-            </div>
             </a>';
         $i++;
         }

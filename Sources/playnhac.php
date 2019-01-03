@@ -40,7 +40,7 @@
 			<ul id="listbaihat" class="p-0" style="list-style:none;">
 			<?php
 			require('./php/connect.php');
-			$sql = "SELECT * FROM v_baihat";
+			$sql = "SELECT * FROM v_baihat ORDER BY likes DESC";
 			$result = mysqli_query($con,$sql);
 			while($row = mysqli_fetch_assoc($result)){
 				$tenbaihat = $row['tenbaihat'];
@@ -121,8 +121,8 @@
 							<td>
 							<div>
 								<div class='list-group-item ml-3 p-1'>
-								<div class='item_title'><b>$hoten</b></div>
-								<div class='item_title ml-3'><p class='thugon'>$noidung</p></div>
+								<div class='item_title'>$hoten</div>
+								<div class='ml-3'><p class='thugon'>$noidung</p></div>
 								<div class='box_items'>
 									<span class='item_span'>
 										<img src='./image/playtime.png' width='18px'>
