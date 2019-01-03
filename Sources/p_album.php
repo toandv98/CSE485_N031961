@@ -52,14 +52,14 @@
                             <span>
                                 <img class="float-left mr-2" src="./'.$anh.'" width="50px">
                             </span>
-                            <div class="item_title">'.$tenbaihat.'</div>
+                            <div class="item_title font-weight-bold">'.$tenbaihat.'</div>
                             <div class="box_items">
                                 <span class="item_span mr-5">
                                     <img src="./image/views.png" width="18px">
-                                    <span style="font-size:12px;">'.$luotnghe.'</span>
+                                    <span style="font-size:13px;">'.$luotnghe.'</span>
                                 </span>
                                 <span>
-                                    <span style="font-size:12px;">'.$casi.'</span>
+                                    <span style="font-size:13px;">'.$casi.'</span>
                                 </span>
                             </div>
                         </a><div class="dlike">';

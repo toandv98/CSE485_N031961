@@ -46,17 +46,18 @@
           $avatar=$row['avatar'];
       mysqli_close($con);
           echo '
-        <main class="col-md-10 m-auto p-5">
-          <form class="" action="./php/capnhatTT.php" method="post" enctype="multipart/form-data">
-            <div class="col-md-3 mr-5 float-left text-md-center">
-              <img src="./'.$avatar.'" class="m-x-auto img-fluid img-circle" alt="avatar">
+        <main class="col-md-11 m-auto p-5">
+        
+        <div class="row">
+          <form class="col-md-12" action="./php/capnhatTT.php" method="post" enctype="multipart/form-data">
+            <div class="col-md-3 float-left text-md-center p-3">
+              <img src="./'.$avatar.'" width="160px" class="m-x-auto img-fluid img-circle" alt="avatar">
               <label class="custom-file">
                 <input type="file" id="anh" name="uploadimg" class="custom-file-input">
                 <label class="custom-file-label text-left mt-3" for="anh">Thay đổi ảnh...</label>
               </label>
             </div>
-              <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8 float-right p-3">
                     <div class="form-group row">
                       <label class="col-lg-3 col-form-label form-control-label">Họ và Tên</label>
                       <div class="col-lg-9">

@@ -17,13 +17,13 @@
                         $luotnghe = $row['tongluotnghe'];
                         echo '<a href="./p_album.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
                             <span>
-                                <img class="float-md-left mr-2" src="./'.$anh.'" width="50px">
+                                <img class="float-md-left mr-2" src="./'.$anh.'" width="55px">
                             </span>
-                            <div class="item_title">'.$tenchude.'</div>
+                            <div class="item_title font-weight-bold">'.$tenchude.'</div>
                             <div class="box_items text-right">
                                 <span class="item_span mr-5">
                                     <img src="./image/views.png" width="40px">
-                                    <span style="font-size:12px;">'.$luotnghe.'</span>
+                                    <span style="font-size:13px;">'.$luotnghe.'</span>
                                 </span>
                             </div>
                         </a>';
@@ -50,11 +50,11 @@
                         <span>
                             <img class="float-md-left mr-2" src="./'.$anh.'" width="55px">
                         </span>
-                        <div class="item_title">'.$tenchude.'</div>
+                        <div class="item_title font-weight-bold">'.$tenchude.'</div>
                         <div class="box_items text-right">
                             <span class="item_span mr-5">
                                 <span class="fa fa-thumbs-o-up"></span>
-                                <span style="font-size:12px;">'.$luotlikes.'</span>
+                                <span style="font-size:13px;">'.$luotlikes.'</span>
                             </span>
                         </div>
                     </a>';
@@ -85,13 +85,13 @@
                         $luotnghe = $row['tongluotnghe'];
                         echo '<a href="./p_album.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
                             <span>
-                                <img class="float-md-left mr-2" src="./'.$anh.'" width="50px">
+                                <img class="float-md-left mr-2" src="./'.$anh.'" width="55px">
                             </span>
-                            <div class="item_title">'.$tenalbum.'</div>
+                            <div class="item_title font-weight-bold">'.$tenalbum.'</div>
                             <div class="box_items text-right">
                                 <span class="item_span mr-5">
                                     <img src="./image/views.png" width="40px">
-                                    <span style="font-size:12px;">'.$luotnghe.'</span>
+                                    <span style="font-size:13px;">'.$luotnghe.'</span>
                                 </span>
                             </div>
                         </a>';
@@ -118,11 +118,11 @@
                         <span>
                             <img class="float-md-left mr-2" src="./'.$anh.'" width="55px">
                         </span>
-                        <div class="item_title">'.$tenalbum.'</div>
+                        <div class="item_title font-weight-bold">'.$tenalbum.'</div>
                         <div class="box_items text-right">
                             <span class="item_span mr-5">
                                 <span class="fa fa-thumbs-o-up"></span>
-                                <span style="font-size:12px;">'.$luotlikes.'</span>
+                                <span style="font-size:13px;">'.$luotlikes.'</span>
                             </span>
                         </div>
                     </a>';
@@ -157,14 +157,14 @@
                             <span>
                                 <img class="float-left mr-2" src="./'.$anh.'" width="50px">
                             </span>
-                            <div class="item_title">'.$tenbaihat.'</div>
+                            <div class="item_title font-weight-bold">'.$tenbaihat.'</div>
                             <div class="box_items">
                                 <span class="item_span mr-5">
                                     <img src="./image/views.png" width="18px">
-                                    <span style="font-size:12px;">'.$luotnghe.'</span>
+                                    <span style="font-size:13px;">'.$luotnghe.'</span>
                                 </span>
                                 <span>
-                                    <span style="font-size:12px;">'.$casi.'</span>
+                                    <span style="font-size:13px;">'.$casi.'</span>
                                 </span>
                             </div>
                         </a><div class="dlike">';
@@ -209,14 +209,14 @@
                             <span>
                                 <img class="float-left mr-2" src="./'.$anh.'" width="50px">
                             </span>
-                            <div class="item_title">'.$tenbaihat.'</div>
+                            <div class="item_title font-weight-bold">'.$tenbaihat.'</div>
                             <div class="box_items">
                                 <span class="item_span mr-5">
                                     <img src="./image/views.png" width="18px">
-                                    <span style="font-size:12px;">'.$luotnghe.'</span>
+                                    <span style="font-size:13px;">'.$luotnghe.'</span>
                                 </span>
                                 <span>
-                                    <span style="font-size:12px;">'.$casi.'</span>
+                                    <span style="font-size:13px;">'.$casi.'</span>
                                 </span>
                             </div>
                         </a><div class="dlike">';

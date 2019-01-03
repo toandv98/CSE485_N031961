@@ -27,7 +27,7 @@
                             <th>Username</th>
                             <th>Email</th>
                             <th>Ngày đăng ký</th>
-                            <th>Xoá</a></th>
+                            <th>Xoá</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -36,7 +36,7 @@
                             <th>Username</th>
                             <th>Email</th>
                             <th>Ngày đăng ký</th>
-                            <th>Xoá</a></th>
+                            <th>Xoá</th>
                         </tr>
                     </tfoot>
                     <tbody>
