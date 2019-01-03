@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 02, 2019 lúc 08:10 PM
--- Phiên bản máy phục vụ: 10.1.37-MariaDB
--- Phiên bản PHP: 7.3.0
+-- Thời gian đã tạo: Th1 03, 2019 lúc 09:56 AM
+-- Phiên bản máy phục vụ: 10.1.36-MariaDB
+-- Phiên bản PHP: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -27,6 +27,16 @@ SET time_zone = "+00:00";
 --
 -- Cấu trúc bảng cho bảng `album`
 --
+DROP DATABASE IF EXISTS db_nhaconline;
+
+CREATE DATABASE IF NOT EXISTS db_nhaconline
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+--
+-- Set default database
+--
+USE db_nhaconline;
 
 CREATE TABLE `album` (
   `id` int(100) NOT NULL,
@@ -44,7 +54,17 @@ INSERT INTO `album` (`id`, `tenalbum`, `image`) VALUES
 (4, 'Những Bài Hát Nghe Khi Đi Phượt', 'image/19884928.jpg'),
 (5, 'Mình Sẽ Mạnh Mẽ Yêu Nhau', 'image/20942104.jpg'),
 (6, 'Người Lạ Ơi Người Lạ', 'image/22143245.jpg'),
-(7, 'Halloween Party 2018', 'image/23866955.jpg');
+(7, 'Halloween Party 2018', 'image/23866955.jpg'),
+(9, 'Mùa Đông Của Anh', 'image/1.jpg'),
+(10, 'Nhạc Nhẹ Cho Quán Cafe', 'image/2.jpg'),
+(11, 'Chuyện Tình Của Mùa Đông', 'image/3.jpg'),
+(12, 'Đánh Thức Màn Đêm', 'image/4.jpg'),
+(13, 'Một Chút Hoài Niệm Của Thanh Xuân', 'image/5.jpg'),
+(14, 'Mùa Đông Cô Đơn', 'image/6.jpg'),
+(15, 'Crush À ! Em Yêu Anh', 'image/7.jpg'),
+(16, 'Mình Đi Em Nhé', 'image/8.jpg'),
+(17, 'Anh Chưa Từng Yêu', 'image/9.jpg'),
+(18, 'Âm Nhạc Cuối Ngày', 'image/10.jpg');
 
 -- --------------------------------------------------------
 
@@ -91,7 +111,10 @@ INSERT INTO `baihat` (`id`, `tenbaihat`, `path`, `image`, `luotnghe`, `likes`, `
 (25, 'Quán Cà Phê Ký Ức', 'nhac/hongkong1.mp3', 'image/23639501.jpg', 1, 0, 2, 6, 4, '2019-01-01 17:45:35'),
 (26, 'Cà Phê Đắng Vị Cô Đơn', 'nhac/hongkong1.mp3', 'image/20673871.jpg', 0, 0, 4, 2, 4, '2019-01-01 17:46:30'),
 (27, 'Taki Taki', 'nhac/hongkong1.mp3', 'image/12693.jpg', 0, 1, 3, 7, 5, '2019-01-01 17:49:49'),
-(28, 'Mad Love (Single)', 'nhac/hongkong1.mp3', 'image/23745473.jpg', 1, 1, 7, 7, 5, '2019-01-01 17:50:36');
+(28, 'Mad Love (Single)', 'nhac/hongkong1.mp3', 'image/23745473.jpg', 1, 1, 7, 7, 5, '2019-01-01 17:50:36'),
+(29, 'Thành Phố Xa Lạ', 'nhac/hongkong1.mp3', 'image/b1.jpg', 0, 0, 14, 8, 12, '2019-01-03 15:53:13'),
+(30, 'Lie To Me', 'nhac/hongkong1.mp3', 'image/b2.jpg', 0, 1, 18, 4, 10, '2019-01-03 15:53:51'),
+(31, 'Ý Xuân Hoà Hợp', 'nhac/hongkong1.mp3', 'image/b3.jpg', 0, 0, 13, 6, 8, '2019-01-03 15:54:49');
 
 -- --------------------------------------------------------
 
@@ -141,7 +164,14 @@ INSERT INTO `chude` (`id`, `tenchude`, `image`) VALUES
 (5, 'EDM', 'image/19975520.jpg'),
 (6, 'Rap', 'image/22334189.jpg'),
 (7, 'Thư giãn', 'image/19969907.jpg'),
-(8, 'Tổng hợp', 'image/281235.jpg');
+(8, 'Tổng hợp', 'image/281235.jpg'),
+(9, 'Những Ca Khúc Bất Hủ', 'image/anh4.jpg'),
+(10, 'Cafe Thứ 7', 'image/anh209.jpg'),
+(11, 'Hát Về Hà Nội', 'image/anh234.jpg'),
+(12, '50 Sắc Thái Cảm Xúc', 'image/anh231.jpg'),
+(14, 'Nhạc Phim Tuyển Chọn', 'image/anh153.jpg'),
+(16, 'Best Love Song Vol.1', 'image/anh2.jpg'),
+(17, 'Sad Song For Heartbreaker', 'image/anh251.jpg');
 
 -- --------------------------------------------------------
 
@@ -194,7 +224,8 @@ INSERT INTO `likes` (`id`, `iduser`, `idbaihat`) VALUES
 (9, 1, 11),
 (10, 2, 9),
 (11, 2, 8),
-(12, 2, 13);
+(12, 2, 13),
+(15, 3, 30);
 
 -- --------------------------------------------------------
 
@@ -225,7 +256,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `userName`, `passWord`, `hoten`, `gioitinh`, `ngaysinh`, `diachi`, `sdt`, `email`, `level`, `code`, `active`, `avatar`, `ngaydangky`) VALUES
 (1, 'toan', '$2y$12$4615a4e890537f69040a2u5fKjMo8i8YbVOCVb5Ibn/YHbP.GjaFW', 'Đặng Văn Toản', '0', '1998-08-01', 'KTX Thuỷ Lợi', '0329174333', 'bolobalabolobala12345@gmail.com', 0, '825c2c1922d3af9466b6942e904aa667', 1, 'image/logo.png', '2018-12-29 17:22:26'),
-(2, 'admin', '$2y$12$5673ccf9899bc4f0405a8uw8fXJnQAnfdD8wBB.MWHnFQjZAw8S32', 'Admin', '0', '0001-01-01', 'None', '0', 'toandv62@gmail.com', 2, '', 1, 'image/avatar.png', '2018-12-29 17:30:29');
+(2, 'admin', '$2y$12$5673ccf9899bc4f0405a8uw8fXJnQAnfdD8wBB.MWHnFQjZAw8S32', 'Admin', '0', '0001-01-01', 'None', '0', 'toandv62@gmail.com', 2, '', 1, 'image/avatar.png', '2018-12-29 17:30:29'),
+(3, 'hao', '$2y$12$6772ea179f0fe9b6ebd26uLT3K2QWblBqFQBNrjHov/6gDK.KhQI6', 'Hoàng Văn Hào', '0', '1997-12-12', 'KTX ĐHTL', '0392092333', 'haohv62@wru.vn', 2, '6dd4953dfab58579bb10ef82bff97fa4', 1, 'image/avatar.png', '2019-01-03 15:27:23');
 
 -- --------------------------------------------------------
 
@@ -319,13 +351,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `album`
 --
 ALTER TABLE `album`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `baihat`
 --
 ALTER TABLE `baihat`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT cho bảng `casi`
@@ -337,7 +369,7 @@ ALTER TABLE `casi`
 -- AUTO_INCREMENT cho bảng `chude`
 --
 ALTER TABLE `chude`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `comment`
@@ -349,13 +381,13 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT cho bảng `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

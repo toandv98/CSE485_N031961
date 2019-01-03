@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nhạc Online</title>
+    <title>Bảng Xếp Hạng</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="./css/hover.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -42,7 +42,7 @@
             <div class="text-md-left mt-5">
                 <h3>Bảng xếp hạng</h3>
                 </div>
-                <hr>
+
                 <select name="bxh"class="custom-select w-25" onchange="loadbxh()" style="min-width:150px;" id="bxh">
                     <option selected value="baihat">Bài hát</option>
                     <option value="album">Album</option>
