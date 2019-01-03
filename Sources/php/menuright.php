@@ -47,7 +47,8 @@
             ?>
         </ul>
     </div>
-<div class="text-md-left mt-3">
+    <hr>
+<div class="text-md-left">
     <h5>Bài hát nghe nhiều</h5>
 </div><hr>
 <div class="list-group">
