@@ -12,11 +12,14 @@
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
 	<link rel="stylesheet" href="./css/jquery.paginate.css">
 	<link rel="stylesheet" href="./css/fixplayer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="./css/like.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
 	<script src="./js/jquery.shorten.1.0.js"></script>
 	<script src="./js/jquery.paginate.js"></script>
+    <script src="./js/like.js"></script>
 </head>
 
 <body>
@@ -34,7 +37,7 @@
 				<div id='player' class="position-relative h-100"></div>
 			</div>
 			<div class="text-md-left mt-5">
-				<h3>Bài hát</h3>
+				<h4>Bài hát được yêu thích</h4>
 			</div><hr>
 			<div class="list-group">
 			<ul id="listbaihat" class="p-0" style="list-style:none;">
@@ -44,12 +47,12 @@
 			$result = mysqli_query($con,$sql);
 			while($row = mysqli_fetch_assoc($result)){
 				$tenbaihat = $row['tenbaihat'];
+				$anh = $row['image'];
 				$casi = $row['tencasi'];
 				$luotnghe = $row['luotnghe'];
-				$image=$row['image'];
-				echo '<li><a href="playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
+				echo '<li><a href="./playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
 					<span>
-						<img class="float-md-left mr-2" src='.$image.' width="50px">
+						<img class="float-left mr-2" src="./'.$anh.'" width="50px">
 					</span>
 					<div class="item_title font-weight-bold">'.$tenbaihat.'</div>
 					<div class="box_items">
@@ -57,12 +60,28 @@
 							<img src="./image/views.png" width="18px">
 							<span style="font-size:13px;">'.$luotnghe.'</span>
 						</span>
-						
 						<span>
 							<span style="font-size:13px;">'.$casi.'</span>
 						</span>
 					</div>
-				</a></li>';
+				</a><div class="dlike">';
+				if(isset($_SESSION['id'])){
+					$iduser = $_SESSION['id'];
+					$results = mysqli_query($con, "SELECT * FROM likes WHERE iduser=$iduser AND idbaihat=".$row['id']."");
+						if (mysqli_num_rows($results) == 1 ):
+							echo "<span class='unlike fa fa-thumbs-up' data-id='$row[id]'></span>
+							<span class='like d-none fa fa-thumbs-o-up' data-id='$row[id]'></span>";
+						else:
+							echo "<span class='like fa fa-thumbs-o-up' data-id='$row[id]'></span> 
+							<span class='unlike d-none fa fa-thumbs-up' data-id='$row[id]'></span>";
+						endif;
+						echo "<span class='likes_count'>$row[likes]</span>";
+					echo "</div></li>";
+				}else{
+					echo "<span class='yclogin fa fa-thumbs-o-up'></span>";
+					echo "<span class='likes_count'>$row[likes]</span>";
+					echo "</div></li>";
+				}
 			}
 			mysqli_close($con);
 		?>
@@ -178,6 +197,9 @@
 	mysqli_close($con);
 	?>
 	<script language="javascript">
+        $('.yclogin').on('click', function(){
+            alert('Bạn phải đăng nhập để sử dụng chức năng này!');
+        });
 		$('#cmt').paginate({
 			  perPage:3 
 		});
