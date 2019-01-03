@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="./css/fixbody.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-	<script src="./js/jquery.paginate.js"></script>
+    <script src="./js/jquery.paginate.js"></script>
+    
 </head>
 
 <body>
@@ -22,17 +23,30 @@
         include('./php/header.php');
         ?>
         
-        <div id="carouselExampleControls" class="carousel slide col-md-11 m-auto pt-3" data-ride="carousel">
+        <main class="col-md-11 m-auto">
+            <div class="left col-md-8 float-left">
+            <div id="carouselExampleControls" class="carousel slide col-md-12 mt-5 bg-light p-1 rounded" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="./image/img01.jpg" alt="First slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="./image/img02.jpg" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="./image/img03.jpg" alt="Third slide">
-                </div>
+            <?php
+                require('./php/connect.php');
+                $sql = "SELECT * FROM carousel";
+                $result = mysqli_query($con,$sql);
+                $i=1;
+                while($row = mysqli_fetch_assoc($result)){
+                    if($i==1){
+                        $ac='active';
+                    }else{
+                        $ac='';
+                    }
+                $ten = $row['ten'];
+                $image=$row['image'];
+                echo "<div class='carousel-item $ac'>
+                            <img class='d-block w-100' src='./$image' alt='Slide $i'>
+                        </div>";
+                    $i++;
+                }
+                mysqli_close($con);
+            ?>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -43,11 +57,8 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-        <main class="col-md-11 m-auto">
-
-            <div class="left col-md-8 float-left">
                 <div class="text-md-left mt-5">
-                    <h3>Chủ Đề</h3>
+                    <h4>Chủ Đề</h4>
                 </div>
                 <hr>
                 <div class="row" id="listchude">
@@ -69,7 +80,7 @@
                     ?>
                 </div>
                 <div class="text-md-left mt-3">
-                    <h3>Album</h3>
+                    <h4>Album</h4>
                 </div>
                 <hr>
                 <div class="row" id="listalbum">
@@ -91,7 +102,7 @@
                         ?>
                 </div>
                 <div class="text-md-left mt-3">
-                    <h3>Bài hát</h3>
+                    <h4>Bài hát</h4>
                 </div>
                 <hr>
                 <div class="list-group">
@@ -110,14 +121,14 @@
                             <span>
                                 <img class="float-md-left mr-2" src="./'.$anh.'" width="50px">
                             </span>
-                            <div class="item_title">'.$tenbaihat.'</div>
+                            <div class="item_title font-weight-bold">'.$tenbaihat.'</div>
                             <div class="box_items">
                                 <span class="item_span mr-5">
                                     <img src="./image/views.png" width="18px">
-                                    <span style="font-size:12px;">'.$luotnghe.'</span>
+                                    <span style="font-size:13px;">'.$luotnghe.'</span>
                                 </span>
                                 <span>
-                                    <span style="font-size:12px;">'.$casi.'</span>
+                                    <span style="font-size:13px;">'.$casi.'</span>
                                 </span>
                             </div>
                         </a></li>';
