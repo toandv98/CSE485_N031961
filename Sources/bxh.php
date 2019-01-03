@@ -42,7 +42,6 @@
             <div class="text-md-left mt-5">
                 <h3>Bảng xếp hạng</h3>
                 </div>
-
                 <select name="bxh"class="custom-select w-25" onchange="loadbxh()" style="min-width:150px;" id="bxh">
                     <option selected value="baihat">Bài hát</option>
                     <option value="album">Album</option>

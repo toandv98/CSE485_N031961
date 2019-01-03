@@ -102,7 +102,7 @@
                         ?>
                 </div>
                 <div class="text-md-left mt-3">
-                    <h4>Bài hát</h4>
+                    <h4>Bài hát mới nhất</h4>
                 </div>
                 <hr>
                 <div class="list-group">
@@ -110,7 +110,7 @@
                 <?php
                     require('./php/connect.php');
                     
-                    $sql = "SELECT * FROM v_baihat" ;
+                    $sql = "SELECT * FROM v_baihat ORDER BY ngaydang DESC" ;
                     $result = mysqli_query($con,$sql);
                     while($row = mysqli_fetch_assoc($result)){
                         $tenbaihat = $row['tenbaihat'];

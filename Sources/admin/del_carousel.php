@@ -3,7 +3,7 @@
 
     include("../php/connect.php");
     mysqli_query($con,"Delete from carousel where id=$id");
-    header('location:chude.php');
+    header('location:admin.php');
     mysqli_close($con);
 
 ?>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 03, 2019 lúc 09:56 AM
--- Phiên bản máy phục vụ: 10.1.36-MariaDB
--- Phiên bản PHP: 7.2.11
+-- Thời gian đã tạo: Th1 03, 2019 lúc 10:59 AM
+-- Phiên bản máy phục vụ: 10.1.37-MariaDB
+-- Phiên bản PHP: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -27,16 +27,6 @@ SET time_zone = "+00:00";
 --
 -- Cấu trúc bảng cho bảng `album`
 --
-DROP DATABASE IF EXISTS db_nhaconline;
-
-CREATE DATABASE IF NOT EXISTS db_nhaconline
-CHARACTER SET utf8mb4
-COLLATE utf8mb4_unicode_ci;
-
---
--- Set default database
---
-USE db_nhaconline;
 
 CREATE TABLE `album` (
   `id` int(100) NOT NULL,
@@ -54,17 +44,7 @@ INSERT INTO `album` (`id`, `tenalbum`, `image`) VALUES
 (4, 'Những Bài Hát Nghe Khi Đi Phượt', 'image/19884928.jpg'),
 (5, 'Mình Sẽ Mạnh Mẽ Yêu Nhau', 'image/20942104.jpg'),
 (6, 'Người Lạ Ơi Người Lạ', 'image/22143245.jpg'),
-(7, 'Halloween Party 2018', 'image/23866955.jpg'),
-(9, 'Mùa Đông Của Anh', 'image/1.jpg'),
-(10, 'Nhạc Nhẹ Cho Quán Cafe', 'image/2.jpg'),
-(11, 'Chuyện Tình Của Mùa Đông', 'image/3.jpg'),
-(12, 'Đánh Thức Màn Đêm', 'image/4.jpg'),
-(13, 'Một Chút Hoài Niệm Của Thanh Xuân', 'image/5.jpg'),
-(14, 'Mùa Đông Cô Đơn', 'image/6.jpg'),
-(15, 'Crush À ! Em Yêu Anh', 'image/7.jpg'),
-(16, 'Mình Đi Em Nhé', 'image/8.jpg'),
-(17, 'Anh Chưa Từng Yêu', 'image/9.jpg'),
-(18, 'Âm Nhạc Cuối Ngày', 'image/10.jpg');
+(7, 'Halloween Party 2018', 'image/23866955.jpg');
 
 -- --------------------------------------------------------
 
@@ -90,31 +70,49 @@ CREATE TABLE `baihat` (
 --
 
 INSERT INTO `baihat` (`id`, `tenbaihat`, `path`, `image`, `luotnghe`, `likes`, `idalbum`, `idcasi`, `idchude`, `ngaydang`) VALUES
-(7, 'Hongkong1', 'nhac/hongkong1.mp3', 'image/anh16.jpg', 784, 0, 2, 2, 3, '2018-12-29 18:58:57'),
+(7, 'Hongkong1', 'nhac/hongkong1.mp3', 'image/anh16.jpg', 784, 1, 2, 2, 3, '2018-12-29 18:58:57'),
 (8, 'Thằng điên', 'nhac/hongkong1.mp3', 'image/23222192.jpg', 85, 2, 2, 2, 3, '2018-12-31 02:56:30'),
 (9, 'Bé lên ba', 'nhac/hongkong1.mp3', 'image/23222192.jpg', 76, 1, 2, 2, 3, '2018-12-31 17:09:49'),
 (10, 'Thu cuối', 'nhac/hongkong1.mp3', 'image/22247057.jpg', 7, 1, 2, 2, 3, '2018-12-31 17:10:17'),
 (11, 'Lạc trôi', 'nhac/hongkong1.mp3', 'image/22247057.jpg', 25, 1, 2, 2, 3, '2018-12-31 17:11:03'),
 (12, 'Rực Rỡ Tháng Năm', 'nhac/hongkong1.mp3', 'image/166.jpg', 0, 0, 2, 6, 7, '2019-01-01 17:04:23'),
-(13, 'Buông Đôi Tay Nhau Ra', 'nhac/hongkong1.mp3', 'image/23310335.jpg', 3, 2, 5, 3, 3, '2019-01-01 17:22:13'),
+(13, 'Buông Đôi Tay Nhau Ra', 'nhac/hongkong1.mp3', 'image/23310335.jpg', 3, 1, 5, 3, 3, '2019-01-01 17:22:13'),
 (14, 'Âm Thầm Bên Em', 'nhac/hongkong1.mp3', 'image/23257481.jpg', 0, 0, 5, 3, 3, '2019-01-01 17:22:54'),
-(15, 'Chắc Ai Đó Sẽ Về', 'nhac/hongkong1.mp3', 'image/23257481.jpg', 0, 0, 5, 2, 3, '2019-01-01 17:23:38'),
+(15, 'Chắc Ai Đó Sẽ Về', 'nhac/hongkong1.mp3', 'image/23257481.jpg', 0, 2, 5, 2, 3, '2019-01-01 17:23:38'),
 (16, 'Dưới Những Cơn Mưa', 'nhac/hongkong1.mp3', 'image/140354.jpg', 0, 0, 6, 4, 3, '2019-01-01 17:26:22'),
-(17, 'Tình Yêu Chắp Vá', 'nhac/hongkong1.mp3', 'image/140354.jpg', 2, 0, 6, 4, 3, '2019-01-01 17:26:48'),
+(17, 'Tình Yêu Chắp Vá', 'nhac/hongkong1.mp3', 'image/140354.jpg', 2, 1, 6, 4, 3, '2019-01-01 17:26:48'),
 (18, 'Vô Hình Trong Tim Em', 'nhac/hongkong1.mp3', 'image/140354.jpg', 0, 0, 5, 4, 3, '2019-01-01 17:29:48'),
-(19, 'Mãi Mãi Bên Nhau', 'nhac/hongkong1.mp3', 'image/167.jpg', 0, 0, 5, 2, 3, '2019-01-01 17:33:14'),
+(19, 'Mãi Mãi Bên Nhau', 'nhac/hongkong1.mp3', 'image/167.jpg', 0, 2, 5, 2, 3, '2019-01-01 17:33:14'),
 (20, 'Firework', 'nhac/hongkong1.mp3', 'image/19969907.jpg', 0, 1, 3, 5, 7, '2019-01-01 17:35:24'),
 (21, '  Take Me Away', 'nhac/hongkong1.mp3', 'image/19884928.jpg', 0, 0, 4, 2, 7, '2019-01-01 17:37:59'),
 (22, 'Việt Nam, Đi, Hôn Và Yêu', 'nhac/hongkong1.mp3', 'image/166.jpg', 0, 0, 4, 6, 7, '2019-01-01 17:39:58'),
 (23, 'Em (Rap Version)', 'nhac/hongkong1.mp3', 'image/20235022.jpg', 0, 0, 5, 5, 6, '2019-01-01 17:41:30'),
 (24, 'Ta Đã Yêu Chưa Vậy', 'nhac/hongkong1.mp3', 'image/22334189.jpg', 0, 0, 5, 5, 6, '2019-01-01 17:42:44'),
-(25, 'Quán Cà Phê Ký Ức', 'nhac/hongkong1.mp3', 'image/23639501.jpg', 1, 0, 2, 6, 4, '2019-01-01 17:45:35'),
+(25, 'Quán Cà Phê Ký Ức', 'nhac/hongkong1.mp3', 'image/23639501.jpg', 2, 1, 2, 6, 4, '2019-01-01 17:45:35'),
 (26, 'Cà Phê Đắng Vị Cô Đơn', 'nhac/hongkong1.mp3', 'image/20673871.jpg', 0, 0, 4, 2, 4, '2019-01-01 17:46:30'),
-(27, 'Taki Taki', 'nhac/hongkong1.mp3', 'image/12693.jpg', 0, 1, 3, 7, 5, '2019-01-01 17:49:49'),
-(28, 'Mad Love (Single)', 'nhac/hongkong1.mp3', 'image/23745473.jpg', 1, 1, 7, 7, 5, '2019-01-01 17:50:36'),
-(29, 'Thành Phố Xa Lạ', 'nhac/hongkong1.mp3', 'image/b1.jpg', 0, 0, 14, 8, 12, '2019-01-03 15:53:13'),
-(30, 'Lie To Me', 'nhac/hongkong1.mp3', 'image/b2.jpg', 0, 1, 18, 4, 10, '2019-01-03 15:53:51'),
-(31, 'Ý Xuân Hoà Hợp', 'nhac/hongkong1.mp3', 'image/b3.jpg', 0, 0, 13, 6, 8, '2019-01-03 15:54:49');
+(27, 'Taki Taki', 'nhac/hongkong1.mp3', 'image/12693.jpg', 1, 1, 3, 7, 5, '2019-01-01 17:49:49'),
+(28, 'Mad Love (Single)', 'nhac/hongkong1.mp3', 'image/23745473.jpg', 5, 1, 7, 7, 5, '2019-01-01 17:50:36');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `carousel`
+--
+
+CREATE TABLE `carousel` (
+  `id` int(100) NOT NULL,
+  `ten` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `carousel`
+--
+
+INSERT INTO `carousel` (`id`, `ten`, `image`) VALUES
+(2, 'Nghe nhạc', 'image/3170.jpg'),
+(3, 'Mới', 'image/3333.jpg'),
+(4, 'New', 'image/3357.jpg');
 
 -- --------------------------------------------------------
 
@@ -140,7 +138,7 @@ INSERT INTO `casi` (`id`, `tencasi`, `image`, `tieusu`) VALUES
 (5, 'JustaTee', 'image/20229817.jpg', 'Tên thật: Nguyễn Thanh Tuấn<br>\r\nNghệ danh: JustaTee<br>\r\nNgày sinh: 01-11-1991<br>\r\nQuê quán: Hà Nội<br>\r\nQuốc gia: Đang cập nhật<br>\r\nGiải thưởng:<br>\r\nĐang cập nhật<br>\r\nThông tin thêm:<br>\r\nJustaTee bắt đầu sáng tác từ năm 2004 với nickname JayTee, sau này được đổi thành JustaTee.\r\nGiai đoạn 2005 - 2008, anh là rapper/Singer/Music producer trong nhóm Click Click Boom - nhóm nhạc rap đa thành viên đầu tiên tại Việt Nam. \r\nNăm 2008, JustaTee bắt đầu đánh dấu sự nghiệp R&B.<br>\r\nNăm 2010, JustaTee cùng Lil\' Knight đồng sáng lập nên LadyKillah với sự điều hành của Mr.J (Jan Saker) làm nên website R&B/Hiphop lớn mạnh nhất hiện nay.\r\n20/08/2010: Ra mắt mini album JUST-A-TEE đánh dấu tên tuổi mình trên nền nhạc R&B của nước nhà. \r\nJustaTee hiện đang là Music Producer của LadyKillah Proz - Nhóm các Rappers/Singers hàng đầu VN như Lil\'Knight, Emily, Mr.T, Yanbi,Mr.A, Bueno, Phúc Bồ, TmT, Big Daddy...Hiện nay, ngoài hoạt động nghệ thuật, JustaTee còn đeo đuổi công việc kinh doanh riêng với quán cà phê của riêng anh.\r\nNhững bài hát mang lại tên tuổi JustaTee: Người Lạ Nơi Cuối Đường, Imma HeartBreaker, K Part 2, Không Tin Một Sớm Mai Bình Yên, Call Me The Liar...'),
 (6, 'Mỹ Tâm', 'image/166.jpg', 'Tên thật: Phan Thị Mỹ Tâm<br>\r\nNghệ danh: Mỹ Tâm<br>\r\nNickname: họa mi tóc nâu<br>\r\nNgày sinh: 16/01/1981<br>\r\nQuê quán: Đà Nẵng<br>\r\nQuốc gia: Việt Nam<br>\r\nGiải thưởng:<br>\r\n- Tháng 4/1998, Mỹ Tâm đoạt giải nhất hội thi đơn ca quận Tân Bình và quận 6.<br>\r\n- Tháng 11/1998, Mỹ Tâm đoạt giải nhất Giọng ca vàng báo Mực Tím.<br>\r\n- 3 giải Cống hiến cho \"Ca Sĩ Của Năm\", 1 giải Âm nhạc châu Âu của MTV, 11 lần liên tiếp nhận giải \"Ca Sĩ được yêu thích nhất\" và 3 năm liên tiếp nhận giải \"Gương Mặt Của Năm\" của Giải thưởng Làn Sóng Xanh.<br>\r\n- Năm 2014, tại sự kiện Top Asia Corporate Ball 2014 ở Kuala Lumpur, Mỹ Tâm thắng giải \"Huyền thoại Âm nhạc châu Á\" và là \"Nghệ sĩ có album bán chạy nhất lãnh thổ\" do Liên đoàn Công nghiệp ghi âm quốc tế (IFPI) công nhận.<br>\r\nThông tin thêm:<br>\r\n- Mỹ Tâm là con út trong một gia đình có tám anh chị em, ngay từ nhỏ cô đã thể hiện mình có khả năng về âm nhạc.<br>\r\n- Từ năm 1997 - 2001, cô học hệ trung cấp chính quy (4 năm) khoa thanh nhạc Nhạc viện Thành phố Hồ Chí Minh và tốt nghiệp thủ khoa.<br>\r\n- Từ 1997 - 1998, Mỹ Tâm tham gia liên tiếp những hội diễn văn nghệ, các cuộc thi giọng hát hay của quận, của thành phố. <br>\r\n- Tháng 01/1999, Mỹ Tâm trở thành ca sĩ độc quyền của Vafaco. Bản thu âm đầu tiên của Tâm được thực hiện dưới sự chỉ đạo của nhạc sĩ Nguyễn Hà. Ca khúc \"Nhé Anh\" vừa là bài tập thu thanh đầu đời vừa là bài hát đánh dấu một Mỹ Tâm đầy ấn tượng.<br>\r\n- Sau đó, Mỹ Tâm liên tục tung ra các sản phẩm HIT, những show diễn lớn và nhanh chóng trở thành một ngôi sao sáng trong làng âm nhạc Việt Nam. <br>\r\n- Ngoài âm nhạc, Mỹ Tâm còn được biết đến với một thương hiệu thời trang riêng My Time và Mỹ Tâm Foundation là quỹ từ thiện mà Mỹ Tâm Entertainment cùng với các Fan của cô lập nên nhằm giúp đỡ những hoàn cảnh khó khăn, các em nhỏ mồ côi.<br>\r\n* Các đĩa nhạc đã phát hành của Mỹ Tâm:<br>\r\nMãi Yêu (2001)<br>\r\nĐâu Chỉ Riêng Em (2002)<br>\r\nYesterday & Now (2003)<br>\r\nHoàng Hôn Thức Giấc (2005)<br>\r\nDường Như Ta Đã (2006)<br>\r\nVút Bay (2006)<br>\r\nTrở Lại (2008)<br>\r\nNhịp Đập (2008)<br>\r\nMelodies Of Time (2010)<br>\r\nCho Một Tình Yêu (2011)<br>\r\nTâm (2013)<br>\r\n* Các show diễn lớn:<br>\r\nYesterday & Now (Ngày Ấy & Bây Giờ) (2004)<br>\r\nSức Mạnh Của Những Ước Mơ (2005)<br>\r\nSóng Đa Tần (2008)<br>\r\nNhững Giai Điệu Của Thời Gian (2011)<br>\r\nCho Một Tình Yêu (2011)<br>\r\nGởi Tình Yêu Của Em (2013)<br>\r\nHeartbeat (2014)<br>\r\nÔ Cửa Màu Xanh (2016)'),
 (7, 'DJ Snake', 'image/12693.jpg', 'Tên thật: Đang cập nhật<br>\r\nNghệ danh: DJ Snake<br>\r\nNgày sinh: Đang cập nhật<br>\r\nQuê quán: Đang cập nhật<br>\r\nQuốc gia: Đang cập nhật<br>\r\nGiải thưởng:<br>\r\nĐang cập nhật'),
-(8, 'Đang cập nhật', 'image/avatar.png', 'Đang cập nhật');
+(8, 'Đang cập nhật', 'image/avatar.png', 'Tên thật:  Đang cập nhật<br>\r\nNghệ danh:  Đang cập nhật<br>\r\nNickname:  Đang cập nhật<br>\r\nNgày sinh:  Đang cập nhật<br>\r\nQuê quán:  Đang cập nhật<br>\r\nQuốc gia:  Đang cập nhật<br>\r\nGiải thưởng: Đang cập nhật<br>');
 
 -- --------------------------------------------------------
 
@@ -164,14 +162,7 @@ INSERT INTO `chude` (`id`, `tenchude`, `image`) VALUES
 (5, 'EDM', 'image/19975520.jpg'),
 (6, 'Rap', 'image/22334189.jpg'),
 (7, 'Thư giãn', 'image/19969907.jpg'),
-(8, 'Tổng hợp', 'image/281235.jpg'),
-(9, 'Những Ca Khúc Bất Hủ', 'image/anh4.jpg'),
-(10, 'Cafe Thứ 7', 'image/anh209.jpg'),
-(11, 'Hát Về Hà Nội', 'image/anh234.jpg'),
-(12, '50 Sắc Thái Cảm Xúc', 'image/anh231.jpg'),
-(14, 'Nhạc Phim Tuyển Chọn', 'image/anh153.jpg'),
-(16, 'Best Love Song Vol.1', 'image/anh2.jpg'),
-(17, 'Sad Song For Heartbreaker', 'image/anh251.jpg');
+(8, 'Tổng hợp', 'image/281235.jpg');
 
 -- --------------------------------------------------------
 
@@ -196,7 +187,8 @@ INSERT INTO `comment` (`id`, `noidung`, `thoigian`, `duyet`, `iduser`, `idbaihat
 (12, 'Bài hát hay vcc', '2018-12-30 22:42:11', 1, 1, 7),
 (22, 'Hát hay vcl', '2018-12-31 00:29:15', 1, 2, 7),
 (26, 'Bài hát quá bình thường, tao cũng hát được.', '2018-12-31 16:47:57', 1, 2, 7),
-(43, 'Hay', '2019-01-01 00:39:33', 1, 2, 8);
+(43, 'Hay', '2019-01-01 00:39:33', 1, 2, 8),
+(44, 'Thêm bình luận mới', '2019-01-03 19:54:25', 0, 1, 10);
 
 -- --------------------------------------------------------
 
@@ -215,17 +207,22 @@ CREATE TABLE `likes` (
 --
 
 INSERT INTO `likes` (`id`, `iduser`, `idbaihat`) VALUES
-(3, 1, 8),
-(4, 1, 10),
-(5, 1, 13),
-(6, 1, 20),
-(7, 1, 28),
 (8, 1, 27),
 (9, 1, 11),
 (10, 2, 9),
 (11, 2, 8),
 (12, 2, 13),
-(15, 3, 30);
+(17, 1, 25),
+(18, 1, 8),
+(22, 1, 17),
+(23, 1, 20),
+(25, 2, 15),
+(26, 2, 19),
+(40, 1, 28),
+(41, 1, 7),
+(45, 1, 19),
+(46, 1, 10),
+(47, 1, 15);
 
 -- --------------------------------------------------------
 
@@ -255,9 +252,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `userName`, `passWord`, `hoten`, `gioitinh`, `ngaysinh`, `diachi`, `sdt`, `email`, `level`, `code`, `active`, `avatar`, `ngaydangky`) VALUES
-(1, 'toan', '$2y$12$4615a4e890537f69040a2u5fKjMo8i8YbVOCVb5Ibn/YHbP.GjaFW', 'Đặng Văn Toản', '0', '1998-08-01', 'KTX Thuỷ Lợi', '0329174333', 'bolobalabolobala12345@gmail.com', 0, '825c2c1922d3af9466b6942e904aa667', 1, 'image/logo.png', '2018-12-29 17:22:26'),
-(2, 'admin', '$2y$12$5673ccf9899bc4f0405a8uw8fXJnQAnfdD8wBB.MWHnFQjZAw8S32', 'Admin', '0', '0001-01-01', 'None', '0', 'toandv62@gmail.com', 2, '', 1, 'image/avatar.png', '2018-12-29 17:30:29'),
-(3, 'hao', '$2y$12$6772ea179f0fe9b6ebd26uLT3K2QWblBqFQBNrjHov/6gDK.KhQI6', 'Hoàng Văn Hào', '0', '1997-12-12', 'KTX ĐHTL', '0392092333', 'haohv62@wru.vn', 2, '6dd4953dfab58579bb10ef82bff97fa4', 1, 'image/avatar.png', '2019-01-03 15:27:23');
+(1, 'toan', '$2y$12$4615a4e890537f69040a2u5fKjMo8i8YbVOCVb5Ibn/YHbP.GjaFW', 'Đặng Văn Toản', '0', '1998-08-01', 'KTX Thuỷ Lợi', '0329174333', 'bolobalabolobala12345@gmail.com', 0, '825c2c1922d3af9466b6942e904aa667', 1, 'image/logobk.png', '2018-12-29 17:22:26'),
+(2, 'admin', '$2y$12$5673ccf9899bc4f0405a8uw8fXJnQAnfdD8wBB.MWHnFQjZAw8S32', 'ADMIN', '0', '1111-11-11', 'None', '0', 'toandv62@gmail.com', 2, '', 1, 'image/avatar.png', '2018-12-29 17:30:29');
 
 -- --------------------------------------------------------
 
@@ -310,6 +306,12 @@ ALTER TABLE `baihat`
   ADD KEY `idalbum` (`idalbum`);
 
 --
+-- Chỉ mục cho bảng `carousel`
+--
+ALTER TABLE `carousel`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `casi`
 --
 ALTER TABLE `casi`
@@ -351,13 +353,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `album`
 --
 ALTER TABLE `album`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `baihat`
 --
 ALTER TABLE `baihat`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT cho bảng `carousel`
+--
+ALTER TABLE `carousel`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `casi`
@@ -369,25 +377,25 @@ ALTER TABLE `casi`
 -- AUTO_INCREMENT cho bảng `chude`
 --
 ALTER TABLE `chude`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT cho bảng `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
