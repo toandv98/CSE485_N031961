@@ -53,7 +53,6 @@
             </ul>
         <div class="tab-content bg-white rounded-bottom">
             <div id="home" class="container tab-pane active rounded-bottom" style="background:#eee"><br>
-            <hr>
                 <div class="list-group">
                 <ul id="listbaihat" class="p-0" style="list-style:none;">
                 <?php

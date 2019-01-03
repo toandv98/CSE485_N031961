@@ -5,7 +5,6 @@
         case 'chude':
         {
             echo '<div id="home" class="container tab-pane active rounded-bottom" style="background:#eee"><br>
-            <hr>
                 <div class="list-group">
                 <ul id="listbaihat" class="p-0" style="list-style:none;">';
                     require('./connect.php');
@@ -37,7 +36,6 @@
                 </div>
             </div>
             <div id="menu1" class="container tab-pane fade rounded-bottom" style="background:#eee"><br>
-            <hr>
             <div class="list-group">
                 <ul id="listbaihat1" class="p-0" style="list-style:none;">';
                 $sql = "SELECT c.id,c.tenchude,c.image, SUM(vb.likes) AS tonglikes FROM chude c INNER JOIN v_baihat vb ON c.id = vb.idchude GROUP BY c.id ORDER BY (tonglikes) DESC" ;
@@ -73,7 +71,6 @@
         case 'album':
         {
             echo '<div id="home" class="container tab-pane active rounded-bottom" style="background:#eee"><br>
-            <hr>
                 <div class="list-group">
                 <ul id="listbaihat" class="p-0" style="list-style:none;">';
                     require('./connect.php');
@@ -105,7 +102,6 @@
                 </div>
             </div>
             <div id="menu1" class="container tab-pane fade rounded-bottom" style="background:#eee"><br>
-            <hr>
             <div class="list-group">
                 <ul id="listbaihat1" class="p-0" style="list-style:none;">';
                 $sql = "SELECT a.id,a.tenalbum,a.image, SUM(vb.likes) AS tonglikes FROM album a INNER JOIN v_baihat vb ON a.id = vb.idalbum GROUP BY a.id ORDER BY (tonglikes) DESC" ;
@@ -141,7 +137,6 @@
         default:
         {
             echo '<div id="home" class="container tab-pane active rounded-bottom" style="background:#eee"><br>
-            <hr>
                 <div class="list-group">
                 <ul id="listbaihat" class="p-0" style="list-style:none;">';
 
@@ -195,7 +190,6 @@
                 </div>
             </div>
             <div id="menu1" class="container tab-pane fade rounded-bottom" style="background:#eee"><br>
-            <hr>
             <div class="list-group">
                 <ul id="listbaihat1" class="p-0" style="list-style:none;">';
                     $sql = "SELECT * FROM v_baihat ORDER BY likes DESC" ;
