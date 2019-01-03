@@ -22,10 +22,9 @@
         session_start();
         include('./php/header.php');
         ?>
-        
         <main class="col-md-11 m-auto">
             <div class="left col-md-8 float-left">
-            <div id="carouselExampleControls" class="carousel slide col-md-12 mt-5 bg-light p-1 rounded" data-ride="carousel">
+            <div id="carouselExampleControls" class="carousel slide col-md-12 mt-3 bg-light p-1 rounded" data-ride="carousel">
             <div class="carousel-inner">
             <?php
                 require('./php/connect.php');

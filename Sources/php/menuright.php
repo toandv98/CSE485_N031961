@@ -14,7 +14,7 @@
         font-weight:bold;
     }
 </style>
-<div class="w-100 mt-5 p-1 bg-light rounded"><img class="w-100" src="./image/score.jpg" alt="Ảnh"></div>
+<div class="w-100 mt-3 p-1 bg-light rounded"><img class="w-100" src="./image/score.jpg" alt="Ảnh"></div>
     <hr>
     <div class="text-md-left mt-3">
             <h5>Album nghe nhiều</h5>
