@@ -40,16 +40,15 @@
         <main class="col-md-11 m-auto">
             <div class="left col-md-8 float-left">
             <div class="text-md-left mt-5">
-                <?php 
-                    // $id = $_GET["id"];
-                    // require('./php/connect.php');
-                    // $resultcd = mysqli_query($con,"SELECT tencasi FROM casi where id = '$id'");
-                    // $rowcd = mysqli_fetch_assoc($resultcd);
-                    // mysqli_close($con);
-                    // echo "<h3>Ca sĩ $rowcd[tencasi]</h3>";
-                ?>
-                <h3>Bảng xếp hạng bài hát</h3>
-                </div><hr>
+                <h3>Bảng xếp hạng</h3>
+                </div>
+                <hr>
+                <select name="bxh"class="custom-select w-25" onchange="loadbxh()" style="min-width:150px;" id="bxh">
+                    <option selected value="baihat">Bài hát</option>
+                    <option value="album">Album</option>
+                    <option value="chude">Chủ đề</option>
+                </select>
+                <hr>
             <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
             <a class="nav-link active" data-toggle="tab" href="#home"><b>Lượt nghe</b></a>
@@ -58,111 +57,7 @@
             <a class="nav-link" data-toggle="tab" href="#menu1"><b>Lượt thích</b></a>
             </li>
             </ul>
-        <div class="tab-content bg-white rounded-bottom">
-            <div id="home" class="container tab-pane active rounded-bottom" style="background:#eee"><br>
-            <hr>
-                <div class="list-group">
-                <ul id="listbaihat" class="p-0" style="list-style:none;">
-                <?php
-                    require('./php/connect.php');
-                    $sql = "SELECT * FROM v_baihat ORDER BY luotnghe DESC" ;
-                    $result = mysqli_query($con,$sql);
-                    while($row = mysqli_fetch_assoc($result)){
-                        $tenbaihat = $row['tenbaihat'];
-                        $anh = $row['image'];
-                        $casi = $row['tencasi'];
-                        $luotnghe = $row['luotnghe'];
-                        echo '<li><a href="./playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
-                            <span>
-                                <img class="float-left mr-2" src="./'.$anh.'" width="50px">
-                            </span>
-                            <div class="item_title">'.$tenbaihat.'</div>
-                            <div class="box_items">
-                                <span class="item_span mr-5">
-                                    <img src="./image/views.png" width="18px">
-                                    <span style="font-size:12px;">'.$luotnghe.'</span>
-                                </span>
-                                <span>
-                                    <span style="font-size:12px;">'.$casi.'</span>
-                                </span>
-                            </div>
-                        </a><div class="dlike">';
-                        if(isset($_SESSION['id'])){
-                            $iduser = $_SESSION['id'];
-                            $results = mysqli_query($con, "SELECT * FROM likes WHERE iduser=$iduser AND idbaihat=".$row['id']."");
-                                if (mysqli_num_rows($results) == 1 ):
-                                    echo "<span class='unlike fa fa-thumbs-up' data-id='$row[id]'></span>
-                                    <span class='like d-none fa fa-thumbs-o-up' data-id='$row[id]'></span>";
-                                else:
-                                    echo "<span class='like fa fa-thumbs-o-up' data-id='$row[id]'></span> 
-                                    <span class='unlike d-none fa fa-thumbs-up' data-id='$row[id]'></span>";
-                                endif;
-                                echo "<span class='likes_count'>$row[likes]</span>";
-                            echo "</div></li>";
-                        }else{
-                            echo "<span class='yclogin fa fa-thumbs-o-up'></span>";
-                            echo "<span class='likes_count'>$row[likes]</span>";
-                            echo "</div></li>";
-                        }
-                    }
-                    mysqli_close($con);
-                ?>
-                </ul>
-                </div>
-            </div>
-            <div id="menu1" class="container tab-pane fade rounded-bottom" style="background:#eee"><br>
-            <hr>
-            <div class="list-group">
-                <ul id="listbaihat1" class="p-0" style="list-style:none;">
-                <?php
-                    require('./php/connect.php');
-                    $sql1 = "SELECT * FROM v_baihat ORDER BY likes DESC" ;
-                    $result = mysqli_query($con,$sql1);
-                    while($row = mysqli_fetch_assoc($result)){
-                        $tenbaihat = $row['tenbaihat'];
-                        $anh = $row['image'];
-                        $casi = $row['tencasi'];
-                        $luotnghe = $row['luotnghe'];
-                        echo '<li><a href="./playnhac.php?id='.$row['id'].'" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
-                            <span>
-                                <img class="float-left mr-2" src="./'.$anh.'" width="50px">
-                            </span>
-                            <div class="item_title">'.$tenbaihat.'</div>
-                            <div class="box_items">
-                                <span class="item_span mr-5">
-                                    <img src="./image/views.png" width="18px">
-                                    <span style="font-size:12px;">'.$luotnghe.'</span>
-                                </span>
-                                <span>
-                                    <span style="font-size:12px;">'.$casi.'</span>
-                                </span>
-                            </div>
-                        </a><div class="dlike">';
-                        if(isset($_SESSION['id'])){
-                            $iduser = $_SESSION['id'];
-                            $results = mysqli_query($con, "SELECT * FROM likes WHERE iduser=$iduser AND idbaihat=".$row['id']."");
-                                if (mysqli_num_rows($results) == 1 ):
-                                    echo "<span class='unlike fa fa-thumbs-up' data-id='$row[id]'></span>
-                                    <span class='like d-none fa fa-thumbs-o-up' data-id='$row[id]'></span>";
-                                else:
-                                    echo "<span class='like fa fa-thumbs-o-up' data-id='$row[id]'></span> 
-                                    <span class='unlike d-none fa fa-thumbs-up' data-id='$row[id]'></span>";
-                                endif;
-                                echo "<span class='likes_count'>$row[likes]</span>";
-                            echo "</div></li>";
-                        }else{
-                            echo "<span class='yclogin fa fa-thumbs-o-up'></span>";
-                            echo "<span class='likes_count'>$row[likes]</span>";
-                            echo "</div></li>";
-                        }
-                    }
-                    mysqli_close($con);
-                ?>
-                </ul>
-                </div>
-            </div>
-        </div>
-                
+        <div class="tab-content bg-white rounded-bottom" id="tabbxh"></div>
             </div>
             <div class="right col-md-4 float-right">
             <?php include('./php/menuright.php');?>
@@ -174,12 +69,36 @@
         ?>
     </div>
     <script>
+        $.ajax({
+				url : "./php/chonbxh.php",
+				type : "post",
+				dataType:"text",
+				data : {
+						loai : 'baihat'
+				},
+				success : function (result){
+                    $('#tabbxh').html(result);
+				}
+			});
+        function loadbxh(){
+			$.ajax({
+				url : "./php/chonbxh.php",
+				type : "post",
+				dataType:"text",
+				data : {
+						loai : $('#bxh').val()
+				},
+				success : function (result){
+                    $('#tabbxh').html(result);
+				}
+			});
+		}
         $('#listbaihat').paginate({
 			  perPage:10 
         });
         $('#listbaihat1').paginate({
 			  perPage:10 
-		});
+        });
         $('.yclogin').on('click', function(){
             alert('Bạn phải đăng nhập để sử dụng chức năng này!');
         });
