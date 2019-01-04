@@ -31,5 +31,4 @@
       echo "Tài khoản không tồn tại. <a href='../index.php'>Về trang chủ</a>";
     }
     mysqli_close($con);
-
 ?>
