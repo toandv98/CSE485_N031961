@@ -35,7 +35,7 @@
         <main class="col-md-11 m-auto">
             <div class="left col-md-8 float-left">
                 <div class="text-md-left mt-3">
-                    <h4>Kết quả</h4>
+                    <h4>Kết quả tìm kiếm cho '<?php echo $keyword?>'</h4>
                 </div><hr>
                 <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
